@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="student"/>
 	<classpathentry kind="src" path="admin"/>
 	<classpathentry kind="src" path="config"/>
-	<classpathentry kind="src" path="main"/>
+	<classpathentry kind="src" path="index"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
@@ -23,5 +23,6 @@
 			<attribute name="owner.project.facets" value="jst.web.jstl"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-spring-plugin-2.3.16.1.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
