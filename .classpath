@@ -5,6 +5,9 @@
 	<classpathentry kind="src" path="admin"/>
 	<classpathentry kind="src" path="config"/>
 	<classpathentry kind="src" path="index"/>
+	<classpathentry kind="src" path="teacher"/>
+	<classpathentry kind="src" path="exame"/>
+	<classpathentry kind="src" path="course"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
