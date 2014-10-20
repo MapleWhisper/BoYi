@@ -3,6 +3,7 @@ package com.index.action;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -10,7 +11,8 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import com.student.action.BaseAction;
+
+import com.boyi.base.BaseAction;
 import com.student.po.Student;
 import com.student.service.StudentService;
 
@@ -52,14 +54,24 @@ public class LoginAction extends  BaseAction{
 		return "loginUI";		//返回到登陆页面
 	}
 	
-	
-	
-	
-	
 	public String registerUI(){
 		return "registerUI";
 	}
+	
+	public String register(){
+		try {
+			studentService.save(student);
+			//注册成功
+			return "loginUI";
+		} catch (Exception e) {
+			//注册失败
+			meg = "error";
+			return "registerUI";		//返回到注册页面
+		}
 
+		
+	}
+	
 	public StudentService getStudentService() {
 		return studentService;
 	}

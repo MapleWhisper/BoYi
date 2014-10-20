@@ -2,7 +2,9 @@
 
 <html>
   <head>
-	<%@ include file="header.jspf" %>
+	<%@ include file="../header.jspf" %>
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
   </head>
   
   <body>
@@ -18,29 +20,38 @@
 				   </div>
 				   <div class="col-xs-8">
 				  <div class="panel-body">
-				  		<form class="form-horizontal" style="margin-top: 80px">
+				  		<form class="form-horizontal" style="margin-top: 50px" id="form1" method="post" action="loginAction!register">
 						    <div class="form-group">
-						      <label for="inputEmail" class="col-xs-3 control-label">*邮箱</label>
+						      <label  class="col-xs-3 control-label" >*邮箱</label>
 						      <div class="col-xs-7">
-						        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+						        <input type="email" class="form-control" required id="inputEmail" placeholder="Email" id="email" name="student.email">
 						      </div>
 						    </div>
 						    <div class="form-group">
-						      <label for="inputPassword" class="col-xs-3 control-label">*登陆密码</label>
+						      <label  class="col-xs-3 control-label">*登陆密码</label>
 						      <div class="col-xs-7">
-						        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+						        <input type="password" class="form-control"  placeholder="Password" id="password" name="student.password">
 						      </div>
 						    </div>
 						    <div class="form-group">
-						      <label for="inputPassword" class="col-xs-3 control-label">*确认密码</label>
+						      <label class="col-xs-3 control-label">*确认密码</label>
 						      <div class="col-xs-7">
-						        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+						        <input type="password" class="form-control" required  placeholder="RePassword" id="password2" name="password2">
 						      </div>
 						    </div>
 						    <div class="form-group">
 						      <div class="col-xs-5 col-xs-offset-3">
-						      	
 						        <button type="submit" class="btn btn-primary btn-lg">立即注册</button>
+						      </div>
+						    </div>
+						    <div class="form-group">
+						      <div class="col-xs-7 col-xs-offset-1">
+									<c:if test="${meg =='error' }">
+										<div class="alert alert-danger alert-dismissible" role="alert">
+  												<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+ 												 <span id="e1">注册失败，邮箱可能已注册<span>
+										</div>
+									</c:if>						      	
 						      </div>
 						    </div>
 						</form>
@@ -64,6 +75,27 @@
     		</div><!-- row-end -->
     		
     	</div>
-    	<%@ include file="buttom.jsp" %>
+    	<%@ include file="../buttom.jsp" %>
+    	<script type="text/javascript">
+    	$(function() {  
+			$("#form1").validate({
+				rules:{
+					'student.email': {
+						required:true,
+						email:true
+					},
+					'student.password': {
+						required:true,
+						minlength:2
+					},
+					password2: {
+						required:true,
+						minlength:2,
+						equalTo:"#password"
+					}
+				}
+			});  
+		});
+    	</script>
   </body>
 </html>

@@ -3,7 +3,7 @@
 
 
 	<!--导航条 -->
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" >
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" ">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed"
@@ -19,7 +19,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="${pageContext.request.contextPath}/indexAction">博弈教育</a></li>
+						<li><a href="${pageContext.request.contextPath}/indexAction">博弈教育首页</a></li>
 					</ul>
 					<!-- 
 					<form class="navbar-form navbar-left" role="search">
@@ -30,35 +30,11 @@
 					</form>
 					 -->
 					<ul class="nav navbar-nav navbar-right">
-						<li><p class="navbar-text">欢迎来到 集团招聘！</p></li>
 						
-			<!--	已登录		 -->
-					<c:if test="${ sessionScope.student!=null}">
-						<li><p class="navbar-text">你好${sessionScope.user.name}</p></li>		
-						<li><a href="#" class="dropdown-toggle" data-toggle="dropdown">我的班级 <b class="caret"></b></a>
-					        <ul class="dropdown-menu">
-					          <li><a href="${pageContext.request.contextPath}/student/studentCenterAction">我的班级</a></li>
-					          <li><a href="#">Another action</a></li>
-					          <li><a href="#">Something else here</a></li>
-					          <li class="divider"></li>
-					          <li><a href="#">我的资料</a></li>
-					        </ul>
-				        </li>
+						<li><p class="navbar-text">你好[${sessionScope.student.name}]</p></li>		
+						<li><a href="#" >[个人中心]</a></li>
 						<li ><a href="${pageContext.request.contextPath}/client/login/logout">
 							<span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;退出登陆</a></li>
-					</c:if>
-					
-	<!-- 		用户没有登陆 -->
-					<c:if test="${sessionScope.student==null}">
-						
-						<li><a href="${pageContext.request.contextPath}/loginAction!loginUI"><span
-								class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;登陆</a></li>
-						<li><a href="${pageContext.request.contextPath}/loginAction!registerUI"><span
-								class="glyphicon glyphicon-registration-mark"></span>&nbsp;&nbsp;注册</a></li>
-						<li class="dropdown">
-				       
-				      </li>
-					</c:if>	
 						
 					</ul>
 				</div>

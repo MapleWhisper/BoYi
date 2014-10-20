@@ -2,7 +2,9 @@
 
 <html>
   <head>
-	<%@ include file="header.jspf" %>
+	<%@ include file="../header.jspf" %>
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
   </head>
   
   <body>
@@ -18,11 +20,11 @@
 				   </div>
 				   <div class="col-xs-8">
 				  <div class="panel-body">
-				  		<form class="form-horizontal" style="margin-top: 80px" method="post" action="loginAction!login">
+				  		<form class="form-horizontal" id="form1" style="margin-top: 80px" method="post" action="loginAction!login">
 						    <div class="form-group">
 						      <label  class="col-xs-2 control-label">邮箱</label>
 						      <div class="col-xs-7">
-						        <input type="email" class="form-control" id="inputEmail" required placeholder="邮箱" name="student.email">
+						        <input type="email" class="form-control" id="inputEmail" required  placeholder="邮箱" name="student.email">
 						      </div>
 						    </div>
 						    <div class="form-group">
@@ -44,7 +46,6 @@
 						    </div>
 						    <div class="form-group">
 						      <div class="col-xs-7 col-xs-offset-1">
-						      		
 									<c:if test="${meg =='error' }">
 										<div class="alert alert-danger alert-dismissible" role="alert">
   												<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -69,7 +70,22 @@
     		</div><!-- row-end -->
     		
     	</div>
-    	<%@ include file="buttom.jsp" %>
-  
+    	<%@ include file="../buttom.jsp" %>
+  		<script type="text/javascript">
+    	$(function() {  
+			$("#form1").validate({
+				rules:{
+					'student.email': {
+						required:true,
+						email:true
+					},
+					'student.password': {
+						required:true,
+						minlength:2
+					}
+				}
+			});  
+		});
+    	</script>
   </body>
 </html>
