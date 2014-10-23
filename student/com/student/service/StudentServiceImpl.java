@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.boyi.base.BaseServerImpl;
+import com.boyi.po.Student;
 import com.boyi.utils.BoYiUtils;
-import com.student.po.Student;
 
 /**
  * 管理员登陆服务实现类

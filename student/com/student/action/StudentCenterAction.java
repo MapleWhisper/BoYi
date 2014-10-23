@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.boyi.base.BaseAction;
-import com.student.po.Student;
+import com.boyi.po.Student;
 import com.student.service.StudentService;
 
 @Controller
