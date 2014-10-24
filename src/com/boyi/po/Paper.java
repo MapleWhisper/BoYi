@@ -3,11 +3,18 @@ package com.boyi.po;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -37,6 +44,9 @@ public class Paper implements Serializable{
 	private Integer MultChoiceNumber;	//多选题数目
 	private Integer judgeNumber;		//判断题数目
 	private Integer questionNumber;		//问答题数目
+	private Classes classes;		//试卷对应班级ID
+	private Set<Score>scores;        //试卷对应成绩
+	
 	
 	private List<Problem> singleList ;
 	private List<Problem> multChoiceList ;
@@ -223,4 +233,25 @@ public class Paper implements Serializable{
 		return i;
 		
 	}
+	
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="paper")
+	public Set<Score> getScores() {
+		return scores;
+	}
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="class_id")
+	public Classes getClasses() {
+		return classes;
+	}
+	public void setClasses(Classes classes) {
+		this.classes = classes;
+	}
+	public void setScores(Set<Score> scores) {
+		this.scores = scores;
+	}
+	
+	
+	
 }
