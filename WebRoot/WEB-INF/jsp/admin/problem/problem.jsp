@@ -78,12 +78,12 @@
 												<td style="width: 100px">课程:</td>
 												<td>
 													<div class="btn-group">
-													  <button type="button" class="btn btn-default" name="course" >语文</button>
-													  <button type="button" class="btn btn-default" name="course" >数学</button>
-													  <button type="button" class="btn btn-default" name="course" >英语</button>
-													  <button type="button" class="btn btn-default" name="course" >物理</button>
-													  <button type="button" class="btn btn-default" name="course" >化学</button>
-													  <button type="button" class="btn btn-default" name="course" >生物</button>
+													  <button type="button" class="btn btn-default" name="subject" >语文</button>
+													  <button type="button" class="btn btn-default" name="subject" >数学</button>
+													  <button type="button" class="btn btn-default" name="subject" >英语</button>
+													  <button type="button" class="btn btn-default" name="subject" >物理</button>
+													  <button type="button" class="btn btn-default" name="subject" >化学</button>
+													  <button type="button" class="btn btn-default" name="subject" >生物</button>
 													</div>
 												</td>
 											</tr>
@@ -142,6 +142,10 @@
     				if($("button.active").size()!=2){
     					$("#e2").toggle();
     					$("#e2").fadeOut(3000);
+    				}else{
+    					var grade  = $("button[name='grade'].active").html();
+    					var subject = $("button[name='subject'].active").html();
+    					$.post("/BoYi/admin/problem/problemAction!list?cur=1",{"grade":grade,"subject":subject});
     				}
     			});
     		});

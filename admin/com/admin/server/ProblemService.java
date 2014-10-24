@@ -14,6 +14,7 @@ public interface ProblemService extends BaseServer<Problem>{
 	 * @return
 	 */
 	public int getMaxPageNum(Page page);
+	public int getMaxPageNum(Page page,String grade,String subject);
 	
 	/**
 	 * 分页显示
@@ -21,6 +22,7 @@ public interface ProblemService extends BaseServer<Problem>{
 	 * @return
 	 */
 	public List<Problem> findAll(Page page);
+	public List<Problem> findAllByGradeAndSubject(Page page,String grade,String subject);
 
 	public List<Problem> search(String key); 
 }
