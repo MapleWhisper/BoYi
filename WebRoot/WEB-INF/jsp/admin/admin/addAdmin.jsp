@@ -90,7 +90,7 @@
     		$(function(){
     			$("#admin").css("margin-right","-30px").css("font-size"," 25px");
     		});
-    	</script
+    	</script>
     	
   </body>
 </html>

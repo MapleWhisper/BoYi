@@ -35,7 +35,7 @@
 								    	  <!--分页 -->
 								    	</div>
 								    	<div class="col-xs-4">
-								    		<a href='${pageContext.request.contextPath}/admin/paperCart' target="_blank" class="btn btn-lg btn-primary">进入试卷篮，生成试卷</a>
+								    		<a href='${pageContext.request.contextPath}/admin/problem/paperCartAction' target="_blank" class="btn btn-lg btn-primary">进入试卷篮，生成试卷</a>
 								    	</div>
 								    </div>
 			    					
@@ -72,7 +72,7 @@
 										    
 										    <span style="float: right">
 										    	<!-- 删除试卷
-										    		<button name="${pro.id}" class="btn btn-sm btn-warning delete" onClick="return confirm('你确定要删除吗？？')">删除试题</button>
+										    		<button name="problem.${pro.id}" class="btn btn-sm btn-warning delete" onClick="return confirm('你确定要删除吗？？')">删除试题</button>
 										    	 -->
 										    	<button name="${pro.id}" class="btn btn-sm btn-info edit" >修改试题</button>
 										    </span>
@@ -98,6 +98,71 @@
     		<%@ include file="../buttom.jsp" %>
     	</div>
     	
+    	<!--修改试题 Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				        <h3 class="modal-title" id="myModalLabel">在此修改试题信息</h4>
+				      </div>
+				      
+				      <!-- 模态表单体 -->
+				      <div class="modal-body">
+				        	<form class="form-horizontal" role="form" id="form2" method="post" >
+								  <div class="form-group">
+								    <label   class="col-xs-2 control-label">题目</label>
+								    <div class="col-xs-10">
+								      <textarea id="title" type="text" class="form-control"  rows="3" name="problem.title" required></textarea>
+								      <input id="id" type="hidden"   name="problem.id" >
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label   class="col-xs-2 control-label">选项A</label>
+								    <div class="col-xs-10">
+								      <input id="A" type="text" class="form-control"  name="problem.optA" >
+								     
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label   class="col-xs-2 control-label">选项B</label>
+								    <div class="col-xs-10">
+								      <input id="B" type="text" class="form-control" name="problem.optB" >
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label   class="col-xs-2 control-label">选项C</label>
+								    <div class="col-xs-10">
+								      <input id="C" type="text" class="form-control"  name="problem.optC" >
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label   class="col-xs-2 control-label">选项D</label>
+								    <div class="col-xs-10">
+								      <input id="D" type="text" class="form-control" name="problem.optD" >
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label   class="col-xs-2 control-label">答案</label>
+								    <div class="col-xs-10">
+								      <textarea id="ans" type="text" class="form-control"  rows="3" name="problem.answer" placeholder="参考答案"></textarea>
+								    </div>
+								  </div>
+								   <div class="form-group">
+								    <div class="col-xs-3 col-xs-offset-4">
+								      <button type="button" class="btn btn-primary" id="sub" >修改题目</button>
+								    </div>
+								  </div>
+							</form>
+							
+				      </div><!-- 模态表单体 -->
+				       <div class="modal-footer">
+				        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+				      </div>
+				    </div>
+				  </div>
+				</div><!-- 修改试题Modal -->
+    	
     	<script type="text/javascript">
     		$(function(){
     			$("#problem").css("margin-right","-30px").css("font-size"," 25px");
@@ -109,10 +174,10 @@
         			var id = $(this).attr('id');
         			if ( $(this).html()=='添加到试卷篮' ){
         				//想session中添加试题
-        				$.post("/ZhaoPin/admin/paperCart/action/add",{"id":id});
+        				$.post("/BoYi/admin/problem/paperCartAction!opera?action=add",{"id":id});
         				$(this).html('已添加');
         			}else{
-        				$.post("/ZhaoPin/admin/paperCart/action/remove",{"id":id});
+        				$.post("/BoYi/admin/problem/paperCartAction!opera?action=remove",{"id":id});
         				$(this).html('添加到试卷篮');
         			}
         		});
@@ -142,7 +207,7 @@
     			
     			//提交表单修改
     			$("#sub").click(function(){
-     				$.post("../../problem/update/json",$("#form2").serialize(),function(date){
+     				$.post("../problem/problemAction!update",$("#form2").serialize(),function(date){
          				var mes = date.mes;
          				if(mes== 'success'){
          					alert("修改成功！");

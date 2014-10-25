@@ -3,6 +3,7 @@ package com.admin.server;
 import java.util.List;
 
 import com.boyi.base.BaseServer;
+import com.boyi.po.Paper;
 import com.boyi.po.Problem;
 import com.boyi.utils.Page;
 
@@ -25,4 +26,17 @@ public interface ProblemService extends BaseServer<Problem>{
 	public List<Problem> findAllByGradeAndSubject(Page page,String grade,String subject);
 
 	public List<Problem> search(String key); 
+	
+	public Paper showPaper(Paper paper);
+	
+	/**
+	 * 根据年级 课程 和 个数 选取 试题 并返回
+	 * @param grade
+	 * @param subject
+	 * @param number
+	 * @return
+	 */
+	public List<Problem> getProblemList(String grade,String subject,String type , Integer number);
+	
+	public List<Problem> getProblemList(String grade,String subject,String type,Integer number,Integer strategy);
 }

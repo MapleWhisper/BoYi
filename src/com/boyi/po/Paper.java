@@ -3,11 +3,14 @@ package com.boyi.po;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +27,8 @@ public class Paper implements Serializable{
 	
 	private String title;			//试卷标题
 	private String label;			//试卷的标签，方便检索该试卷
+	private String grade;			//试卷年级
+	private String subject;			//试卷科目
 	
 	private Date createDate;		//试卷的生成日期
 	private String auther;			//试卷生成人
@@ -206,7 +211,7 @@ public class Paper implements Serializable{
 	public void setQuestion(String question) {
 		this.question = question;
 	}
-	
+	@Column(length=20)
 	public String getAuther() {
 		return auther;
 	}
@@ -214,6 +219,20 @@ public class Paper implements Serializable{
 		this.auther = auther;
 	}
 	
+	@Column(length=20)
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	@Column(length=20)
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
 	public Integer[] toArray(List<Integer> list){
 		Integer []i = new Integer[list.size()];
 		int index = 0 ;
@@ -223,4 +242,5 @@ public class Paper implements Serializable{
 		return i;
 		
 	}
+	
 }

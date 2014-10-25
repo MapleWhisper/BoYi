@@ -19,6 +19,7 @@ public class Article {
 	private String title;		//文章标题
 	private String context;		//文章内容
 	private Date createDate;	//创建日期
+	private String auther;		//文章作者
 	private String type;		//文章类型		分为公司介绍 和 帮助文章 
 	
 	@Id
@@ -29,6 +30,7 @@ public class Article {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	@Column(length=200)
 	public String getTitle() {
 		return title;
 	}
@@ -51,11 +53,21 @@ public class Article {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
+	
+	@Column(length=20)
 	public String getType() {
 		return type;
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	@Column(length=20)
+	public String getAuther() {
+		return auther;
+	}
+	public void setAuther(String auther) {
+		this.auther = auther;
 	}
 	
 	

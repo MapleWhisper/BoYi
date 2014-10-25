@@ -7,7 +7,9 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
 import com.boyi.base.BaseServerImpl;
+import com.boyi.po.Paper;
 import com.boyi.po.Problem;
 import com.boyi.utils.Page;
 
@@ -67,5 +69,40 @@ public class ProblemServiceImpl extends BaseServerImpl<Problem> implements Probl
 				.setParameter(0, "%"+key+"%")
 				.setParameter(1, "%"+key+"%").list();
 		 
+	}
+	
+	/**
+	 * 根据数组获得 试题信息数据
+	 */
+	@Override
+	public Paper showPaper(Paper paper) {
+		paper.setSingleList(getByIds( JSON.parseArray(paper.getSingle(), Integer.class) ) );
+		paper.setMultChoiceList(getByIds(JSON.parseArray(paper.getMultChoice(), Integer.class)));
+		paper.setJudegeList(getByIds(JSON.parseArray(paper.getJudege(), Integer.class)));
+		paper.setQuestionList(getByIds(JSON.parseArray(paper.getQuestion(), Integer.class)));
+		paper.setSingleNumber(paper.getSingleList().size());
+		paper.setMultChoiceNumber(paper.getMultChoiceList().size());
+		paper.setJudgeNumber(paper.getJudegeList().size());
+		paper.setQuestionNumber(paper.getQuestionList().size());
+		return paper;
+	}
+	
+	public List<Problem> getProblemList(String grade,String subject,String type,Integer number){
+		return this.getProblemList(grade, subject, type ,number, 1);
+		
+	}
+	
+	public List<Problem> getProblemList(String grade,String subject,String type,Integer number,Integer strategy){
+		
+		List<Problem> list ;
+		if(strategy ==1){	//默认策略，随机 选取试题
+			 String hql = "from Problem p where p.grade = ? and p.subject = ? and p.type = ? order by rand() ";
+			 list = getSession().createQuery(hql).setString(0, grade).setString(1, subject).setString(2, type)
+			.setMaxResults(number).list();
+		}else{
+			list = null;
+		}
+		return list;
+		
 	}
 }	

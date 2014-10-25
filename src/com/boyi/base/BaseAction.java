@@ -14,22 +14,30 @@ public class BaseAction extends ActionSupport{
 	
 	
 	public String edit(){
-		return "";
+		return "edit";
+	}
+	
+	public String list(){
+		return "list";
 	}
 	
 	public String update(){
-		return "";
+		return "toIndex";
 	}
 	
 	public String add(){
-		return "";
+		return "add";
 	}
 	
 	public String save(){
-		return "";
+		return "toIndex";
 	}
 	
 	public String delete(){
-		return "";
+		return "toIndex";
+	}
+	
+	public String show(){
+		return "show";
 	}
 }

@@ -124,17 +124,6 @@
     					$(this).siblings().removeClass("active");
     					$(this).parent().siblings("div").find("button").removeClass("active");
     				}
-    				
-    				var name = btn.attr("name");
-    				if(name=="workPlace"){
-    					workPlace = btn.text();
-    				}
-    				if(name=="position" ){
-    					position = btn.text();
-    				}
-    				if(name=="type"){
-    					type = btn.text();
-    				}
     			});
     		});
     		$(function(){
@@ -145,7 +134,9 @@
     				}else{
     					var grade  = $("button[name='grade'].active").html();
     					var subject = $("button[name='subject'].active").html();
-    					$.post("/BoYi/admin/problem/problemAction!list?cur=1",{"grade":grade,"subject":subject});
+    					$.post("/BoYi/admin/problem/problemAction!list?cur=1",{"grade":grade,"subject":subject},function(){
+    						location.href="/BoYi/admin/problem/problemAction!list?cur=1";
+    					});
     				}
     			});
     		});

@@ -1,5 +1,9 @@
 package com.admin.action;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -7,7 +11,9 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.admin.server.ArticleService;
 import com.boyi.base.BaseAction;
+import com.boyi.po.Article;
 
 @Controller
 @Scope("prototype")
@@ -19,9 +25,46 @@ import com.boyi.base.BaseAction;
 })
 public class AdminIndexAction extends BaseAction{
 	
+	@Resource(name = "articleSerivceImpl")
+	private ArticleService articleService;
+	
+	private List<Article> articleList;
+	
 	@Override
 	public String execute() throws Exception {
+		this.articleList = articleService.findAdminNotificationAll();
 		return "index";
 	}
+
+	public ArticleService getArticleService() {
+		return articleService;
+	}
+
+	public void setArticleService(ArticleService articleService) {
+		this.articleService = articleService;
+	}
+
+	public List<Article> getArticleList() {
+		return articleList;
+	}
+
+	public void setArticleList(List<Article> articleList) {
+		this.articleList = articleList;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
