@@ -6,7 +6,7 @@
 	<classpathentry kind="src" path="config"/>
 	<classpathentry kind="src" path="index"/>
 	<classpathentry kind="src" path="teacher"/>
-	<classpathentry kind="src" path="exam"/>
+	<classpathentry kind="src" path="paper"/>
 	<classpathentry kind="src" path="course"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
@@ -27,5 +27,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-spring-plugin-2.3.16.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/MyEclipse Tomcat v7.0"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
