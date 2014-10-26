@@ -4,7 +4,7 @@
 <head>
 <%@ include file="../header.jspf"%>
 <title>自动组卷页面</title>
-<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
 </head>
 
@@ -32,7 +32,7 @@
 					</div>
 					<div class="panel-body">
 						<!-- 自动生成试卷 参数设置 表单 -->
-						<form class="form-horizontal" id="form1"
+						<form class="form-horizontal" id="form1"  target="_blank"
 							action="${pageContext.request.contextPath}/admin/paper/autoPaperAction!get"
 							role="form" method="post">
 							

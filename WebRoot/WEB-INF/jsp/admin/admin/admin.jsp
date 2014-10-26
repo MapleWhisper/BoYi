@@ -4,6 +4,7 @@
   <head>
 	<%@ include file="../header.jspf" %>
 	<title>管理员列表</title>
+	
   </head>
   
   <body>
@@ -39,8 +40,8 @@
 										<td>${admin.username }</td>
 										<td>${admin.name }</td>
 										<td>${admin.position }</td>
-										<td><a href="admin/edit/id/${admin.id }" class="btn btn-info"><span class=" glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改</a></td>
-										<td><a href="admin/delete/id/${admin.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')"><span class=" glyphicon  glyphicon-trash"></span>&nbsp;&nbsp;删除</a></td>
+										<td><a href="adminAction!edit?id=${admin.id }" class="btn btn-info"><span class=" glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改</a></td>
+										<td><a href="adminAction!delete?id=${admin.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')"><span class=" glyphicon  glyphicon-trash"></span>&nbsp;&nbsp;删除</a></td>
 									</tr>																								
 								 </c:forEach>
 									

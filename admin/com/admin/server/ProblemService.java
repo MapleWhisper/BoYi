@@ -36,7 +36,6 @@ public interface ProblemService extends BaseServer<Problem>{
 	 * @param number
 	 * @return
 	 */
-	public List<Problem> getProblemList(String grade,String subject,String type , Integer number);
-	
-	public List<Problem> getProblemList(String grade,String subject,String type,Integer number,Integer strategy);
+	public List<Integer> getProblemId(String grade,String subject,String type , Integer number);
+	public List<Integer> getProblemId(String grade,String subject,String type,Integer number,Integer strategy);
 }

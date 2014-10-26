@@ -87,21 +87,22 @@ public class ProblemServiceImpl extends BaseServerImpl<Problem> implements Probl
 		return paper;
 	}
 	
-	public List<Problem> getProblemList(String grade,String subject,String type,Integer number){
-		return this.getProblemList(grade, subject, type ,number, 1);
+	public List<Integer> getProblemId(String grade,String subject,String type,Integer number){
+		return this.getProblemId(grade, subject, type ,number, 1);
 		
 	}
 	
-	public List<Problem> getProblemList(String grade,String subject,String type,Integer number,Integer strategy){
+	public List<Integer> getProblemId(String grade,String subject,String type,Integer number,Integer strategy){
 		
-		List<Problem> list ;
+		List<Integer> list ;
 		if(strategy ==1){	//默认策略，随机 选取试题
-			 String hql = "from Problem p where p.grade = ? and p.subject = ? and p.type = ? order by rand() ";
-			 list = getSession().createQuery(hql).setString(0, grade).setString(1, subject).setString(2, type)
+			 String hql = "select id from Problem p where p.grade = ? and p.subject = ? and p.type = ? order by rand() ";
+			 list = getSession().createSQLQuery(hql).setString(0, grade).setString(1, subject).setString(2, type)
 			.setMaxResults(number).list();
 		}else{
 			list = null;
 		}
+		System.out.println(list);
 		return list;
 		
 	}

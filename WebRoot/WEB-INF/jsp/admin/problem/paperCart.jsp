@@ -85,7 +85,7 @@
 											</div><!--单选题 -->
 											
 											<!-- 多选题 -->
-											<div class="panel panel-primary" id="part1">
+											<div class="panel panel-primary" id="part2">
 											  <div class="panel-heading">
 											    <h3 class="panel-title">第二部分 多选题</h3>
 											  </div>
@@ -113,7 +113,7 @@
 											</div><!--多选题  -->
 											
 											<!-- 多选题 -->
-											<div class="panel panel-primary" id="part1" >
+											<div class="panel panel-primary" id="part3" >
 											  <div class="panel-heading">
 											    <h3 class="panel-title">第三部分 判断题</h3>
 											  </div>
@@ -137,7 +137,7 @@
 											</div><!--多选题  -->
 											
 											<!-- 简答题 -->
-											<div class="panel panel-primary" id="part1" >
+											<div class="panel panel-primary" id="part4" >
 											  <div class="panel-heading">
 											    <h3 class="panel-title">第四部分 简答题</h3>
 											  </div>

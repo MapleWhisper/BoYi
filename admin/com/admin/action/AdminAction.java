@@ -22,10 +22,11 @@ import com.boyi.po.Admin;
 @ParentPackage("struts-default")
 @Namespace("/admin/admin")
 @Action(value="adminAction",results={
-		@Result(name="toIndex",type="redirectAction",location="admin/index"),
+		@Result(name="toIndex",type="redirectAction",location="adminAction"),
 		@Result(name="error",location="/WEB-INF/jsp/error.jsp"),
 		@Result(name="index",location="/WEB-INF/jsp/admin/admin/admin.jsp"),
 		@Result(name="add",location="/WEB-INF/jsp/admin/admin/addAdmin.jsp"),
+		@Result(name="edit",location="/WEB-INF/jsp/admin/admin/editAdmin.jsp"),
 		
 })
 public class AdminAction  extends BaseAction{
@@ -34,6 +35,8 @@ public class AdminAction  extends BaseAction{
 	
 	private List<Admin> adminList;
 	private Admin admin;
+	private Integer id;
+	
 	private String meg;
 	
 	@Override
@@ -58,16 +61,28 @@ public class AdminAction  extends BaseAction{
 		return "toIndex";
 	}
 	
+	@Override
+	public String edit() {
+		this.admin = adminServer.getById(id);
+		
+		return super.edit();
+	}
 	
+	@Override
+	public String update() {
+		Admin a = adminServer.getById(admin.getId());
+		a.setUsername(admin.getUsername());
+		a.setName(admin.getName());
+		a.setPosition(admin.getPosition());
+		adminServer.updata(a);
+		return super.update();
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Override
+	public String delete() {
+		adminServer.delete(id);
+		return super.delete();
+	}
 	
 	
 	
@@ -101,6 +116,14 @@ public class AdminAction  extends BaseAction{
 
 	public void setMeg(String meg) {
 		this.meg = meg;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	

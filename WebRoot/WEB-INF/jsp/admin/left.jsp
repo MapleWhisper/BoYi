@@ -13,7 +13,7 @@
 <ul class="list-group" role="tablist" id="nav">
 		<li role="presentation" class="list-group-item pre " id="course">
 			<span class="glyphicon glyphicon-th-list"></span>
-			<a href="${pageContext.request.contextPath}/admin/admin/adminAction">
+			<a href="${pageContext.request.contextPath}/admin/course/courseAction">
 				课程管理
 				<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span>
 			</a>

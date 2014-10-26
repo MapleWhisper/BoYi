@@ -26,6 +26,17 @@ public class Course implements Serializable {
 	private String subject;			//科目
 	
 	private String courseDetail;
+		
+	public Course() {
+	}
+	
+	
+	public Course(int id , String grade, String subject) {
+		super();
+		this.id = id;
+		this.grade = grade;
+		this.subject = subject;
+	}
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
