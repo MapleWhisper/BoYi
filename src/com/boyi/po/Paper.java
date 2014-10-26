@@ -3,7 +3,6 @@ package com.boyi.po;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +31,7 @@ public class Paper implements Serializable{
 	
 	private Date createDate;		//试卷的生成日期
 	private String auther;			//试卷生成人
+	
 	
 	private Integer []singles;		//单选题的题号Id数组
 	private Integer []MultChoices;	//多选题的题号Id数组
@@ -242,6 +242,5 @@ public class Paper implements Serializable{
 		return i;
 		
 	}
-	
 }
 

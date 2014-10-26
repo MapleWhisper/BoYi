@@ -3,89 +3,59 @@ package com.boyi.po;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
+
 @Entity
 @Component
 public class Classes implements Serializable {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
 	
-	@Column(length=20)
-	private String name;
+	private Integer id;					//id
+	private String name;				//班级名称
+	private Integer studentNumer;		//班级总人数
+	private Integer curentNumber;		//当前人数
 	
-	@Column
-	private Integer studentNumer;
+	private Date endDate;				//班级截止日期
+	private Date beginDate;				//班级开始日期
 	
-	@OneToOne(cascade=CascadeType.ALL,mappedBy="classes")
-	private Teacher teacher ; 
+	private String classTime;			//上课时间
+	private String classType;			//班级类型
 	
-	@Column
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date endDate;
+	private String classPlace;			//上课地点
+	private int classPrice;				//班级价格
+	private String classDetail;			//班级详情
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="classes")
-	private Set<Paper> paper;
-	
-	@Column
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date beginDate;
-	
-	@ManyToMany(cascade=CascadeType.ALL,mappedBy="classes")
-	private Set<Student> students;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="course_id")
-	private Course course;
-	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="classes")
-	private Set<Score>scores;
-	
-	@Column
-	private String classType;
-	
-	@Column
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date classTime;
-	
-	@Column
-	private String classPlace;
-	
-	@Column
-	private int classPrice;
-	
-	private String classDetail;
+	private Set<Student> students;		//学生
+	private Teacher teacher ; 			//老师
+	private Course course;				//所属课程
 	
 	
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinColumn(name="courseId")
+	public Course getCourse() {
+		return course;
+	}
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 	
+	@Column(length=65536)
 	public String getClassDetail() {
 		return classDetail;
 	}
 	public void setClassDetail(String classDetail) {
 		this.classDetail = classDetail;
 	}
-	public Date getClassTime() {
-		return classTime;
-	}
-	public void setClassTime(Date classTime) {
-		this.classTime = classTime;
-	}
+	
 	public String getClassPlace() {
 		return classPlace;
 	}
@@ -98,35 +68,28 @@ public class Classes implements Serializable {
 	public void setClassPrice(int classPrice) {
 		this.classPrice = classPrice;
 	}
-	public Set<Score> getScores() {
-		return scores;
-	}
-	public void setScores(Set<Score> scores) {
-		this.scores = scores;
-	}
 	public String getClassType() {
 		return classType;
 	}
 	public void setClassType(String classType) {
 		this.classType = classType;
 	}
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	@Column(length=20)
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public Course getCourse() {
-		return course;
-	}
-	public void setCourse(Course course) {
-		this.course = course;
 	}
 	public Integer getStudentNumer() {
 		return studentNumer;
@@ -134,24 +97,27 @@ public class Classes implements Serializable {
 	public void setStudentNumer(Integer studentNumer) {
 		this.studentNumer = studentNumer;
 	}
+	
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinColumn(name="teacherId")
 	public Teacher getTeacher() {
 		return teacher;
 	}
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
+	
+	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	public Date getEndDate() {
 		return endDate;
 	}
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	public Set<Paper> getPaper() {
-		return paper;
-	}
-	public void setPaper(Set<Paper> paper) {
-		this.paper = paper;
-	}
+	
+	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	public Date getBeginDate() {
 		return beginDate;
 	}
@@ -159,12 +125,26 @@ public class Classes implements Serializable {
 		this.beginDate = beginDate;
 	}
 	
+	@ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="classes")
 	public Set<Student> getStudents() {
 		return students;
 	}
 	public void setStudents(Set<Student> students) {
 		this.students = students;
 	}
+	public Integer getCurentNumber() {
+		return curentNumber;
+	}
+	public void setCurentNumber(Integer curentNumber) {
+		this.curentNumber = curentNumber;
+	}
+	public String getClassTime() {
+		return classTime;
+	}
+	public void setClassTime(String classTime) {
+		this.classTime = classTime;
+	}
+	
 	
 
 }

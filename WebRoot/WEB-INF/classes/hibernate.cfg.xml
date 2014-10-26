@@ -14,18 +14,17 @@
 	<property name="Connection.useUnicode">true</property>
 	<property name="connection.characterEncoding">utf-8</property>
 	<!--     	自动创建表结构 -->
-	
-	<mapping class="com.boyi.po.Classes"/>
+
+	<mapping class="com.boyi.po.Classes" />
 	<mapping class="com.boyi.po.Student" />
 	<mapping class="com.boyi.po.Privilege" />
 	<mapping class="com.boyi.po.Admin" />
 	<mapping class="com.boyi.po.Article" />
 	<mapping class="com.boyi.po.Paper" />
 	<mapping class="com.boyi.po.Problem" />
-	<mapping class="com.boyi.po.Score"/>
-	<mapping class="com.boyi.po.Teacher"/>
-	<mapping class="com.boyi.po.Course"/>
-	
+	<mapping class="com.boyi.po.Teacher" />
+	<mapping class="com.boyi.po.Course" />
+
 
 </session-factory>
 
