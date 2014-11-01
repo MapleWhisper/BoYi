@@ -17,18 +17,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.admin.server.AdminServer;
 import com.boyi.base.BaseAction;
 import com.boyi.po.Admin;
 import com.boyi.po.Privilege;
+import com.boyi.service.AdminServer;
 
 @Controller
 @Scope("prototype")
 @ParentPackage("struts-default")
-@Namespace("/admin")
+@Namespace("/")
 @Action(value="adminLoginAction",results={
-		@Result(name="toLogin",type="redirectAction",location="admin/adminLoginAction"),
+		@Result(name="toIndex",type="redirectAction",location="adminLoginAction"),
 		@Result(name="login",location="/WEB-INF/jsp/admin/login.jsp"),
+		@Result(name="success",type="redirectAction" , location="admin/indexAction"),
 })
 public class AdminLoginAction extends BaseAction{
 	
@@ -60,19 +61,20 @@ public class AdminLoginAction extends BaseAction{
 	 * @param admin
 	 * @return
 	 */
-	@RequestMapping("/loginAdmin/login")
 	public String login(){
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		
 		//如果输入的验证码不正确
 		if( !valifCode.equals(session.getAttribute("valifCode") ))  {
 			error = "验证码错误";
 			return "login";
 		}
+		System.out.println(admin.getUsername());
+		System.out.println(admin.getPassword());
 		Admin a =adminServer.login(admin);
 		System.out.println("管理员登陆");
 		//登陆成功
 		if(a!=null){
+			/*
 			Integer [] ids = new Integer[5];
 			Arrays.fill(ids, 0);
 			int index = 0 ;
@@ -82,9 +84,9 @@ public class AdminLoginAction extends BaseAction{
 				}
 			}
 			admin.setPrivilegeIds(ids);
-			
+			*/
 			session.setAttribute("admin", a);
-			return "toLogin";
+			return "success";
 		}
 		//登陆失败
 		error="账号或密码不正确";

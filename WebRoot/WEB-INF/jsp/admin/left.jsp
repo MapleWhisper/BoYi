@@ -13,7 +13,7 @@
 <ul class="list-group" role="tablist" id="nav">
 		<li role="presentation" class="list-group-item pre " id="classes">
 			<span class="glyphicon glyphicon-tasks"></span>
-			<a href="${pageContext.request.contextPath}/admin/course/courseAction">
+			<a href="${pageContext.request.contextPath}/admin/classes/classesAction">
 				班次管理
 				<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span>
 			</a>
@@ -59,7 +59,7 @@
 		</li>
 		<li role="presentation" class="list-group-item pre " id="teacher">
 			<span class="glyphicon glyphicon-user"></span>
-			<a href="${pageContext.request.contextPath}/admin/admin/adminAction">
+			<a href="${pageContext.request.contextPath}/admin/teacher/teacherAction">
 				教师管理
 				<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span>
 			</a>

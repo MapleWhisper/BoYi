@@ -17,10 +17,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.admin.server.ArticleService;
 import com.alibaba.fastjson.JSON;
 import com.boyi.base.BaseAction;
 import com.boyi.po.Article;
+import com.boyi.service.ArticleService;
 
 
 

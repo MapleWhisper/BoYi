@@ -10,5 +10,4 @@ public enum ClassesStatus {
 	在读,
 	未开始,
 	已结束,
-	考试中
 }

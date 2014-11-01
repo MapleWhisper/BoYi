@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import com.boyi.base.BaseAction;
 import com.boyi.po.Student;
-import com.student.service.StudentService;
+import com.boyi.service.StudentService;
 
 @Controller
 @Scope("prototype")

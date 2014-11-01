@@ -27,7 +27,7 @@
 						  </div>
 						  <div class="panel-body">
 							<table class="table table-hover table-striped table-bordered">
-								<tr>
+								<tr class="info">
 									<td>标题</td>
 									<td>分类</td>
 									<td>创建日期</td>

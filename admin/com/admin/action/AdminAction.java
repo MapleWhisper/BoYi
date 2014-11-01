@@ -11,9 +11,9 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.admin.server.AdminServer;
 import com.boyi.base.BaseAction;
 import com.boyi.po.Admin;
+import com.boyi.service.AdminServer;
 
 
 

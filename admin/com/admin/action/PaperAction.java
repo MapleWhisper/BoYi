@@ -15,11 +15,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.admin.po.PaperCart;
-import com.admin.server.PaperService;
-import com.admin.server.ProblemService;
 import com.alibaba.fastjson.JSON;
 import com.boyi.base.BaseAction;
 import com.boyi.po.Paper;
+import com.boyi.service.PaperService;
+import com.boyi.service.ProblemService;
 
 
 @Controller
