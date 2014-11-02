@@ -93,6 +93,12 @@ public class AdminLoginAction extends BaseAction{
 		return "login";
 		
 	}
+	
+	public String logout(){
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		session.removeAttribute("admin");	
+		return "toIndex";		//返回到登陆页面
+	}
 
 
 	public AdminServer getAdminServer() {

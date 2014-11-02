@@ -25,6 +25,7 @@
 	<mapping class="com.boyi.po.Problem" />
 	<mapping class="com.boyi.po.Teacher" />
 	<mapping class="com.boyi.po.Course" />
+	<mapping class="com.boyi.po.Exam" />
 
 
 </session-factory>

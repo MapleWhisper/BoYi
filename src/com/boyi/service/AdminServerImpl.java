@@ -13,7 +13,7 @@ import com.boyi.po.Admin;
  * @author 于广路
  * 
  */
-@Service("adminServerImpl")
+@Service()
 @Transactional
 public class AdminServerImpl extends BaseServerImpl<Admin> implements AdminServer {
 	/**

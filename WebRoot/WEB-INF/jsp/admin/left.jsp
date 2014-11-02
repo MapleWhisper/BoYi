@@ -25,6 +25,13 @@
 				<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span>
 			</a>
 		</li>
+		<li role="presentation" class="list-group-item pre " id="exam">
+			<img src="${pageContext.request.contextPath}/image/paper.png"></src="${pageContext.request.contextPath}/image/paper.png"img>
+			<a href="${pageContext.request.contextPath}/admin/exam/examAction">
+				考试管理
+				<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span>
+			</a>
+		</li>
 		<li role="presentation" class="list-group-item pre " id="paper">
 			<span class="glyphicon glyphicon-tags"></span>
 			<a href="${pageContext.request.contextPath}/admin/paper/paperAction">

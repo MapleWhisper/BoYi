@@ -3,7 +3,7 @@
 <html>
   <head>
 	<%@ include file="../header.jspf" %>
-	<title>班次管理</title>
+	<title>考试管理</title>
   </head>
   
   <body>
@@ -25,24 +25,24 @@
 						<!-- 面板开始 -->
 						<div class="panel panel-primary">
 						  <div class="panel-heading">
-						    <h1 class="panel-title" style="font-size: 25px">班次列表 Classes List</h1>
+						    <h1 class="panel-title" style="font-size: 25px">考试列表 Exam List</h1>
 						  </div>
 						  <div class="panel-body">
 						  		<div class="row well">
 						  			<center>
-						  				<a  class="btn btn-warning btn-lg btn-block" href="${pageContext.request.contextPath}/admin/classes/classesAction!add" 
-						  					style="width: 300px">添加班次</a>
+						  				<a  class="btn btn-primary btn-lg btn-block" href="${pageContext.request.contextPath}/admin/exam/examAction!add" 
+						  					style="width: 300px">添加考试</a>
 						  			</center>
 						  			
 						  		</div>
 						  		<!-- 班级导航头 -->
 								<ul class="nav nav-pills nav-justified" role="tablist">
 									
-								   <li role="presentation" class="${status=='未开始'?'active':' ' }"><a href="${pageContext.request.contextPath}/admin/classes/classesAction" >
+								   <li role="presentation" class="${status=='未开始'?'active':' ' }"><a href="${pageContext.request.contextPath}/admin/exam/examAction" >
 								   			未开始</a></li>
-								   <li role="presentation" class="${status=='在读'?'active':' ' }"><a href="${pageContext.request.contextPath}/admin/classes/classesAction?status=在读" >
-								   			在读</a></li>
-								   <li role="presentation" class="${status=='已结束'?'active':' ' }"><a href="${pageContext.request.contextPath}/admin/classes/classesAction?status=已结束" >
+								   <li role="presentation" class="${status=='正在考试'?'active':' ' }"><a href="${pageContext.request.contextPath}/admin/exam/examAction?status=正在考试" >
+								   			正在考试</a></li>
+								   <li role="presentation" class="${status=='已结束'?'active':' ' }"><a href="${pageContext.request.contextPath}/admin/exam/examAction?status=已结束" >
 								   			已结束</a></li>
 								</ul>
 								
@@ -51,21 +51,21 @@
 								  <div role="tabpanel" class="tab-pane active" id="list1" >
 								  		 <table class="table table-hover table-striped table-bordered table-condensed" style="margin-top: 10px">
 											<tr class="info">
-												<td>课程名</td>
-												<td>教师名称</td>
-												<td>开课时间</td>
-												<td>结束时间</td>
+												<td>考试名</td>
+												<td>考试开始时间</td>
+												<td>考试结束时间</td>
+												<td>状态</td>
 												<td>操作</td>
 												<td>操作</td>
 											</tr>
-										 <c:forEach items="${classesList}" var="c">
+										 <c:forEach items="${examList}" var="e">
 										 	<tr>
-												<td>${c.name }</td>
-												<td>${c.teacher.name }</td>
-												<td><fm:formatDate value="${c.beginDate }" pattern="yyyy-MM-dd"/></td>
-												<td><fm:formatDate value="${c.endDate }" pattern="yyyy-MM-dd"/></td>
-												<td><a href="classesAction!edit?id=${c.id }" class="btn btn-info"><span class=" glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改</a></td>
-												<td><a href="classesAction!delete?id=${c.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')"><span class=" glyphicon  glyphicon-trash"></span>&nbsp;&nbsp;删除</a></td>
+												<td>${fn:substring(e.name,0,20) }</td>
+												<td><fm:formatDate value="${e.beginTime  }" pattern="yyyy-MM-dd HH:mm"/></td>
+												<td><fm:formatDate value="${e.endTime }" pattern="yyyy-MM-dd HH:mm"/></td>
+												<td>${e.status }</td>
+												<td><a href="examAction!edit?id=${e.id }" class="btn btn-info"><span class=" glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改</a></td>
+												<td><a href="examAction!delete?id=${e.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')"><span class=" glyphicon  glyphicon-trash"></span>&nbsp;&nbsp;删除</a></td>
 											</tr>																								
 										 </c:forEach>
 											
@@ -86,7 +86,7 @@
     	</div>
     	<script type="text/javascript">
     		$(function(){
-    			$("#classes").css("margin-right","-30px").css("font-size"," 25px");
+    			$("#exam").css("margin-right","-30px").css("font-size"," 25px");
     		});
     	</script>
     	

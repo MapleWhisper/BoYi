@@ -1,12 +1,9 @@
 package com.boyi.service;
 
-import java.util.List;
-
 import org.springframework.transaction.annotation.Transactional;
 
 import com.boyi.base.BaseServer;
-import com.boyi.po.Classes;
-import com.boyi.po.Course;
+import com.boyi.po.Exam;
 
 /**
  * 
@@ -16,6 +13,5 @@ import com.boyi.po.Course;
  * 
  */
 @Transactional
-public interface ClassesServer extends BaseServer<Classes> {
-	public List<Classes> findAllByStatus(String status);
+public interface ExamServer extends BaseServer<Exam> {
 }

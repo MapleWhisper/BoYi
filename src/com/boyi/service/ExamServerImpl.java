@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.boyi.base.BaseServerImpl;
 import com.boyi.po.Classes;
+import com.boyi.po.Exam;
 
 
 /**
@@ -19,10 +20,6 @@ import com.boyi.po.Classes;
 @Service
 @SuppressWarnings("unchecked")
 @Transactional
-public class ClassesServerImpl extends BaseServerImpl<Classes> implements ClassesServer {
-		@Override
-		public List<Classes> findAllByStatus(String status) {
-			String hql  = "from Classes c where c.status = ?";
-			return getSession().createQuery(hql).setString(0, status).list();
-		}
+public class ExamServerImpl extends BaseServerImpl<Exam> implements ExamServer {
+	
 }

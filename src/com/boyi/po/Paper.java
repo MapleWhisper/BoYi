@@ -3,11 +3,15 @@ package com.boyi.po;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -64,7 +68,7 @@ public class Paper implements Serializable{
 	private String judege;				//需要被保存进数据库的判断题 Id的 Json字符串
 	private String question;			//需要被保存进数据库的简答题 Id的 Json字符串
 	
-	
+	private Set<Exam> exams;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -233,6 +237,16 @@ public class Paper implements Serializable{
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
+	
+	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="paper")
+	public Set<Exam> getExams() {
+		return exams;
+	}
+	public void setExams(Set<Exam> exams) {
+		this.exams = exams;
+	}
+	
+	
 	public Integer[] toArray(List<Integer> list){
 		Integer []i = new Integer[list.size()];
 		int index = 0 ;
@@ -240,7 +254,6 @@ public class Paper implements Serializable{
 			i[index++] = tem;
 		}
 		return i;
-		
 	}
 }
 

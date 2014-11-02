@@ -54,6 +54,12 @@ public class LoginAction extends  BaseAction{
 		return "loginUI";		//返回到登陆页面
 	}
 	
+	public String logout(){
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		session.removeAttribute("student");	
+		return "loginUI";		//返回到登陆页面
+	}
+	
 	public String registerUI(){
 		return "registerUI";
 	}

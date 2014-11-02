@@ -26,4 +26,11 @@ public class CourseServerImpl extends BaseServerImpl<Course> implements CourseSe
 		List <Course> course = getSession().createQuery(hql).setString(0, grade+"%").list();
 		return course;
 	}
+	
+	@Override
+	public List<Course> findAll() {
+		String hql = "select new Course(id,grade,subject) from Course ";
+		List <Course> course = getSession().createQuery(hql).list();
+		return course;
+	}
 }

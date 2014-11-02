@@ -31,8 +31,8 @@
 					 -->
 					<ul class="nav navbar-nav navbar-right">
 						
-						<li><p class="navbar-text">你好[${sessionScope.student.name}]</p></li>		
-						<li ><a href="${pageContext.request.contextPath}/client/login/logout">
+						<li><p class="navbar-text">你好:${sessionScope.admin.name}</p></li>		
+						<li ><a href="${pageContext.request.contextPath}/adminLoginAction!logout">
 							<span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;退出登陆</a></li>
 						
 					</ul>

@@ -6,9 +6,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/admin"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/config"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/index"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/teacher"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/course"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/paper"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/exam"/>
         <property name="context-root" value="BoYi"/>
         <property name="java-output-path" value="/BoYi/WebRoot/WEB-INF/classes"/>
     </wb-module>

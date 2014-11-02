@@ -3,6 +3,7 @@ package com.boyi.po;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -32,11 +35,14 @@ public class Classes implements Serializable {
 	
 	private String classPlace;			//上课地点
 	private int classPrice;				//班级价格
+	private String status;				//课程状态
 	private String classDetail;			//班级详情
 	
 	private Set<Student> students;		//学生
 	private Teacher teacher ; 			//老师
 	private Course course;				//所属课程
+	private Set<Exam> exams;			//考试
+
 	
 	
 	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
@@ -143,6 +149,20 @@ public class Classes implements Serializable {
 	}
 	public void setClassTime(String classTime) {
 		this.classTime = classTime;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="classes")
+	public Set<Exam> getExams() {
+		return exams;
+	}
+	public void setExams(Set<Exam> exams) {
+		this.exams = exams;
 	}
 	
 	

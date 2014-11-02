@@ -4,7 +4,7 @@
   <head>
 	<%@ include file="../header.jspf" %>
 	
-	<title>添加班次</title>
+	<title>修改班次</title>
 	<link rel="stylesheet"  href="${pageContext.request.contextPath}/js/kindeditor/themes/simple/simple.css" />
 	
   </head>
@@ -26,34 +26,35 @@
 						<!-- 面板开始 -->
 						<div class="panel panel-danger">
 						  <div class="panel-heading">
-						    <h1 class="panel-title" style="font-size: 25px">添加班次  Add Classes</h1>
+						    <h1 class="panel-title" style="font-size: 25px">修改班次  Edit Class</h1>
 						  </div>
 						  <div class="panel-body">
-								<form action="${pageContext.request.contextPath }/admin/classes/classesAction!save" 
+								<form action="${pageContext.request.contextPath }/admin/classes/classesAction!update" 
 										class="form-horizontal" role="form" id="form1" method="post">
 										<div class="form-group">
 											<label  class="col-xs-2 control-label">班级名称</label>
 											<div class="col-xs-10">
-												<input type="text" class="form-control " required name="classes.name" id="name" >
+												<s:textfield type="text" cssClass="form-control" required="required" name="classes.name" id="name"/>
+												<input type="hidden" name="id" value="${classes.id}">
 											</div>
 										</div>
 										
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级总人数</label>
 											<div class="col-xs-4">
-												<input type="number" class="form-control " required name="classes.studentNumer" id="studentNumer" >
+												<s:textfield type="number" cssClass="form-control " required="required" name="classes.studentNumer" id="studentNumer" />
 											</div>
 										</div>
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级开始日期</label>
 											<div class="col-xs-4">
-												<input type="text" class="form-control  " required name="classes.beginDate" id="beginDate" onClick="WdatePicker()">
+												<input type="text" class="form-control  " required="required" name="classes.beginDate" id="beginDate" value="${classes.beginDate }" onClick="WdatePicker()">
 											</div>
 										</div>
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级结束日期</label>
 											<div class="col-xs-4">
-												<input type="text" class="form-control  " required name="classes.endDate" id="endDate" onClick="WdatePicker()">
+												<input type="text" class="form-control  " required="required" name="classes.endDate" id="endDate" value="${classes.beginDate }" onClick="WdatePicker()">
 											</div>
 										</div>
 										
@@ -62,19 +63,19 @@
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">上课时间</label>
 											<div class="col-xs-10">
-												<input type="text" class="form-control  " required name="classes.classTime" id="classTime" >
+												<s:textfield type="text" cssClass="form-control" required="required" name="classes.classTime" id="classTime" />
 											</div>
 										</div>
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">上课地点</label>
 											<div class="col-xs-10">
-												<input type="text" class="form-control  " required name="classes.classPlace" id="classPlace" >
+												<s:textfield type="text" cssClass="form-control  " required="required" name="classes.classPlace" id="classPlace" />
 											</div>
 										</div>
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级类型</label>
 											<div class="col-xs-4">
-												<input type="text" class="form-control  " required name="classes.classType" id="classType" >
+												<s:textfield type="text" cssClass="form-control  " required="required" name="classes.classType" id="classType" />
 											</div>
 										</div>
 										
@@ -82,7 +83,7 @@
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">课程价格</label>
 											<div class="col-xs-4">
-												<input type="number" class="form-control  " required name="classes.classPrice" id="classPrice" >
+												<s:textfield type="number" cssClass="form-control  " required="required" name="classes.classPrice" id="classPrice" />
 											</div>
 										</div>
 										
@@ -90,21 +91,17 @@
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">老师</label>
 											<div class="col-xs-3">
-												<select name="teacherId" required class="form-control">
-													<c:forEach items="${teacherList}" var="tea">
-														<option value="${tea.id}">${tea.name}</option>
-													</c:forEach>
-												</select>
+												<s:select name="teacherId" required="required" cssClass="form-control" 
+														list="teacherList" listKey="id" listValue="name" >
+												</s:select>
 											</div>
 										</div>
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">所属课程</label>
 											<div class="col-xs-3">
-												<select name="courseId" required class="form-control">
-													<c:forEach items="${courseList}" var="c">
-														<option value="${c.id}">${c.grade } ${c.subject }</option>
-													</c:forEach>
-												</select>
+												<s:select name="courseId" required="required" cssClass="form-control" 
+														list="courseList" listKey="id" listValue="grade" >
+												</s:select>
 											</div>
 										</div>
 										
@@ -114,12 +111,13 @@
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">课程详情/介绍</label>
 											<div class="col-xs-10">
-												<textarea  class="form-control  " required name="classes.classDetail" id="editor" ></textarea>
+												<textarea  class="form-control" required="required" rows="8"
+													 name="classes.classDetail" id="editor" >${classes.classDetail }</textarea>
 											</div>
 										</div>
 										
 										<div class="form-group">
-											<center><input type="submit" value="提交文章" id="submit"  class="btn btn-primary btn-lg"/></center>
+											<center><input type="submit" value="修改班级信息" id="submit"  class="btn btn-primary btn-lg"/></center>
 										</div>
 										
 								</form>
