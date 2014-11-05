@@ -4,7 +4,7 @@
   <head>
 	<%@ include file="../header.jspf" %>
 	
-	<title>修改班次</title>
+	<title>修改考试信息</title>
 	<link rel="stylesheet"  href="${pageContext.request.contextPath}/js/kindeditor/themes/simple/simple.css" />
 	
   </head>
@@ -26,98 +26,64 @@
 						<!-- 面板开始 -->
 						<div class="panel panel-danger">
 						  <div class="panel-heading">
-						    <h1 class="panel-title" style="font-size: 25px">修改班次  Edit Class</h1>
+						    <h1 class="panel-title" style="font-size: 25px">修改考试信息  Edit Exam</h1>
 						  </div>
 						  <div class="panel-body">
-								<form action="${pageContext.request.contextPath }/admin/classes/classesAction!update" 
+								<form action="${pageContext.request.contextPath }/admin/exam/examAction!update" 
 										class="form-horizontal" role="form" id="form1" method="post">
 										<div class="form-group">
-											<label  class="col-xs-2 control-label">班级名称</label>
+											<label  class="col-xs-2 control-label">考试名称</label>
 											<div class="col-xs-10">
-												<s:textfield type="text" cssClass="form-control" required="required" name="classes.name" id="name"/>
-												<input type="hidden" name="id" value="${classes.id}">
+												<input type="text" class="form-control" required name="exam.name" id="name" value="${exam.name }" >
+												<input type="hidden" class="form-control" required name="id" id="id" value="${ exam.id}">
 											</div>
 										</div>
 										
 										<div class="form-group" >
-											<label  class="col-xs-2 control-label">班级总人数</label>
+											<label  class="col-xs-2 control-label">考试开始日期</label>
 											<div class="col-xs-4">
-												<s:textfield type="number" cssClass="form-control " required="required" name="classes.studentNumer" id="studentNumer" />
+												<input type="datetime" class="form-control  " required value="<fm:formatDate value="${exam.beginTime }" pattern="yyyy-MM-dd HH:mm:ss" />"
+														name="exam.beginTime" id="beginTime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-%d %H:%m:%s'})">                                              
 											</div>
 										</div>
 										<div class="form-group" >
-											<label  class="col-xs-2 control-label">班级开始日期</label>
+											<label  class="col-xs-2 control-label">考试结束日期</label>
 											<div class="col-xs-4">
-												<input type="text" class="form-control  " required="required" name="classes.beginDate" id="beginDate" value="${classes.beginDate }" onClick="WdatePicker()">
-											</div>
-										</div>
-										<div class="form-group" >
-											<label  class="col-xs-2 control-label">班级结束日期</label>
-											<div class="col-xs-4">
-												<input type="text" class="form-control  " required="required" name="classes.endDate" id="endDate" value="${classes.beginDate }" onClick="WdatePicker()">
+												<input type="datetime" class="form-control  " required value="<fm:formatDate value="${exam.endTime }" pattern="yyyy-MM-dd HH:mm:ss" />"                              
+													name="exam.endTime" id="endTime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-%d %H:%m:%s'})">
 											</div>
 										</div>
 										
 										<hr>
 										
 										<div class="form-group" >
-											<label  class="col-xs-2 control-label">上课时间</label>
-											<div class="col-xs-10">
-												<s:textfield type="text" cssClass="form-control" required="required" name="classes.classTime" id="classTime" />
-											</div>
-										</div>
-										<div class="form-group" >
-											<label  class="col-xs-2 control-label">上课地点</label>
-											<div class="col-xs-10">
-												<s:textfield type="text" cssClass="form-control  " required="required" name="classes.classPlace" id="classPlace" />
-											</div>
-										</div>
-										<div class="form-group" >
-											<label  class="col-xs-2 control-label">班级类型</label>
-											<div class="col-xs-4">
-												<s:textfield type="text" cssClass="form-control  " required="required" name="classes.classType" id="classType" />
-											</div>
-										</div>
-										
-										
-										<div class="form-group" >
-											<label  class="col-xs-2 control-label">课程价格</label>
-											<div class="col-xs-4">
-												<s:textfield type="number" cssClass="form-control  " required="required" name="classes.classPrice" id="classPrice" />
-											</div>
-										</div>
-										
-										<hr>
-										<div class="form-group" >
-											<label  class="col-xs-2 control-label">老师</label>
+											<label  class="col-xs-2 control-label">试卷</label>
 											<div class="col-xs-3">
-												<s:select name="teacherId" required="required" cssClass="form-control" 
-														list="teacherList" listKey="id" listValue="name" >
+												<s:select list="paperList" listKey="id" listValue="title" name="paperId" cssClass="form-control" id="paperId"> 
 												</s:select>
 											</div>
-										</div>
-										<div class="form-group" >
-											<label  class="col-xs-2 control-label">所属课程</label>
 											<div class="col-xs-3">
-												<s:select name="courseId" required="required" cssClass="form-control" 
-														list="courseList" listKey="id" listValue="grade" >
+												<button class="btn btn-primary" type="button" id="showPaper">点此查看试卷</button>
+											</div>
+										</div>
+										
+										<div class="form-group" >
+											<label  class="col-xs-2 control-label">考试班级</label>
+											<div class="col-xs-3">
+												<s:select list="classesList" listKey="id" listValue="name" name="classesId" cssClass="form-control" >
 												</s:select>
 											</div>
 										</div>
 										
-										
-										
-										
 										<div class="form-group" >
-											<label  class="col-xs-2 control-label">课程详情/介绍</label>
+											<label  class="col-xs-2 control-label">考试须知</label>
 											<div class="col-xs-10">
-												<textarea  class="form-control" required="required" rows="8"
-													 name="classes.classDetail" id="editor" >${classes.classDetail }</textarea>
+												<textarea  class="form-control" required name="exam.note" id="editor" >${exam.note}</textarea>
 											</div>
 										</div>
 										
 										<div class="form-group">
-											<center><input type="submit" value="修改班级信息" id="submit"  class="btn btn-primary btn-lg"/></center>
+											<center><input type="submit" value="提交考试" id="submit"  class="btn btn-primary btn-lg"/></center>
 										</div>
 										
 								</form>
@@ -155,6 +121,15 @@
 		});
 		$(function() {  
 			$("#form1").validate();
+		});
+		$(function(){
+			$("#showPaper").click(function(){
+				var id =$("#paperId  option:selected").val();
+				if(id !=null){
+					//location.href="../paper/paperAction!show?id="+id;
+					window.open("../paper/paperAction!show?id="+id);
+				}
+			});
 		});
 		</script>
     	

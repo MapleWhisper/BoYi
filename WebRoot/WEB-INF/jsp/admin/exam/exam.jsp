@@ -39,11 +39,15 @@
 								<ul class="nav nav-pills nav-justified" role="tablist">
 									
 								   <li role="presentation" class="${status=='未开始'?'active':' ' }"><a href="${pageContext.request.contextPath}/admin/exam/examAction" >
-								   			未开始</a></li>
+								   			未开始<span class="badge" >${count.未开始 }</span></a>
+								   	</li>
 								   <li role="presentation" class="${status=='正在考试'?'active':' ' }"><a href="${pageContext.request.contextPath}/admin/exam/examAction?status=正在考试" >
-								   			正在考试</a></li>
+								   			正在考试<span class="badge" >${count.正在考试 }</span></a>
+								   	</li>
 								   <li role="presentation" class="${status=='已结束'?'active':' ' }"><a href="${pageContext.request.contextPath}/admin/exam/examAction?status=已结束" >
-								   			已结束</a></li>
+								   			已结束</a>
+								   			<!-- <span class="badge" >${count.正在考试 }</span> -->
+								   	</li>
 								</ul>
 								
 								<!-- 班级内容 -->
@@ -54,7 +58,6 @@
 												<td>考试名</td>
 												<td>考试开始时间</td>
 												<td>考试结束时间</td>
-												<td>状态</td>
 												<td>操作</td>
 												<td>操作</td>
 											</tr>
@@ -63,7 +66,6 @@
 												<td>${fn:substring(e.name,0,20) }</td>
 												<td><fm:formatDate value="${e.beginTime  }" pattern="yyyy-MM-dd HH:mm"/></td>
 												<td><fm:formatDate value="${e.endTime }" pattern="yyyy-MM-dd HH:mm"/></td>
-												<td>${e.status }</td>
 												<td><a href="examAction!edit?id=${e.id }" class="btn btn-info"><span class=" glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改</a></td>
 												<td><a href="examAction!delete?id=${e.id}" class="btn btn-danger" onclick="return confirm('确认要删除吗？')"><span class=" glyphicon  glyphicon-trash"></span>&nbsp;&nbsp;删除</a></td>
 											</tr>																								

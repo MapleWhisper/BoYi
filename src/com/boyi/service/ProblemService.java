@@ -14,8 +14,7 @@ public interface ProblemService extends BaseServer<Problem>{
 	 * @param page	分页信息
 	 * @return
 	 */
-	public int getMaxPageNum(Page page);
-	public int getMaxPageNum(Page page,String grade,String subject);
+	public Integer getMaxPageNum(Page page,String grade,String subject);
 	
 	/**
 	 * 分页显示

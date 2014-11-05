@@ -13,6 +13,9 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.boyi.po.Problem;
+import com.boyi.utils.Page;
+
 
 /**
  * 
@@ -112,7 +115,7 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	@Override
 	public List<E> findAll() {
 		
-		return 	(List<E>) getSession().createQuery("from "+clazz.getSimpleName()).list();
+		return 	(List<E>) getSession().createQuery("from "+clazz.getSimpleName()+" order by id desc").list();
 	}
 	
 	/**
@@ -144,6 +147,31 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	}
 	
 	/**
+	 * 得到最大的页数
+	 * @param page
+	 * @return
+	 */
+	@Override
+	public Integer getMaxPageNum(Page page) {
+		Integer sum = ((Number)(getSession().createQuery("select count(id) from "+clazz.getSimpleName()).iterate().next())).intValue() ;
+		sum = (sum+page.getAmount()-1)/page.getAmount(); 
+		return sum;
+	}
+	
+	/**
+	 * 根据Page进行分页显示
+	 * @param page
+	 * @return
+	 */
+	@Override
+	public List<E> findAll(Page page) {
+		Query query= getSession().createQuery("from "+clazz.getSimpleName()+" order by id desc");
+		query.setMaxResults(page.getAmount());							//取几条记录
+		query.setFirstResult( (page.getCur()-1)*page.getAmount() );		//从哪个记录开始取
+		return query.list();
+	}
+	
+	/**
 	 * 获取SessionFactory工厂
 	 * 
 	 * @return
@@ -154,7 +182,5 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
-	
 	
 }

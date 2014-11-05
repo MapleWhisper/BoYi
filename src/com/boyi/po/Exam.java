@@ -2,6 +2,8 @@ package com.boyi.po;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +31,8 @@ public class Exam implements Serializable{
 	private String status;			//考试状态
 	
 	private String note;			//考试须知
+	
+	private Set<Result> results;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -97,5 +103,14 @@ public class Exam implements Serializable{
 	public void setNote(String note) {
 		this.note = note;
 	}
+	
+	@OneToMany(cascade={CascadeType.ALL},mappedBy="exam")
+	public Set<Result> getResults() {
+		return results;
+	}
+	public void setResults(Set<Result> results) {
+		this.results = results;
+	}
+	
 	
 }

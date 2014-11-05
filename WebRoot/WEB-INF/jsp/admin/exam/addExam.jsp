@@ -41,14 +41,14 @@
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">考试开始日期</label>
 											<div class="col-xs-4">
-												<input type="text" class="form-control  " required 
+												<input type="datetime" class="form-control" required 
 														name="exam.beginTime" id="beginTime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-%d %H:%m:%s'})">                              
 											</div>
 										</div>
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">考试结束日期</label>
 											<div class="col-xs-4">
-												<input type="text" class="form-control  " required 
+												<input type="datetime" class="form-control" required 
 													name="exam.endTime" id="endTime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-%d %H:%m:%s'})">
 											</div>
 										</div>
@@ -65,7 +65,7 @@
 												</select>
 											</div>
 											<div class="col-xs-3">
-												<button class="btn btn-primary" id="showPaper">点此查看试卷</button>
+												<button class="btn btn-primary" type="button" id="showPaper">点此查看试卷</button>
 											</div>
 										</div>
 										

@@ -45,13 +45,12 @@ public class ProblemServiceImpl extends BaseServerImpl<Problem> implements Probl
 	/**
 	 * 得到最大的页数
 	 */
-	public int getMaxPageNum(Page page){
-		int sum = ((Number)(getSession().createQuery("select count(*) from Problem p ").iterate().next())).intValue() ;
+	public Integer getMaxPageNum(Page page){
+		Integer sum = ((Number)(getSession().createQuery("select count(*) from Problem p ").iterate().next())).intValue() ;
 		sum = (sum+page.getAmount()-1)/page.getAmount(); 
 		return sum;
 	}
-	@Override
-	public int getMaxPageNum(Page page, String grade, String subject) {
+	public Integer getMaxPageNum(Page page, String grade, String subject) {
 		int sum = ((Number)(getSession().createQuery("select count(*) from Problem p where p.grade =? and p.subject = ? ")
 				.setParameter(0, grade).setParameter(1, subject)
 				.iterate().next())).intValue() ;

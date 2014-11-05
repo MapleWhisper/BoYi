@@ -15,7 +15,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table
 @Component
 public class Problem implements Serializable{
 	private Integer id;			//id

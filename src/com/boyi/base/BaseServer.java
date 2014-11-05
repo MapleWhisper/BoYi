@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.boyi.utils.Page;
+
 /**
  * 公共的 Server公共接口
  * 所有的server接口必须继承此接口
@@ -52,4 +54,18 @@ public interface BaseServer<T> {
 	 * @return
 	 */
 	public List<T> findAll();
+	
+	/**
+	 * 得到最大的页数
+	 * @param page
+	 * @return
+	 */
+	public Integer getMaxPageNum(Page page);
+	
+	/**
+	 * 根据Page进行分页显示
+	 * @param page
+	 * @return
+	 */
+	public List<T> findAll(Page page);
 }
