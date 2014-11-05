@@ -86,9 +86,7 @@
     		$(function(){
     			$("#article").css("margin-right","-30px").css("font-size"," 25px");
     		});
-    		$(function(){
-    			$('table').dataTable();
-    		});
+    		
     	</script>
 
 </body>
