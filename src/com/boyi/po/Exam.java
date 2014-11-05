@@ -32,7 +32,7 @@ public class Exam implements Serializable{
 	
 	private String note;			//考试须知
 	
-	private Set<Result> results;
+	private Set<ExamResult> results;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -105,10 +105,10 @@ public class Exam implements Serializable{
 	}
 	
 	@OneToMany(cascade={CascadeType.ALL},mappedBy="exam")
-	public Set<Result> getResults() {
+	public Set<ExamResult> getResults() {
 		return results;
 	}
-	public void setResults(Set<Result> results) {
+	public void setResults(Set<ExamResult> results) {
 		this.results = results;
 	}
 	

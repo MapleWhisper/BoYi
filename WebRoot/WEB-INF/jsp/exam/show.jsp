@@ -66,8 +66,8 @@
 
 			<!--右侧的内容 -->
 			<div class="col-xs-10">
-				<form action="${pageContext.request.contextPath}/client/paper/answer" method="post" id="form1">
-					   		<input type="hidden" name="id" value="${paper.id}">
+				<form action="${pageContext.request.contextPath}/exam/examAction!update" method="post" id="form1">
+					   		<input type="hidden" name="id" value="${exam.id}">
 				<div class="panel-group" id="accordion" role="tablist"
 					aria-multiselectable="true">
 					<!-- 单选题 -->
@@ -223,6 +223,8 @@
 			
 		</div>
 	</div>
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
 	<script type="text/javascript">
 		//倒计时
 		var cnt = setInterval("count()", 1000);
@@ -268,6 +270,19 @@
 				return false;
 			});
 		});
+
+		$(function(){
+			$("#form1").validate();			
+			
+			$("#form1").submit(function(){
+				$.post("examAction!update",$("#form1").serialize(),function(){
+					alert("提交成功");
+				});
+				return false;
+			});
+		});
+		
+    	
 	</script>
 
 </body>

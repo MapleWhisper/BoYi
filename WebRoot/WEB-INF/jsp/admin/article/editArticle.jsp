@@ -9,19 +9,19 @@
   </head>
   
   <body>
-    	<div class="container">
+    	<div class="container-fluid">
     		<div class="row">
     			<%@ include file="../head.jsp" %>
     		</div>
     		<div class="row" style="margin-top: 70px">
     				<!--左侧的导航条 -->
-					<div class="col-xs-3">
+					<div class="col-xs-2">
 						<%@include file="../left.jsp"%>
 					</div>
 					<!--左侧的导航条 -->
 					
 					<!--右侧的内容 -->
-					<div class="col-xs-9">
+					<div class="col-xs-10">
 						<!-- 面板开始 -->
 						<div class="panel panel-danger">
 						  <div class="panel-heading">
@@ -30,23 +30,23 @@
 						  <div class="panel-body">
 								<form action="${pageContext.request.contextPath }/admin/article/articleAction!update" class="form-horizontal" role="form" id="form1" method="post">
 										<div class="form-group">
-											<label  class="col-xs-2 control-label">文章标题</label>
-											<div class="col-xs-10">
+											<label  class="col-xs-1 control-label">文章标题</label>
+											<div class="col-xs-11">
 												<input type="text" class="form-control" required name="article.title" id="title" value="${article.title }" >
 												<input type="hidden"  name="article.id"  value="${article.id }" >
 											</div>
 										</div>
 										
 										<div class="form-group" >
-											<label  class="col-xs-2 control-label">文章类别：</label>
-											<div class="col-xs-10" >
+											<label  class="col-xs-1 control-label">文章类别：</label>
+											<div class="col-xs-11" >
 												<s:radio list="%{#{'主页新闻':'主页新闻','帮助文章':'帮助文章','后台通知':'后台通知' }}"  name="article.type"/>
 											</div>
 										</div>
 										
 										<div class="form-group">
-											<label  class="col-xs-2 control-label">文章内容：</label>
-											<div class="col-xs-10">
+											<label  class="col-xs-1 control-label">文章内容：</label>
+											<div class="col-xs-11">
 												<textarea id="editor" class="form-control" name="article.context" rows="25" >${article.context }</textarea>
 											</div>
 										</div>

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Result implements Serializable{
+public class ExamResult implements Serializable{
 	private Integer id;
 	private String ans;
 	private Double score;

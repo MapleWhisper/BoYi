@@ -8,6 +8,13 @@
 				<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span>
 			</a>
 		</li>
+		<li role="presentation" class="list-group-item pre " id="teacherCenter">
+			<span class="glyphicon glyphicon-user"></span>
+			<a href="${pageContext.request.contextPath}/admin/teacherCenter/teacherCenterAction">
+				教师中心
+				<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span>
+			</a>
+		</li>
 </ul>
 
 <ul class="list-group" role="tablist" id="nav">

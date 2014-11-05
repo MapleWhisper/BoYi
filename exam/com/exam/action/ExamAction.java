@@ -1,10 +1,16 @@
 package com.exam.action;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -12,11 +18,16 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.alibaba.fastjson.JSON;
 import com.boyi.base.BaseAction;
+import com.boyi.enmu.ExamStatus;
 import com.boyi.po.Classes;
 import com.boyi.po.Exam;
+import com.boyi.po.ExamResult;
 import com.boyi.po.Paper;
+import com.boyi.po.Student;
 import com.boyi.service.ClassesServer;
+import com.boyi.service.ExamResultServer;
 import com.boyi.service.ExamServer;
 import com.boyi.service.PaperService;
 import com.boyi.service.ProblemService;
@@ -47,6 +58,9 @@ public class ExamAction extends BaseAction{
 	@Resource(name="examServerImpl")
 	private ExamServer examServer;
 	
+	@Resource(name="examResultServerImpl")
+	private ExamResultServer examResultServer;
+	
 	
 	private List<Exam> examList;
 	private List<Classes> classesList;
@@ -54,9 +68,9 @@ public class ExamAction extends BaseAction{
 	
 	private Paper paper;
 	private Exam exam;
-	private String leftTime;
-	
 	private Page page;
+	
+	private String leftTime;
 	private Integer id;
 	private Integer cur;
 	private Integer paperId;
@@ -100,22 +114,89 @@ public class ExamAction extends BaseAction{
 		Date now = new Date();
 		
 		if(now.getTime() < start.getTime()){
+			
 			//如果考试还没开始
 		}else if(now.getTime() > end.getTime()){
 			//考试已经结束
+			if(exam.getStatus().equals(ExamStatus.正在考试.toString())){
+				exam.setStatus(ExamStatus.已结束.toString());
+				examServer.updata(exam);
+			}
+			return "toIndex";
 		}else{
+			if(exam.getStatus().equals(ExamStatus.未开始.toString())){
+				exam.setStatus(ExamStatus.正在考试.toString());
+				examServer.updata(exam);
+			}
 			//考试正在进行
-				int diff = (int) (end.getTime() - now.getTime());
-			 	int day = diff / (24 * 60 * 60 * 1000);  
-		        int hour = (diff / (60 * 60 * 1000) - day * 24);  
-		        int min = ((diff / (60 * 1000)) - day * 24 * 60 - hour * 60);  
-		        int sec = (diff/1000-day*24*60*60-hour*60*60-min*60);
-		        this.leftTime = hour+":"+min+":"+sec;
+			//计算 考试剩余时间
+			this.leftTime = calcLeftTime(end, now);
 		}
 		return "show";
 	}
 	
+
 	
+	//保存用户答案
+	@Override
+	@SuppressWarnings("unchecked")
+	public String update() {
+		HttpServletRequest request  = ServletActionContext.getRequest();
+		HttpSession session  = request.getSession();
+		this.exam = examServer.getById(id);
+		Integer stuId = ((Student) session.getAttribute("student"))==null?null:getId();
+		if(stuId == null){
+			stuId = 1;
+		}
+		ExamResult result = examResultServer.getById(stuId, id);
+		this.paper = exam.getPaper();
+		
+		HashMap<Integer,String> answer;
+		//取出 存放答案的HashMap
+		if(result.getAns()==null || result.getAns().equals("")){
+			answer = new HashMap<Integer, String>();
+		}else{
+			answer = (HashMap<Integer, String>) JSON.parseObject(result.getAns(),HashMap.class);
+		}
+		
+		
+		//取出所有问题Id
+		List<Integer> proIdList = new ArrayList<Integer>();
+		proIdList.addAll(JSON.parseArray(paper.getSingle(), Integer.class));
+		proIdList.addAll(JSON.parseArray(paper.getMultChoice(), Integer.class));
+		proIdList.addAll(JSON.parseArray(paper.getJudege(), Integer.class));
+		proIdList.addAll(JSON.parseArray(paper.getQuestion(), Integer.class));
+		for( Integer i :  proIdList){
+			String a = request.getParameter(i+"");
+			if(a!=null && !a.equals("")){
+				answer.put(i, a);
+			}
+		}
+		
+		//生成答案JSON字符串
+		String ans  = JSON.toJSONString(answer);
+		result.setAns(ans);
+		examResultServer.updata(result);
+		
+		return null;
+	}
+	
+	
+	
+	/**
+	 * 计算剩余时间
+	 * @param end
+	 * @param now
+	 * @return
+	 */
+	private String calcLeftTime(Date end, Date now) {
+		int diff = (int) (end.getTime() - now.getTime());
+		int day = diff / (24 * 60 * 60 * 1000);  
+		int hour = (diff / (60 * 60 * 1000) - day * 24);  
+		int min = ((diff / (60 * 1000)) - day * 24 * 60 - hour * 60);  
+		int sec = (diff/1000-day*24*60*60-hour*60*60-min*60);
+		return hour+":"+min+":"+sec;
+	}
 	public ClassesServer getClassesServer() {
 		return classesServer;
 	}
@@ -215,6 +296,14 @@ public class ExamAction extends BaseAction{
 
 	public void setLeftTime(String leftTime) {
 		this.leftTime = leftTime;
+	}
+
+	public ExamResultServer getExamResultServer() {
+		return examResultServer;
+	}
+
+	public void setExamResultServer(ExamResultServer examResultServer) {
+		this.examResultServer = examResultServer;
 	}
 	
 	

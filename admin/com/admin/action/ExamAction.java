@@ -94,9 +94,9 @@ public class ExamAction extends BaseAction{
 		}
 		exam.setClasses(c);
 		exam.setPaper(p);
-		Set<com.boyi.po.Result> results = new HashSet<com.boyi.po.Result>(); 
+		Set<com.boyi.po.ExamResult> results = new HashSet<com.boyi.po.ExamResult>(); 
 		for(Student s : c.getStudents()){
-			com.boyi.po.Result r = new com.boyi.po.Result();
+			com.boyi.po.ExamResult r = new com.boyi.po.ExamResult();
 			r.setStudent(s);
 			results.add(r);
 		}

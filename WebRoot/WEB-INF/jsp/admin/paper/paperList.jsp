@@ -3,23 +3,23 @@
 <html>
   <head>
 	<%@ include file="../header.jspf" %>
-	<title>管理员列表</title>
+	<title>试卷列表</title>
   </head>
   
   <body>
-    	<div class="container">
+    	<div class="container-fluid">
     		<div class="row">
     			<%@ include file="../head.jsp" %>
     		</div>
     		<div class="row" style="margin-top: 70px">
     				<!--左侧的导航条 -->
-					<div class="col-xs-3">
+					<div class="col-xs-2">
 						<%@include file="../left.jsp"%>
 					</div>
 					<!--左侧的导航条 -->
 					
 					<!--右侧的内容 -->
-					<div class="col-xs-9">
+					<div class="col-xs-10">
 						<!-- 面板开始 -->
  						<!-- 试卷列表 -->
     					<div class="panel panel-primary">

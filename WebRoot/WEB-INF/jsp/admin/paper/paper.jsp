@@ -7,19 +7,19 @@
   </head>
   
   <body>
-    	<div class="container">
+    	<div class="container-fluid">
     		<div class="row">
     			<%@ include file="../head.jsp" %>
     		</div>
     		<div class="row" style="margin-top: 70px">
     				<!--左侧的导航条 -->
-					<div class="col-xs-3">
+					<div class="col-xs-2">
 						<%@include file="../left.jsp"%>
 					</div>
 					<!--左侧的导航条 -->
 					
 					<!--右侧的内容 -->
-					<div class="col-xs-9">
+					<div class="col-xs-10">
 						<!-- 面板开始 -->
 						
 						<!-- 生成试卷 -->
@@ -55,6 +55,7 @@
 													  <button type="button" class="btn btn-default" name="grade" >小学五年级</button>
 													  <button type="button" class="btn btn-default" name="grade" >小学六年级</button>
 													</div>
+													<br>
 													<div class="btn-group" style="margin-top: 15px">
 														<button type="button" class="btn btn-default" name="grade" >初中一年级</button>
 														<button type="button" class="btn btn-default" name="grade" >初中二年级</button>

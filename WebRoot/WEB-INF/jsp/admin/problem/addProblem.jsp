@@ -7,19 +7,19 @@
   </head>
   
   <body>
-    	<div class="container">
+    	<div class="container-fluid">
     		<div class="row">
     			<%@ include file="../head.jsp" %>
     		</div>
     		<div class="row" style="margin-top: 70px">
     				<!--左侧的导航条 -->
-					<div class="col-xs-3">
+					<div class="col-xs-2">
 						<%@include file="../left.jsp"%>
 					</div>
 					<!--左侧的导航条 -->
 					
 					<!--右侧的内容 -->
-					<div class="col-xs-9">
+					<div class="col-xs-10">
 						<!-- 面板开始 -->
 									<div class="panel panel-primary">
 							  <div class="panel-heading">
@@ -203,6 +203,38 @@
 											      	</select>
 											    </div>
 											  </div>
+											  <div class="form-group">
+											    <label   class="col-xs-1 control-label">年级</label>
+											    <div class="col-xs-3">
+											      	<select class="form-control"  name="problem.grade">
+									      					<option value="小学一年级"   >小学一年级</option>
+                                                              <option value="小学二年级"   >小学二年级</option>
+                                                              <option value="小学三年级"   >小学三年级</option>
+                                                              <option value="小学四年级"   >小学四年级</option>
+                                                              <option value="小学五年级"   >小学五年级</option>
+                                                              <option value="小学六年级"   >小学六年级</option>
+                                                              <option value="初中一年级"  selected>初中一年级</option>
+                                                              <option value="初中二年级"   >初中二年级</option>
+                                                              <option value="初中三年级"   >初中三年级</option>
+                                                              <option value="高中一年级"   >高中一年级</option>
+                                                              <option value="高中二年级"   >高中二年级</option>
+                                                              <option value="高中三年级"   >高中三年级</option>
+											      	</select>
+											    </div>
+											  </div>
+											  <div class="form-group">
+											    <label   class="col-xs-1 control-label">科目</label>
+											    <div class="col-xs-3">
+											      	<select class="form-control"  name="problem.subject">
+						      								  <option value="数学"  >数学</option>
+                                                                <option value="语文"  >语文</option>
+                                                                <option value="英语"  >英语</option>
+                                                                <option value="物理"  >物理</option>
+                                                                <option value="化学"  >化学</option>
+                                                                <option value="生物"  >生物</option>
+											      	</select>
+											    </div>
+											  </div>
 											   <div class="form-group">
 											    <div class="col-xs-3 col-xs-offset-4">
 											      <input type="submit" class="btn btn-primary btn-lg"  value="添加多选题">
@@ -245,6 +277,38 @@
 											      		<option value="简单" selected="selected">简单</option>
 											      		<option value="中等">中等</option>
 											      		<option value="困难">困难</option>
+											      	</select>
+											    </div>
+											  </div>
+											  <div class="form-group">
+											    <label   class="col-xs-1 control-label">年级</label>
+											    <div class="col-xs-3">
+											      	<select class="form-control"  name="problem.grade">
+									      					<option value="小学一年级"   >小学一年级</option>
+                                                              <option value="小学二年级"   >小学二年级</option>
+                                                              <option value="小学三年级"   >小学三年级</option>
+                                                              <option value="小学四年级"   >小学四年级</option>
+                                                              <option value="小学五年级"   >小学五年级</option>
+                                                              <option value="小学六年级"   >小学六年级</option>
+                                                              <option value="初中一年级"  selected>初中一年级</option>
+                                                              <option value="初中二年级"   >初中二年级</option>
+                                                              <option value="初中三年级"   >初中三年级</option>
+                                                              <option value="高中一年级"   >高中一年级</option>
+                                                              <option value="高中二年级"   >高中二年级</option>
+                                                              <option value="高中三年级"   >高中三年级</option>
+											      	</select>
+											    </div>
+											  </div>
+											  <div class="form-group">
+											    <label   class="col-xs-1 control-label">科目</label>
+											    <div class="col-xs-3">
+											      	<select class="form-control"  name="problem.subject">
+						      								  <option value="数学"  >数学</option>
+                                                                <option value="语文"  >语文</option>
+                                                                <option value="英语"  >英语</option>
+                                                                <option value="物理"  >物理</option>
+                                                                <option value="化学"  >化学</option>
+                                                                <option value="生物"  >生物</option>
 											      	</select>
 											    </div>
 											  </div>
