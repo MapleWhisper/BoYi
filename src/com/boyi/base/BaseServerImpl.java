@@ -155,6 +155,7 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	public Integer getMaxPageNum(Page page) {
 		Integer sum = ((Number)(getSession().createQuery("select count(id) from "+clazz.getSimpleName()).iterate().next())).intValue() ;
 		sum = (sum+page.getAmount()-1)/page.getAmount(); 
+		page.setSum(sum);
 		return sum;
 	}
 	
@@ -168,6 +169,7 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 		Query query= getSession().createQuery("from "+clazz.getSimpleName()+" order by id desc");
 		query.setMaxResults(page.getAmount());							//取几条记录
 		query.setFirstResult( (page.getCur()-1)*page.getAmount() );		//从哪个记录开始取
+		this.getMaxPageNum(page);
 		return query.list();
 	}
 	

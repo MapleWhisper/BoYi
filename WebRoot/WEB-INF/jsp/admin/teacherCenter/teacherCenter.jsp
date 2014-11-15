@@ -6,10 +6,7 @@
 <title>教师中心</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/js/datatables/dataTables.bootstrap.css"></link>
-<script
-	src="${pageContext.request.contextPath}/js/datatables/js/jquery.dataTables.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/js/datatables/dataTables.bootstrap.js"></script>
+
 </head>
 
 <body>
@@ -117,7 +114,10 @@
 		</div>
 		<%@ include file="../buttom.jsp"%>
 	</div>
-
+	<script
+	src="${pageContext.request.contextPath}/js/datatables/js/jquery.dataTables.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/js/datatables/dataTables.bootstrap.js"></script>
 	<script type="text/javascript">
     		$(function(){
     			$("#teacherCenter").css("margin-right","-30px").css("font-size"," 25px");

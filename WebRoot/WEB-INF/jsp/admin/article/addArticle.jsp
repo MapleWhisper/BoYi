@@ -3,10 +3,9 @@
 <html>
   <head>
 	<%@ include file="../header.jspf" %>
-	
+	<link rel="stylesheet"  href="${pageContext.request.contextPath}/js/kindeditor/themes/simple/simple.css" />
 	<title>管理员列表</title>
-	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
+	
   </head>
   
   <body>
@@ -33,7 +32,14 @@
 										<div class="form-group">
 											<label  class="col-xs-2 control-label">文章标题</label>
 											<div class="col-xs-10">
-												<input type="text" class="form-control inputxt" required name="article.title" id="title" >
+												<input type="text" class="form-control " required name="article.title" id="title" >
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label  class="col-xs-2 control-label">作者</label>
+											<div class="col-xs-4">
+												<input type="text" class="form-control " required name="article.auther" id="auther" >
 											</div>
 										</div>
 										
@@ -71,7 +77,8 @@
     		</div>
     		<%@ include file="../buttom.jsp" %>
     	</div>
-    	<link rel="stylesheet"  href="${pageContext.request.contextPath}/js/kindeditor/themes/simple/simple.css" />
+    	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
 		<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/kindeditor-min.js"></script>
 		<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/lang/zh_CN.js"></script>
     	<script type="text/javascript">

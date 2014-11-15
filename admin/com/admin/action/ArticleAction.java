@@ -3,24 +3,23 @@ package com.admin.action;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSON;
 import com.boyi.base.BaseAction;
+import com.boyi.lucene.ArticleQuery;
 import com.boyi.po.Article;
 import com.boyi.service.ArticleService;
+import com.boyi.utils.Page;
 
 
 
@@ -41,17 +40,37 @@ public class ArticleAction  extends BaseAction{
 	@Resource(name = "articleSerivceImpl")
 	private ArticleService articleService;
 	
+	@Value("${articleAmountPerPage}")
+	private Integer articleAmountPerPage;	//每页显示多少文章
+	
+	@Resource(name="articleQuery")
+	private ArticleQuery articleQuery;
+	
 	private List<Article> articleList;
 	
 	private Article article;
 	private Integer id;
+	private Page page;
+	private Integer cur;
+	private String key;
+	
+	
+	
 	
 	/**
 	 * 后台文章管理 列表
 	 */
 	@Override
 	public String execute() throws Exception {
-		this.articleList = articleService.findAll();
+		if(cur ==null || cur <=0 ){
+			cur =1;
+		}
+		Page page = new Page();
+		page.setCur(cur);
+		page.setAmount(articleAmountPerPage);
+		this.page = page;
+		
+		this.articleList = articleService.findAll(page);
 		return "index";
 	}
 
@@ -107,6 +126,17 @@ public class ArticleAction  extends BaseAction{
 	}
 	
 	
+	/**
+	 * 全文检索
+	 * @return
+	 */
+	public String search(){
+		if(key!=null){
+			//articleQuery.updateIndex();
+			this.articleList = articleQuery.serch(key);
+		}
+		return "index";
+	}
 	
 	
 	
@@ -144,15 +174,44 @@ public class ArticleAction  extends BaseAction{
 		this.id = id;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public Integer getCur() {
+		return cur;
+	}
+
+	public void setCur(Integer cur) {
+		this.cur = cur;
+	}
+
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public Integer getArticleAmountPerPage() {
+		return articleAmountPerPage;
+	}
+
+	public void setArticleAmountPerPage(Integer articleAmountPerPage) {
+		this.articleAmountPerPage = articleAmountPerPage;
+	}
+
+	public ArticleQuery getArticleQuery() {
+		return articleQuery;
+	}
+
+	public void setArticleQuery(ArticleQuery articleQuery) {
+		this.articleQuery = articleQuery;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
 	
 }

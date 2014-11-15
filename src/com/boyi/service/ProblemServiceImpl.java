@@ -1,5 +1,7 @@
 package com.boyi.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -29,7 +31,7 @@ public class ProblemServiceImpl extends BaseServerImpl<Problem> implements Probl
 		Query query= getSession().createQuery("from Problem p order by p.id desc");
 		query.setMaxResults(page.getAmount());							//取几条记录
 		query.setFirstResult( (page.getCur()-1)*page.getAmount() );		//从哪个记录开始取
-		
+		page.setSum(this.getMaxPageNum(page));
 		return query.list();
 	}
 	@Override
@@ -104,5 +106,21 @@ public class ProblemServiceImpl extends BaseServerImpl<Problem> implements Probl
 		System.out.println(list);
 		return list;
 		
+	}
+	
+	@Override
+	public Paper setAnswer(Paper paper, String ans) {
+		if(ans!=null){
+			HashMap<String, String> map =  JSON.parseObject(ans, HashMap.class);
+			List<Problem> list = new ArrayList<Problem>();
+			list.addAll(paper.getSingleList());
+			list.addAll(paper.getMultChoiceList());
+			list.addAll(paper.getJudegeList());
+			list.addAll(paper.getQuestionList());
+			for(Problem p :list){
+				p.setUserAns(map.get(p.getId()));
+			}
+		}
+		return paper;
 	}
 }	

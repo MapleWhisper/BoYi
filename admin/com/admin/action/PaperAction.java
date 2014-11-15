@@ -1,9 +1,13 @@
 package com.admin.action;
 
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -17,7 +21,10 @@ import org.springframework.stereotype.Controller;
 import com.admin.po.PaperCart;
 import com.alibaba.fastjson.JSON;
 import com.boyi.base.BaseAction;
+import com.boyi.po.ExamResult;
 import com.boyi.po.Paper;
+import com.boyi.po.Problem;
+import com.boyi.service.ExamResultServer;
 import com.boyi.service.PaperService;
 import com.boyi.service.ProblemService;
 
@@ -32,6 +39,7 @@ import com.boyi.service.ProblemService;
 		@Result(name="index",location="/WEB-INF/jsp/admin/paper/paper.jsp"),
 		@Result(name="show",location="/WEB-INF/jsp/admin/paper/showPaper.jsp"),
 		@Result(name="list",location="/WEB-INF/jsp/admin/paper/paperList.jsp"),
+		@Result(name="checkPaper",location="/WEB-INF/jsp/admin/paper/checkPaper.jsp"),
 		
 })
 public class PaperAction extends BaseAction{
@@ -41,12 +49,18 @@ public class PaperAction extends BaseAction{
 	@Resource(name="problemServiceImpl")
 	private ProblemService problemService;
 	
+	@Resource(name="examResultServerImpl")
+	private ExamResultServer examResultServer;
+	
+	
+	private ExamResult examResult;
+	
 	private List<Paper> paperList;
 	private Paper paper;
 	private Integer id;
 	private String grade;	//试题列表年级
 	private String subject;	//试题列表 课程
-	
+	private Double score;		//用户答案
 	
 	/**
 	 * 显示试卷列表页面
@@ -117,16 +131,46 @@ public class PaperAction extends BaseAction{
 		return "show";
 	}
 	
+	/**
+	 * 显示带成绩 试卷页面
+	 * 教师查看试卷
+	 * @return
+	 */
+	public String checkPaper(){
+		
+		this.examResult = examResultServer.getById(id);
+		this.paper = examResult.getExam().getPaper();
+		//加载试题信息
+		this.paper = problemService.showPaper(paper);
+		
+		String ans = examResult.getAns();
+		//加载答案
+		this.paper = problemService.setAnswer(paper, ans);
+		
+		
+		return "checkPaper";
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/**
+	 * 设置成绩
+	 * 
+	 */
+	public void setScore(){
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/plain");
+		PrintWriter pw = null;
+		try {
+			pw = response.getWriter();
+			this.examResult = examResultServer.getById(id);
+			examResult.setScore(score);
+			examResultServer.updata(examResult);
+			pw.println("success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			pw.println("error");
+		}
+		
+	}
 
 	public PaperService getPaperService() {
 		return paperService;
@@ -193,7 +237,44 @@ public class PaperAction extends BaseAction{
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	
-	
+
+
+
+	public ExamResultServer getExamResultServer() {
+		return examResultServer;
+	}
+
+
+
+	public void setExamResultServer(ExamResultServer examResultServer) {
+		this.examResultServer = examResultServer;
+	}
+
+
+
+
+
+
+
+	public Double getScore() {
+		return score;
+	}
+
+
+
+	public void setScore(Double score) {
+		this.score = score;
+	}
+
+
+
+	public ExamResult getExamResult() {
+		return examResult;
+	}
+
+
+	public void setExamResult(ExamResult examResult) {
+		this.examResult = examResult;
+	}
 	
 }

@@ -29,6 +29,14 @@ public interface ProblemService extends BaseServer<Problem>{
 	public Paper showPaper(Paper paper);
 	
 	/**
+	 * 通过Ans字符串 把答案 放到试卷中
+	 * @param paper
+	 * @param Ans
+	 * @return
+	 */
+	public Paper setAnswer(Paper paper,String Ans);
+	
+	/**
 	 * 根据年级 课程 和 个数 选取 试题 并返回
 	 * @param grade
 	 * @param subject

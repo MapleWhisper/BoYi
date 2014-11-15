@@ -28,6 +28,7 @@ public class Problem implements Serializable{
 	private String difficulty;	//题目难度	简单，中等， 困难
 	private String label;		//题目标签  	便于搜索
 	private Date createDate;	//入库试卷
+	private String userAns;	//用户答题答案
 	
 	private String grade;		//试题年级
 	private String subject;		//所属课程
@@ -116,7 +117,7 @@ public class Problem implements Serializable{
 		this.createDate = createDate;
 	}
 	
-	private String userAns;	//用户答题答案
+	
 
 	@Transient
 	public String getUserAns() {

@@ -44,9 +44,10 @@
 						  		<table  class="table table-hover table-striped table-bordered" style="text-align: center;" id="table1">
 						  			<thead>
 						  				<tr  >
-											<td>比赛标题</td>
+											<td>考试标题</td>
 											<td>开始时间</td>
-											<td>比赛状态</td>
+											<td>考试状态</td>
+											<td>成绩查看/批阅</td>
 										</tr>
 						  			</thead>
 						  			<tbody>
@@ -58,6 +59,8 @@
 											<td><fm:formatDate value="${e.beginTime}" pattern="yyyy-MM-dd HH:mm"/></td>
 											
 											<td ><span style="font-size: 14px" class="label">${e.status }</span></td>
+											<td><a type="button" href="${pageContext.request.contextPath}/admin/teacherCenter/teacherCenterAction!showResult?id=${e.id}" 
+													class="btn btn-info">查看</a></td>
 										</tr>
 										
 										</c:forEach>

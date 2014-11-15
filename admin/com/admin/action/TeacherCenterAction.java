@@ -1,6 +1,5 @@
 package com.admin.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,8 +15,10 @@ import org.springframework.stereotype.Controller;
 
 import com.boyi.base.BaseAction;
 import com.boyi.po.Classes;
+import com.boyi.po.Exam;
 import com.boyi.po.Teacher;
 import com.boyi.service.ClassesServer;
+import com.boyi.service.ExamServer;
 import com.boyi.service.TeacherServer;
 
 
@@ -30,6 +31,7 @@ import com.boyi.service.TeacherServer;
 		@Result(name="error",location="/WEB-INF/jsp/error.jsp"),
 		@Result(name="index",location="/WEB-INF/jsp/admin/teacherCenter/teacherCenter.jsp"),
 		@Result(name="showClasses",location="/WEB-INF/jsp/admin/teacherCenter/showClasses.jsp"),
+		@Result(name="showResult",location="/WEB-INF/jsp/admin/teacherCenter/showResult.jsp"),
 		
 })
 public class TeacherCenterAction  extends BaseAction{
@@ -39,7 +41,11 @@ public class TeacherCenterAction  extends BaseAction{
 	@Resource(name="classesServerImpl")
 	private ClassesServer classesServer;
 	
+	@Resource(name="examServerImpl")
+	private ExamServer examServer;
+	
 	private List<Teacher> teacherList;
+	private Exam exam;
 	
 	private Teacher teacher;
 	private Classes classes;
@@ -66,6 +72,11 @@ public class TeacherCenterAction  extends BaseAction{
 		return "showClasses";
 	}
 	
+	public String showResult(){
+		this.exam = examServer.getById(id);
+		
+		return "showResult";
+	}
 
 	public Teacher getTeacher() {
 		return teacher;
@@ -117,6 +128,22 @@ public class TeacherCenterAction  extends BaseAction{
 		this.classes = classes;
 	}
 
+	public ExamServer getExamServer() {
+		return examServer;
+	}
+
+	public void setExamServer(ExamServer examServer) {
+		this.examServer = examServer;
+	}
+
+	public Exam getExam() {
+		return exam;
+	}
+
+	public void setExam(Exam exam) {
+		this.exam = exam;
+	}
+	
 	
 	
 	
