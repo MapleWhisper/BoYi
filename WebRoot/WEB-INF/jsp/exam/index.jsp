@@ -8,8 +8,10 @@
 
 <body>
 	<div class="container">
-		<div class="row"></div>
-		<div class="row" style="margin-top: 70px">
+		<div style="background-color:#666633;height:100px;width:1140px;">
+			
+		</div>
+		<div class="row"><!--  style="margin-top:70px" -->
 			<!--左侧的导航条 -->
 			<div class="col-xs-2">
 				<%@include file="left.jsp"%>
@@ -18,13 +20,14 @@
 
 			<!--右侧的内容 -->
 			<div class="col-xs-10">
-					<div style="heigth:20px;text-align:center;">
-						<h4>比赛标题</h4>
+					<!-- <div style="heigth:20px;text-align:center;">
+						<h2>比赛标题</h2>
 					</div>
+					-->
 					<div class="panel panel-default" style="background-color:#ffffff;">
 						<div class="panel-body">
 								<table class="table table-hover table-striped" style="text-align: center;">
-									<tr class="info" >
+									<tr class="info">
 										<td>比赛标题</td>
 										<td>开始时间</td>
 										<td>比赛状态</td>
