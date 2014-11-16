@@ -2,8 +2,8 @@
 
 <div class="panel panel-default" style="background-color:#ffffff;">
 	<div class="panel-body">
-			<div >
-				<img src="../images/images1-5.jpg" style="height:150px;">
+			<div style="border:1px solid red;margin:0px auto;height:150px;width:132px;">
+				<img src="#">
 			</div>
 			<table class="table table-condensed table-hover table-striped ">
 				<tr>
@@ -14,7 +14,7 @@
 				</tr>
 				<tr>
 					<td>班级：</td>
-				</tr>
+				</tr>				
 				<tr>
 					<td>${exam.classes.name}</td>
 				</tr>
