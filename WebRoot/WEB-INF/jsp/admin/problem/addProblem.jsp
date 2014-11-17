@@ -3,7 +3,7 @@
 <html>
   <head>
 	<%@ include file="../header.jspf" %>
-	<title>管理员列表</title>
+	<title>添加试题</title>
   </head>
   
   <body>
@@ -404,6 +404,8 @@
     	</div>
     	<script src="${pageContext.request.contextPath}/js/ckeditor/ckeditor.js"></script>
 		<script src="${pageContext.request.contextPath}/js/ckeditor/jquery.js"></script>
+		<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/lang/zh_CN.js"></script>
     	<script type="text/javascript">
     		$(function(){
     			$("#problem").css("margin-right","-30px").css("font-size"," 25px");
@@ -414,6 +416,16 @@
     			$( 'textarea#editor3' ).ckeditor();
     			$( 'textarea#editor4' ).ckeditor();
     		});
+    		/*
+    		KindEditor.ready(function(K) {
+    			editor = K.create('#editor1', {
+    				uploadJson : '/BoYi/js/kindeditor/jsp/upload_json.jsp',
+    				fileManagerJson : '/BoYi/js/kindeditor/jsp/file_manager_json.jsp',
+    				allowFileManager : true
+    			});
+    		});
+    		*/
+    		
     		$(function(){
     			$("#scanProblem").click(function(){
     				if($("button.active").size()!=2){

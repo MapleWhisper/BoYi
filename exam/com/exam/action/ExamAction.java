@@ -1,13 +1,15 @@
 package com.exam.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -32,6 +34,7 @@ import com.boyi.service.ExamServer;
 import com.boyi.service.PaperService;
 import com.boyi.service.ProblemService;
 import com.boyi.utils.Page;
+import com.sun.mail.iap.Response;
 
 
 @Controller("ExamAction")
@@ -98,40 +101,40 @@ public class ExamAction extends BaseAction{
 	
 	/**
 	 * 显示 考试详情
+	 * @throws IOException 
 	 */
 	@Override
-	public String show() {
+	public String show()  {
 		exam = examServer.getById(id);
 		this.paperId = exam.getPaper().getId();
-		Paper paper = paperService.getById(paperId);
-		if(paper==null){
-			return "toIndex";
-		}
-		this.paper = problemService.showPaper(paper);
-		
 		Date start = exam.getBeginTime();
 		Date end = exam.getEndTime();
 		Date now = new Date();
-		
 		if(now.getTime() < start.getTime()){
-			
 			//如果考试还没开始
+			return null;
 		}else if(now.getTime() > end.getTime()){
 			//考试已经结束
 			if(exam.getStatus().equals(ExamStatus.正在考试.toString())){
 				exam.setStatus(ExamStatus.已结束.toString());
 				examServer.updata(exam);
 			}
-			return "toIndex";
 		}else{
 			if(exam.getStatus().equals(ExamStatus.未开始.toString())){
 				exam.setStatus(ExamStatus.正在考试.toString());
+				System.out.println("可以开始了1");
 				examServer.updata(exam);
 			}
 			//考试正在进行
 			//计算 考试剩余时间
+			System.out.println("可以开始了2");
 			this.leftTime = calcLeftTime(end, now);
 		}
+		Paper paper = paperService.getById(paperId);
+		if(paper==null){
+			return "toIndex";
+		}
+		this.paper = problemService.showPaper(paper);
 		return "show";
 	}
 	
@@ -144,6 +147,10 @@ public class ExamAction extends BaseAction{
 		HttpServletRequest request  = ServletActionContext.getRequest();
 		HttpSession session  = request.getSession();
 		this.exam = examServer.getById(id);
+		if(!exam.getStatus().equals("正在考试")){
+			return "error";
+		}
+		
 		Integer stuId = ((Student) session.getAttribute("student"))==null?null:getId();
 		if(stuId == null){
 			stuId = 1;

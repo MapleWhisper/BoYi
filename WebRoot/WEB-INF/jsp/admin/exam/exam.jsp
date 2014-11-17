@@ -63,7 +63,7 @@
 											</tr>
 										 <c:forEach items="${examList}" var="e">
 										 	<tr>
-												<td>${fn:substring(e.name,0,20) }</td>
+												<td><a href="${pageContext.request.contextPath}/exam/examAction">${fn:substring(e.name,0,20) }</a></td>
 												<td><fm:formatDate value="${e.beginTime  }" pattern="yyyy-MM-dd HH:mm"/></td>
 												<td><fm:formatDate value="${e.endTime }" pattern="yyyy-MM-dd HH:mm"/></td>
 												<td><a href="examAction!edit?id=${e.id }" class="btn btn-info"><span class=" glyphicon glyphicon-edit"></span>&nbsp;&nbsp;修改</a></td>

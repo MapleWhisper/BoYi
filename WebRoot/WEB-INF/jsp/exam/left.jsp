@@ -2,8 +2,8 @@
 
 <div class="panel panel-default" style="background-color:#ffffff;">
 	<div class="panel-body">
-			<div style="border:1px solid red;margin:0px auto;height:150px;width:132px;">
-				<img src="#">
+			<div style="border:0px;margin:0px auto;height:150px;width:132px;">
+			<img src="${pageContext.request.contextPath}/image/student_default_pic.jpg" height="148px" width="130px"></img>					
 			</div>
 			<table class="table table-condensed table-hover table-striped ">
 				<tr>

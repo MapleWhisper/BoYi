@@ -28,13 +28,22 @@
 .block {
 	display: block;
 }
-}
+
 </style>
 </head>
 
-<body>
-	<div class="container">
-		<div class="row">
+<body style="background-color:#efeee4;">
+	<div class="header">
+		<p style="font-size:30px;font-weight:bold">${exam.name}</p>
+				<p style="font-size:20px;">开始时间<fm:formatDate
+						value="${exam.beginTime}" pattern="yyyy-MM-dd HH:mm" /><br>
+					结束时间<fm:formatDate value="${exam.endTime}"
+						pattern="yyyy-MM-dd HH:mm" />
+				</p>
+	</div>
+	<div class="container-fluid">
+		<!-- 注释掉的内容，和上面的效果一样 -->
+		<!-- <div class="row">
 			<div class="page-header " style="text-align: center;">
 				<h2 class="text-primary">${exam.name}</h2>
 				<small class="text-info"> 开始时间<fm:formatDate
@@ -44,16 +53,20 @@
 				</small>
 			</div>
 		</div>
+		-->
 		<div class="row">
 			<!--左侧的导航条 -->
 			<div class="col-xs-2">
 				<%@include file="left.jsp"%>
 				<div class="panel panel-default">
 					<div class="panel-body">
-						剩余时间: <span id="time">${leftTime}</span> <br>
-						<button type="button" class="btn btn-primary" data-toggle="modal"
+						<p style="margin-bottom:8px;">剩余时间: <span id="time" style="color: red">${leftTime}</span></p>
+						<p style="margin-bottom:8px;"><button type="button" class="btn btn-primary" data-toggle="modal"
 							data-target="#myModal">一起考试的小伙伴</button>
-						<h3>考试须知:</h3>
+						</p>
+						<p style="font-size:20px;">考试须知:</p>
+						<p>试卷可以多次提交<br>每次提交覆盖之前的答案<br>如果提交答案为空<br>将保留最近一次不为空值的答案<br>祝你考试顺利!<br></p>
+						<p style="font-size:20px;">考试注意:</p>
 						<p>${exam.note}</p>
 					</div>
 				</div>
@@ -67,6 +80,7 @@
 					action="${pageContext.request.contextPath}/exam/examAction!update"
 					method="post" id="form1">
 					<input type="hidden" name="id" value="${exam.id}">
+					<input type="hidden" value="${exam.status }" id="status">
 					<div class="panel-group" id="accordion" role="tablist"
 						aria-multiselectable="true">
 						<!-- 单选题 -->
@@ -109,7 +123,7 @@
 									</c:forEach>
 									<center>
 										<input type="submit" value="保存试卷"
-											onClick="return confirm('确定要提交吗？试卷一旦提交，不可再修改')"
+											onClick="return confirm('确定要提交吗？')"
 											class="btn btn-primary btn-lg" />
 									</center>
 
@@ -149,7 +163,7 @@
 									</c:forEach>
 									<center>
 										<input type="submit" value="保存试卷"
-											onClick="return confirm('确定要提交吗？试卷一旦提交，不可再修改')"
+											onClick="return confirm('确定要提交吗？')"
 											class="btn btn-primary btn-lg" />
 									</center>
 								</div>
@@ -184,7 +198,7 @@
 									</c:forEach>
 									<center>
 										<input type="submit" value="保存试卷"
-											onClick="return confirm('确定要提交吗？试卷一旦提交，不可再修改')"
+											onClick="return confirm('确定要提交吗？')"
 											class="btn btn-primary btn-lg" />
 									</center>
 								</div>
@@ -286,6 +300,11 @@
 			$(document).bind("cut", function() {
 				return false;
 			});
+			
+			if($("#status").val() == "已结束"){
+				$("input").attr("disabled","disabled");
+				$("textarea").attr("disabled","disabled");
+			}
 		});
 
 		$(function() {
@@ -300,6 +319,7 @@
 						return false;
 					});
 		});
+		
 	</script>
 
 </body>
