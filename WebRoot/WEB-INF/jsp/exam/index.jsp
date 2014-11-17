@@ -11,6 +11,7 @@
 		<div style="background-color:#666633;height:100px;width:1140px;">
 			
 		</div>
+		
 		<div class="row"><!--  style="margin-top:70px" -->
 			<!--左侧的导航条 -->
 			<div class="col-xs-2">
@@ -20,6 +21,7 @@
 
 			<!--右侧的内容 -->
 			<div class="col-xs-10">
+				
 					<!-- <div style="heigth:20px;text-align:center;">
 						<h2>比赛标题</h2>
 					</div>
@@ -32,8 +34,10 @@
 										<td>开始时间</td>
 										<td>比赛状态</td>
 									</tr>
+									
 									<c:forEach items="${examList}" var="e">
 										<tr>
+											
 											<td ><a target="_blank" href="${pageContext.request.contextPath}/exam/examAction!show?id=${e.id}">                              
 												${e.name}</a>
 											</td>
