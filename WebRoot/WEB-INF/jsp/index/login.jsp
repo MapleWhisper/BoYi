@@ -58,12 +58,15 @@
 						</form>
 				  </div>
 				  </div><!-- col-xs-8 -->
-				 	 <div class="col-xs-4"  style="margin-top: 80px">
-				 	 	<div>
-				 	 		<center>
+				  	<div class="col-xs-1">
+				  		<div style="width: 1px;height:300px;background-color: #ddd;margin-top: 30px;">
+						</div>
+				  	</div>
+				 	 <div class="col-xs-3"  style="margin-top: 80px">
+				 	 	
+				 	 	<div style="text-align: center;">
 							  	<p>还不是博弈教育用户？</p><br>
 							<a href="${pageContext.request.contextPath}/loginAction!registerUI" class="btn btn-warning btn-lg">立即注册</a>
-							</center>
 						</div>
     				</div><!-- col-xs-4 -->
 				</div><!-- panel -->

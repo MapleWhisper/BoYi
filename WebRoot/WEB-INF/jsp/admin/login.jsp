@@ -3,7 +3,7 @@
 <html>
   <head>
 	<%@ include file="../header.jspf" %>
-	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+	
 	<title>登陆后台</title>
   </head>
    

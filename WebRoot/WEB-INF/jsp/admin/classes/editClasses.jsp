@@ -100,7 +100,7 @@
 											<label  class="col-xs-2 control-label">所属课程</label>
 											<div class="col-xs-3">
 												<s:select name="courseId" required="required" cssClass="form-control" 
-														list="courseList" listKey="id" listValue="grade" >
+														list="courseList" listKey="id" listValue="grade+' '+subject" >
 												</s:select>
 											</div>
 										</div>
@@ -116,8 +116,8 @@
 											</div>
 										</div>
 										
-										<div class="form-group">
-											<center><input type="submit" value="修改班级信息" id="submit"  class="btn btn-primary btn-lg"/></center>
+										<div class="form-group" style="text-align: center;">
+											<input type="submit" value="修改班级信息" id="submit"  class="btn btn-primary btn-lg"/>
 										</div>
 										
 								</form>

@@ -104,7 +104,6 @@
 					<!--右侧的内容 -->
     		</div>
     		<%@ include file="../buttom.jsp" %>
-    	</div>
     	
     	<script type="text/javascript">
     		$(function(){

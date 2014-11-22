@@ -14,5 +14,11 @@ import com.boyi.po.Classes;
  */
 @Transactional
 public interface ClassesServer extends BaseServer<Classes> {
+	
+	/**
+	 * 根据状态查找班级
+	 * @param status
+	 * @return
+	 */
 	public List<Classes> findAllByStatus(String status);
 }

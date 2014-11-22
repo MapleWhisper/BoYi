@@ -27,6 +27,7 @@
 		#nav{
 			width: 200px;
 		}
+		.new {display: none}
 	</style>
 	
 

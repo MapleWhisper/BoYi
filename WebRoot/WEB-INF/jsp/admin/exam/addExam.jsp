@@ -64,8 +64,11 @@
 													</c:forEach>
 												</select>
 											</div>
-											<div class="col-xs-3">
+											<div class="col-xs-2">
 												<button class="btn btn-primary" type="button" id="showPaper">点此查看试卷</button>
+											</div>
+											<div class="col-xs-3">
+												<div class="alert alert-info form-control-static" role="alert">*只列出 ${grade} ${subject} 试卷</div>
 											</div>
 										</div>
 										
@@ -77,6 +80,9 @@
 														<option value="${c.id}">${c.name}</option>
 													</c:forEach>
 												</select>
+											</div>
+											<div class="col-xs-3">
+												<div class="alert alert-info form-control-static" role="alert">*只列出正在进行的课程</div>
 											</div>
 										</div>
 										

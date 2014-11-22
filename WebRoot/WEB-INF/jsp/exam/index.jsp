@@ -3,7 +3,7 @@
 <html>
 <head>
 <%@ include file="header.jspf"%>
-<title>通知中心</title>
+<title>博弈教育考试系统</title>
 <style type="text/css">
 
 </style>

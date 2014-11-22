@@ -8,15 +8,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>欢迎来到博弈教育</title>
   </head>
   
   <body>
-  		<html><body>
-  		<% int count =0;%>
-  		The page count is now :
-  		<%= ++count%>
-  		</body></html>
+  		<script>
+  			location.href="/BoYi/indexAction";
+  		</script>
   		
   </body>
 </html>

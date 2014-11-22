@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @Scope("prototype")
 @ParentPackage("struts-default")
 public class BaseAction extends ActionSupport{
-	
+	protected String meg;
 	
 	public String edit(){
 		return "edit";
@@ -40,4 +40,13 @@ public class BaseAction extends ActionSupport{
 	public String show(){
 		return "show";
 	}
+
+	public String getMeg() {
+		return meg;
+	}
+
+	public void setMeg(String meg) {
+		this.meg = meg;
+	}
+	
 }

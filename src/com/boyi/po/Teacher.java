@@ -18,7 +18,7 @@ public class Teacher implements Serializable {
 	private String teacherId;				//教工号
 	
 	private String name;
-	
+	private String pic;
 	//登录信息
 	private String email;			//邮箱
 	private String password;		//密码
@@ -84,6 +84,16 @@ public class Teacher implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Column(length=200)
+	public String getPic() {
+		return pic;
+	}
+
+
+	public void setPic(String pic) {
+		this.pic = pic;
 	}
 
 	

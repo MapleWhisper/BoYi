@@ -149,9 +149,8 @@ if ( $.fn.DataTable.TableTools ) {
 		}
 	} );
 }
-
 $(function(){
-	$('table').dataTable({
+	$('table').has("thead").dataTable({
 		 "language": {
 	            "lengthMenu": "每页显示 _MENU_ 条纪录 ",
 	            "zeroRecords": "抱歉,没有找到数据",

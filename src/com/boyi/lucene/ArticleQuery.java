@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
@@ -23,6 +24,7 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
+import org.junit.Test;
 import org.springframework.stereotype.Component;
 
 import com.boyi.po.Article;
@@ -41,7 +43,8 @@ public class ArticleQuery implements LuceneQuery<Article>{
 	
 	static{
 		try {
-			directory = FSDirectory.open(new File("./index/article"));
+			
+			directory = FSDirectory.open(new File("../webapps/BoYi/index/article"));
 			analyzer = new SmartChineseAnalyzer();
 			conf = new IndexWriterConfig(Version.LATEST, analyzer);
 			indexWriter = new IndexWriter(directory, conf);

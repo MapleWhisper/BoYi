@@ -30,7 +30,7 @@
 						  <div class="panel-body">
 						  		<div class="row well">
 						  			<center>
-						  				<a  class="btn btn-primary btn-lg btn-block" href="${pageContext.request.contextPath}/admin/exam/examAction!add" 
+						  				<a  class="btn btn-primary btn-lg btn-block" id="add"  href="${pageContext.request.contextPath}/admin/exam/examAction!add" 
 						  					style="width: 300px">添加考试</a>
 						  			</center>
 						  			
@@ -83,13 +83,38 @@
 					</div>
 					<!--右侧的内容 -->
 					
+				
     		</div>
+    		<%@ include file="../script/gradeAndSubjectModal.jsp"%>
     		<%@ include file="../buttom.jsp" %>
     	</div>
     	<script type="text/javascript">
     		$(function(){
     			$("#exam").css("margin-right","-30px").css("font-size"," 25px");
     		});
+    		function add(){
+    			location.href="examAction!add";
+    		}
+    		$(function(){
+    			$("#add").click(function(){
+    				$("#gradeSubjectModel").modal("toggle");
+    				return false;
+    			});
+    			$("#confirm").click(function(){
+    				if($("button.active").size()!=2){
+    					$("#e2").toggle();
+    					$("#e2").fadeOut(3000);
+    					return false;
+    				}else{
+    					var grade  = $("button[name='grade'].active").html();
+    					var subject = $("button[name='subject'].active").html();
+    					$.post("/BoYi/admin/indexAction!greadAndSubject",{"grade":grade,"subject":subject});
+    					setTimeout("add()", 200);
+    					return true;
+    				}
+    			});
+    		});
+    		
     	</script>
     	
   </body>

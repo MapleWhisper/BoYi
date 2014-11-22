@@ -25,4 +25,5 @@ public class ClassesServerImpl extends BaseServerImpl<Classes> implements Classe
 			String hql  = "from Classes c where c.status = ?";
 			return getSession().createQuery(hql).setString(0, status).list();
 		}
+		
 }

@@ -6,6 +6,9 @@
 <title>教师中心</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/js/datatables/dataTables.bootstrap.css"></link>
+<style type="text/css">
+	
+</style>
 
 </head>
 
@@ -76,7 +79,7 @@
 
 			<div class="col-xs-3" style="margin-left: -10px">
 				<div class="panel panel-info">
-					<div class="panel-heading">教师信息</div>
+					<div class="panel-heading">教师信息<span style="float: right;"><a href="#" id="edit">修改个人信息</a></span></div>
 					<div class="panel-body">
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#home"
@@ -89,18 +92,30 @@
 						<!-- Tab panes -->
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="home">
+								<form action="teacherCenterAction!update" method="post" style="text-align: center;">
+								<input type="hidden" name="id" value="${teacher.id}">
 								<table class="table table-hover table-condensed "
 									style="text-align: center;">
 									<tr>
+										<td>头像:</td>
+										<td class="old"><img src="${pageContext.request.contextPath}/${teacher.pic}" width="120px" height="160px"></img></td>
+										<td class="new"><button id="editPic" type="button" class="btn btn-primary btn-small">修改头像</button></td>
+									</tr>
+									<tr>
 										<td>姓名:</td>
-										<td>${teacher.name}</td>
+										<td class="old">${teacher.name}</td>
+										<td class="new"><input type="text" name="teacher.name" value="${teacher.name}"></td>
 									</tr>
 									<tr>
 										<td>邮箱:</td>
-										<td>${teacher.email}</td>
+										<td class="old">${teacher.email}</td>
+										<td class="new"><input type="text" name="teacher.email" value="${teacher.email}"></td>
 									</tr>
 
 								</table>
+									<button type="submit" class="new btn btn-primary btn-small">保存信息</button>
+								</form>
+								
 							</div>
 							<div role="tabpanel" class="tab-pane" id="profile">...</div>
 							<div role="tabpanel" class="tab-pane" id="messages">...</div>
@@ -108,16 +123,17 @@
 					</div>
 				</div>
 				<!-- panel -end -->
-			</div>
-			<!-- col-sm-3 -->
+			</div><!-- col-sm-3 教师详情结束 -->
+			<%@ include file="../script/addTeacherModal.jsp" %>
+			
 
 		</div>
 		<%@ include file="../buttom.jsp"%>
 	</div>
-	<script
-	src="${pageContext.request.contextPath}/js/datatables/js/jquery.dataTables.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/js/datatables/dataTables.bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/js/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/datatables/dataTables.bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
 	<script type="text/javascript">
     		$(function(){
     			$("#teacherCenter").css("margin-right","-30px").css("font-size"," 25px");
@@ -134,10 +150,23 @@
     					$(this).addClass("btn-danger");
     				}
     			});
+    			
+    			$("#edit").click(function(){
+    				$(".old").toggle();
+    				$(".new").toggle();
+    				if($(this).html()=="修改个人信息"){
+    					$(this).html("取消修改");
+    				}else{
+    					$(this).html("修改个人信息");
+    				}
+    			});
+    			
+    			$("#editPic").click(function(){
+    				$("#addTeacherPicModal").modal("show");
+    			});
     		});
-    		$(function(){
-    			$('table').dataTable();
-    		});
+    		
+			$("form").validate();    		
     	</script>
 
 </body>

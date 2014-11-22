@@ -15,11 +15,10 @@ import com.opensymphony.xwork2.ActionSupport;
 @ParentPackage("struts-default")
 @Namespace("/")
 @Action(value="indexAction",results={
-		@Result(name="index",type="redirectAction",location="indexAction"),
+		@Result(name="toIndex",type="redirectAction",location="indexAction"),
 		@Result(name="loginUI",location="/WEB-INF/jsp/loginAction/loginUI.jsp"),
-		@Result(name="index",location="/index.jsp",type="redirect"),
 		@Result(name="loginout",location="/WEB-INF/jsp/loginAction/logout.jsp"),
-		@Result(name="index",location="/WEB-INF/jsp/index/Jsp模板.jsp")
+		@Result(name="index",location="/WEB-INF/jsp/index/index.jsp")
 })
 public class IndexAction extends ActionSupport{
 	@Override

@@ -1,5 +1,8 @@
 package com.admin.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,6 +16,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.admin.util.ImageUtil;
 import com.boyi.base.BaseAction;
 import com.boyi.po.Classes;
 import com.boyi.po.Exam;
@@ -50,8 +54,13 @@ public class TeacherCenterAction  extends BaseAction{
 	private Teacher teacher;
 	private Classes classes;
 	
+	private File pic;
+	private String picFileName;
+	private String picContentType;
 	
 	private Integer id;
+	
+	
 	@Override
 	public String execute() throws Exception {
 		HttpSession session = ServletActionContext.getRequest().getSession();
@@ -67,6 +76,44 @@ public class TeacherCenterAction  extends BaseAction{
 		return "index";
 	}
 	
+	public String addPic(){
+		this.teacher = teacherServer.getById(id);
+		System.out.println(id);
+		System.out.println(picFileName);
+		System.out.println(picContentType);
+		System.out.println(pic.length());
+		if(teacher==null){
+			return "toIndex";
+		}
+		String path = "image/teacher/pic/"+id+picFileName.substring(picFileName.lastIndexOf("."));
+		try {
+			if(ImageUtil.savaPic(ServletActionContext.getServletContext(), new FileInputStream(pic), path, pic.length())){
+				teacher.setPic(path);
+				teacherServer.updata(teacher);
+				return "toIndex";
+			}else{
+				meg = "图片上传出错";
+				return "error";
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			meg = "图片上传出错";
+			return "error";
+			
+		}
+	}
+	
+	@Override
+	public String update() {
+		Teacher t = teacherServer.getById(id);
+		if(t!=null){
+			t.setEmail(teacher.getEmail());
+			t.setName(teacher.getName());
+			teacherServer.updata(t);
+		}
+		return super.update();
+	}
+	
 	public String showClasses(){
 		this.classes = classesServer.getById(id);
 		return "showClasses";
@@ -77,7 +124,19 @@ public class TeacherCenterAction  extends BaseAction{
 		
 		return "showResult";
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public Teacher getTeacher() {
 		return teacher;
 	}
@@ -143,7 +202,40 @@ public class TeacherCenterAction  extends BaseAction{
 	public void setExam(Exam exam) {
 		this.exam = exam;
 	}
-	
+
+	public File getPic() {
+		return pic;
+	}
+
+	public void setPic(File pic) {
+		this.pic = pic;
+	}
+
+	public String getMeg() {
+		return meg;
+	}
+
+	public void setMeg(String meg) {
+		this.meg = meg;
+	}
+
+	public String getPicFileName() {
+		return picFileName;
+	}
+
+	public void setPicFileName(String picFileName) {
+		this.picFileName = picFileName;
+	}
+
+	public String getPicContentType() {
+		return picContentType;
+	}
+
+	public void setPicContentType(String picContentType) {
+		this.picContentType = picContentType;
+	}
+
+
 	
 	
 	

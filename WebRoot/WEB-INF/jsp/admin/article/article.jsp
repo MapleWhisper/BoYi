@@ -3,7 +3,7 @@
 <html>
 <head>
 <%@ include file="../header.jspf"%>
-<title>管理员列表</title>
+<title>文章列表</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/js/datatables/dataTables.bootstrap.css"></link>
 

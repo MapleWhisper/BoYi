@@ -38,11 +38,11 @@ body {
 	background-size: cover;
 	padding: 138px 0 0;
 	text-align: center;
-	min-height: 300px;
+	height:220px;
 	position: relative ;
 	font-size:50px;
 	color:#ffffff;
-	padding-top:200px;
+	padding-top:120px;
 }
 .container{
 	margin-bottom: 150px; 

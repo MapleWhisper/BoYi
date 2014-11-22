@@ -28,18 +28,22 @@
 .block {
 	display: block;
 }
+.header{
+	font-size: 15px;
+}
+.header .h2{
+	font-size: 20px;
+}
 
 </style>
 </head>
 
 <body style="background-color:#efeee4;">
 	<div class="header">
-		<p style="font-size:30px;font-weight:bold">${exam.name}</p>
-				<p style="font-size:20px;">开始时间<fm:formatDate
-						value="${exam.beginTime}" pattern="yyyy-MM-dd HH:mm" /><br>
-					结束时间<fm:formatDate value="${exam.endTime}"
-						pattern="yyyy-MM-dd HH:mm" />
-				</p>
+		<p class="h2">${exam.name}</p>
+		<p >开始时间<fm:formatDate value="${exam.beginTime}" pattern="yyyy-MM-dd HH:mm" /><br>
+			结束时间<fm:formatDate value="${exam.endTime}" pattern="yyyy-MM-dd HH:mm" />
+		</p>
 	</div>
 	<div class="container-fluid">
 		<!-- 注释掉的内容，和上面的效果一样 -->

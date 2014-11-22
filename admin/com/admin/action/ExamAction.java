@@ -7,7 +7,9 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -16,6 +18,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.boyi.base.BaseAction;
+import com.boyi.enmu.ClassesStatus;
 import com.boyi.enmu.ExamStatus;
 import com.boyi.po.Classes;
 import com.boyi.po.Exam;
@@ -74,9 +77,19 @@ public class ExamAction extends BaseAction{
 	
 	@Override
 	public String add() {
-		this.classesList = classesServer.findAll();
-		this.paperList = paperService.findAll();
-		return super.add();
+		//添加班级列表 只列出只读班级	
+		this.classesList = classesServer.findAllByStatus(ClassesStatus.在读.toString());
+		
+		//添加试卷列表
+		HttpSession session =  ServletActionContext.getRequest().getSession();
+		String grade = (String)session.getAttribute("grade");
+		String subject = (String)session.getAttribute("subject");
+		
+		if(grade==null || subject ==null){
+			return "toIndex";
+		}
+		this.paperList = paperService.findAllByGradeAndSubject(grade, subject);
+		return "add";
 	}
 	
 	@Override

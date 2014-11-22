@@ -118,8 +118,8 @@
 											</div>
 										</div>
 										
-										<div class="form-group">
-											<center><input type="submit" value="提交文章" id="submit"  class="btn btn-primary btn-lg"/></center>
+										<div class="form-group" style="text-align: center;">
+											<input type="submit" value="添加班级" id="submit"  class="btn btn-primary btn-lg"/>
 										</div>
 										
 								</form>
