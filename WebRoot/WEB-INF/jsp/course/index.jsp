@@ -183,24 +183,19 @@
 					<!-- 
 					<hr style="border:0;background-color:#0033cc;height:2px;">
 					 -->
-					<div class="panel panel-default" style="margin-top: 20px;">
-						<div class="panel-body" style="height: 120">
+					
 							<div class="row">
 								<div class="col-sm-3">
 									<a href=""><img src="image/laoshi.jpg"
-										class="img-responsive" height="60" width="50"> </a>
+										class="img-responsive" height="60" width="60"> </a>
 								</div>
 								<div class="col-sm-9">
-									<a href="  ">数据</a> <br> 教师介绍的数据
+									<a href="  ">武玉密</a> <br> 教师介绍的数据<br>
+									主要课程:<font color="orange">英语，数学</font>
+									
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-sm-10 col-sm-offset-2">
-									主要课程:<font color="orange">数据</font>
-								</div>
-							</div>
-						</div>
-					</div>
+						
 				</div>
 
 
@@ -210,15 +205,13 @@
 					<!-- 
 					<hr style="border:0;background-color:#0033cc;height:2px;">
 					 -->
-					<div class="panel panel-default" style="margin-top: 20px">
-						<div class="panel-body" style="height: 120">
+					
 							<ul>
 								<li><a>高中复习文档数据</a>
 								<li><a><font color="orange">高中复习文档</font></a>
 								<li><a>高中复习文档</a>
 							</ul>
-						</div>
-					</div>
+						
 				</div>
 
 
