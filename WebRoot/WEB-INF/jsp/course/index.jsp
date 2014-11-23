@@ -40,7 +40,6 @@
   border: 0px solid #ddd;
 }
 
-
 </style>
 
 
@@ -215,18 +214,13 @@
 				</div>
 
 
-
-
-
-
-
 			</div>
 		</div>
 	</div>
 
 
 
-
+<%@ include file="../foot.jsp"%>
 </body>
 
 </html>

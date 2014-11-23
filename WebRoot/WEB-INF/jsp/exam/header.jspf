@@ -47,6 +47,15 @@ body {
 .container{
 	margin-bottom: 150px; 
 }
+.foot li {
+	float: left;
+}
+
+.foot li a {
+	text-decoration: none;
+	padding: 8px; /* 去掉下划线 */
+}
+
 </style>
 
 

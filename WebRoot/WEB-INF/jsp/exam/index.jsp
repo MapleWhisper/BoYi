@@ -63,6 +63,7 @@
 
 		</div>
 	</div>
+	<%@ include file="../foot.jsp"%>
 	<script type="text/javascript">
 
 		$(function(){

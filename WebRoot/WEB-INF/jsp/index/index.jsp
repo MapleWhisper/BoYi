@@ -48,6 +48,10 @@
 	background: #fff;
 	opacity: 1;
 }
+
+.glyphicon{
+	margin-right: 4px;
+}	
 </style>
 
 </head>
