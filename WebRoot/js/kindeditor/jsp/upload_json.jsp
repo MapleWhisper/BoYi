@@ -41,6 +41,9 @@ if(!ServletFileUpload.isMultipartContent(request)){
 //检查目录
 File uploadDir = new File(savePath);
 if(!uploadDir.isDirectory()){
+	uploadDir.mkdirs();
+}
+if(!uploadDir.isDirectory()){
 	out.println(getError("上传目录不存在。"));
 	return;
 }
@@ -114,7 +117,7 @@ SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 
 String newImgName = df.format(new Date()) + "_"    
 
-              + new Random().nextInt(1000) + "." + fileExt;     
+              + fileName;     
 
 byte[] buffer = new byte[1024];     
 

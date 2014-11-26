@@ -27,10 +27,10 @@
 					</ul></li>
 				<li><a href="#" style="font-size:14px;color:#fff;">关于我们</a>
 					<ul>
-						<li><a href="#">发展历程</a></li>
-						<li><a href="#">企业文化</a></li>
-						<li><a href="#">投资者关系</a></li>
-						<li><a href="#">诚聘英才</a></li>
+						<li><a target="_blank" href="http://company.bjsyedu.com">公司首页</a></li>
+						<li><a target="_blank" href="http://company.bjsyedu.com/?page_id=35">公司介绍</a></li>
+						<li><a target="_blank" href="http://company.bjsyedu.com/?page_id=53">关于我们</a></li>
+						<li><a target="_blank" href="http://job.bjsyedu.com/ZhaoPin/client/index">诚聘英才</a></li>
 					</ul>
 				</li>
 				<li><a href="#" style="font-size:14px;color:#fff;">联系我们</a>
@@ -52,8 +52,7 @@
 		<!-- footer1 开始 -->
 		<div id="footer1" style="text-align: center;">
 			
-			<span style="color:#999999;font-size:16px;">京ICP证020384号
-				京公网安备 110105001414
+			<span style="color:#999999;font-size:16px;">黑ICP备14006802号 ©2014 博精思弈 教育 版权所有 
 			</span> 
 		</div>
 		<!-- footer1 结束 -->

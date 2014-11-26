@@ -46,8 +46,7 @@
 		<!-- footer1 开始 -->
 		<div id="footer1" t>
 			
-			<span style="color:#999999;font-size:16px;margin-left:5px;">京ICP证020384号
-				京公网安备 110105001414</span> <span
+			<span style="color:#999999;font-size:16px;margin-left:5px;"> 黑ICP备14006802号  ©2014 博精思弈  教育 版权所有</span> <span
 				style="color:#CCCCCC;font-size:14px;font-weight:bold;border:0px;margin-left:190px;">客服热线：400-815-3399</span>
 		</div>
 		<!-- footer1 结束 -->

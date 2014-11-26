@@ -28,7 +28,7 @@
 
 #sort li a {
 	text-decoration: none;
-	padding: 8px; /* 去掉下划线 */
+	padding: 8px; 
 }
 
 .table > thead > tr > th,

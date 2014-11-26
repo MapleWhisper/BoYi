@@ -66,7 +66,7 @@
 
 		<li role="presentation" class="list-group-item pre " id="student">
 			<span class="glyphicon glyphicon-user"></span>
-			<a href="${pageContext.request.contextPath}/admin/admin/adminAction">
+			<a href="${pageContext.request.contextPath}/admin/student/studentAction">
 				学生管理
 				<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span>
 			</a>

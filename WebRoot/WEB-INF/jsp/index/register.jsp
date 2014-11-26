@@ -105,11 +105,11 @@
 					},
 					'student.password': {
 						required:true,
-						minlength:2
+						minlength:6
 					},
 					password2: {
 						required:true,
-						minlength:2,
+						minlength:6,
 						equalTo:"#password"
 					}
 				}

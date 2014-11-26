@@ -79,6 +79,8 @@
     	</div>
     	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
+		<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/kindeditor-min.js"></script>
+		<script charset="utf-8" src="${pageContext.request.contextPath}/js/kindeditor/lang/zh_CN.js"></script>
 		
     	<script type="text/javascript">
     		$(function(){
