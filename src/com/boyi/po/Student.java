@@ -35,7 +35,7 @@ public class Student implements Serializable{
 	private String age;				//年龄
 	private String sex;				//性别
 	private String parentName;		//父母姓名
-	private String paerentPhoneNumber;		//父母手机号
+	private String parentPhoneNumber;		//父母手机号
 	
 	
 	private Set<Classes> classes;	//所报课程
@@ -157,14 +157,15 @@ public class Student implements Serializable{
 	public void setParentName(String parentName) {
 		this.parentName = parentName;
 	}
-	
 	@Column(length=11)
-	public String getPaerentPhoneNumber() {
-		return paerentPhoneNumber;
+	public String getParentPhoneNumber() {
+		return parentPhoneNumber;
 	}
-	public void setPaerentPhoneNumber(String paerentPhoneNumber) {
-		this.paerentPhoneNumber = paerentPhoneNumber;
+	public void setParentPhoneNumber(String parentPhoneNumber) {
+		this.parentPhoneNumber = parentPhoneNumber;
 	}
+	
+	
 	
 	
 }

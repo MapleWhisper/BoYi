@@ -21,6 +21,7 @@ public class Article {
 	private Date createDate;	//创建日期
 	private String auther;		//文章作者
 	private String type;		//文章类型		分为公司介绍 和 帮助文章 
+	private String url;			//文章链接
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -68,6 +69,13 @@ public class Article {
 	}
 	public void setAuther(String auther) {
 		this.auther = auther;
+	}
+	@Column(length=255)
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 	

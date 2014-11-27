@@ -85,4 +85,11 @@
 				<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span>
 			</a>
 		</li>
+		<li role="presentation" class="list-group-item pre " id="config" >
+			<span class="glyphicon glyphicon-cog"></span>
+			<a href="${pageContext.request.contextPath}/admin/config/configAction">
+				系统设置
+				<span style="float: right;"><span class="glyphicon glyphicon-chevron-right"></span></span>
+			</a>
+		</li>
 </ul>

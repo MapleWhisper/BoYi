@@ -14,7 +14,8 @@
 				<div class="row">
 					<div class="col-xs-5">
 						<h3>原头像</h3>
-						<img src="${pageContext.request.contextPath}/${teacher.pic}" width="240" height="320">
+						<img src="${pageContext.request.contextPath}/${teacher.pic}"
+							width="240" height="320">
 					</div>
 					<div class="col-xs-1">
 						<div style="width: 1px;height:380px;background-color: #ddd">
@@ -22,21 +23,32 @@
 					</div>
 					<div class="col-xs-6">
 						<form action="teacherCenterAction!addPic" method="post"
-							enctype="multipart/form-data" class='form-horizontal' style="margin-top: 70px">
-							<div class="form-group">
+							enctype="multipart/form-data" class='form-horizontal'
+							style="margin-top: 70px">
+							<div class="form-group" >
 								<label class="col-sm-4 control-label">请选择头像</label>
 								<div class="col-sm-8">
-									<input type="file" name="pic" required="required" accept="image/jpeg,image/png,image/gif,image/bmp">
-									<input type="hidden" name="id" value="${teacher.id}">
+									<input type="file" name="pic" required="required" onclick="$('#upload').show();"
+										accept="image/jpeg,image/png,image/gif,image/bmp"> <input
+										type="hidden" name="id" value="${teacher.id}">
 								</div>
-								
+
 							</div>
-							
-							<button type="submit" id="confirm" class="btn btn-primary btn-lg">确认上传教师图片</button>
+							<hr>
 							<ul style="color: red">
 								<li>*请上传 jpg,png,bmp,gif格式的照片</li>
 								<li>*照片大小不可以超过512KB</li>
 							</ul>
+							<hr>
+							<div style="display: none" id="upload">
+
+
+								<button type="submit" id="confirm"
+									class="btn btn-primary btn-lg">确认上传教师图片</button>
+
+
+
+							</div>
 						</form>
 					</div>
 

@@ -36,8 +36,8 @@
 				<li><a href="#" style="font-size:14px;color:#fff;">联系我们</a>
 					<ul>
 						
-						<li><a ><span class="glyphicon glyphicon-earphone"></span>400-815-3399</a></li>
-						<li><a ><span class="glyphicon glyphicon-envelope"></span>2089442068@qq.com</a></li>
+						<li><a ><span class="glyphicon glyphicon-earphone"></span>${applicationScope.system['company.phoneNumber']}</a></li>
+						<li><a ><span class="glyphicon glyphicon-envelope"></span>${applicationScope.system['admin.email']}</a></li>
 						<li><a ><span class="glyphicon glyphicon-map-marker"></span>哈尔滨南岗邮政街321号</a></li>
 						<li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2089442068&site=qq&menu=yes">
 							<img  src="${pageContext.request.contextPath}/image/index/qq.png" 

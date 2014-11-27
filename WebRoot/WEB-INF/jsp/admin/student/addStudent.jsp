@@ -50,11 +50,14 @@
 										<div class="col-xs-3">
 											<input type="password" class="form-control" name="student.password" id="password" required="required" >
 										</div>
+										<div class="col-xs-3">
+											<button type="button" class="btn btn-primary" id="initPwd">重置密码为123456</button>
+										</div>
 									</div>
 									<div class="form-group">
 										<label   class="col-xs-2 control-label">*确认输入密码</label>
 										<div class="col-xs-3">
-											<input type="password" class="form-control" id="password2" name="password2" required="required">
+											<input type="password" class="form-control" id="password2" name="password2" id="password2" required="required">
 										</div>
 									</div>
 									<div class="form-group">
@@ -80,6 +83,12 @@
 										</div>
 									</div>
 									<div class="form-group">
+										<label   class="col-xs-2 control-label">学生电话</label>
+										<div class="col-xs-3">
+											<input type="number" class="form-control" name="student.phoneNumber" id="phoneNumber"  >
+										</div>
+									</div>
+									<div class="form-group">
 										<label   class="col-xs-2 control-label">身份证号</label>
 										<div class="col-xs-3">
 											<input type="number" class="form-control  " name="student.idNumber" id="idNumber"	>
@@ -101,6 +110,12 @@
 										<label   class="col-xs-2 control-label">城市</label>
 										<div class="col-xs-3">
 											<input type="text" class="form-control  " name="student.city" id="city"	>
+										</div>
+									</div>
+									<div class="form-group">
+										<label   class="col-xs-2 control-label">住址</label>
+										<div class="col-xs-6">
+											<input type="text" class="form-control  " name="student.address" id="address"	>
 										</div>
 									</div>
 									<div>
@@ -140,6 +155,13 @@
 					}
 				});    			
     		})
+    		$(function(){
+    			$("#initPwd").click(function(){
+    				$("#password").val("123456");
+    				$("#password2").val("123456");
+    				
+    			});
+    		});
     	</script>
     	
   </body>

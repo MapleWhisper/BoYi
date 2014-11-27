@@ -30,9 +30,13 @@ public class ImageUtil {
 		}
 		try {
 			File file = new File(path);
+			if(!file.getParentFile().exists()){
+				file.getParentFile().mkdirs();
+			}
 			if(file.exists()){
 				file.delete();
 			}
+			
 			Files.copy(is, Paths.get(path)); //替换原来文件
 		} catch (IOException e) {
 			e.printStackTrace();

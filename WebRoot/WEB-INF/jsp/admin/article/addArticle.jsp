@@ -50,21 +50,35 @@
 												<br>
 												<input type="radio" name="article.type" value="帮助文章">帮助文章
 												<br>
+												<input type="radio" name="article.type" value="资料下载">资料下载
+												<br>
 												<hr>
 												<input type="radio" name="article.type" value="后台通知">后台通知
 												<br>
 											</div>
 										</div>
+										<hr>
+										
+										<div class="form-group">
+											<label  class="col-xs-2 control-label">新闻链接(URL)：</label>
+											<div class="col-xs-10">
+												<input type="url" name="article.url" class="form-control" required="required">
+												<span style="color: red">*** 主页新闻，帮助文章，资料下载  该项必须填写 内容随便填写 ***</span>
+											</div>
+											
+										</div>
+										<hr>
 										
 										<div class="form-group">
 											<label  class="col-xs-2 control-label">文章内容：</label>
 											<div class="col-xs-10">
+												<span style="color: red">*** 后台通知该项必须填写 链接随便填写 ***</span>
 												<textarea id="editor" class="form-control" name="article.context" rows="25"></textarea>
 											</div>
 										</div>
 										
-										<div class="form-group">
-											<center><input type="submit" value="提交文章" id="submit"  class="btn btn-primary btn-lg"/></center>
+										<div class="form-group" style="text-align: center;">
+											<input type="submit" value="提交文章" id="submit"  class="btn btn-primary btn-lg"/>
 										</div>
 										
 								</form>

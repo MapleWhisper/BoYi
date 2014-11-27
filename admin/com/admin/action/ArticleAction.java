@@ -40,7 +40,7 @@ public class ArticleAction  extends BaseAction{
 	@Resource(name = "articleSerivceImpl")
 	private ArticleService articleService;
 	
-	@Value("${articleAmountPerPage}")
+	@Value("${page.studentAmountPerPage}")
 	private Integer articleAmountPerPage;	//每页显示多少文章
 	
 	@Resource(name="articleQuery")

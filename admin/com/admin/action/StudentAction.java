@@ -8,12 +8,14 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.boyi.base.BaseAction;
 import com.boyi.po.Student;
 import com.boyi.service.StudentService;
+import com.boyi.utils.Page;
 
 
 
@@ -34,15 +36,26 @@ public class StudentAction  extends BaseAction{
 	@Resource(name="studentServiceImpl")
 	private StudentService studentService;	//注入student服务	studentServerImpl
 	
+	@Value("${page.studentAmountPerPage}")
+	private Integer studentAmountPerPage;	//每页显示多少学生
+	
 	private List<Student> studentList;
 	private Student student;
 	private Integer id;
 	
 	private String meg;
+	private Page page;
+	private Integer cur;
 	
 	@Override
 	public String execute() throws Exception {
-		studentList = studentService.findAll();
+		this.page = new Page();
+		page.setAmount(studentAmountPerPage);
+		if(cur ==null){
+			cur =1;
+		}
+		page.setCur(cur);
+		studentList = studentService.findAll(page);
 		return "index";
 	}
 	
@@ -70,15 +83,26 @@ public class StudentAction  extends BaseAction{
 	
 	@Override
 	public String edit() {
-		this.student = studentService.getById(id);
 		
+		this.student = studentService.getById(id);
 		return super.edit();
 	}
 	
 	@Override
 	public String update() {
-		Student s = studentService.getById(student.getId());
+		Student s = studentService.getById(id);
 		s.setName(student.getName());
+		s.setAddress(student.getAddress());
+		s.setAge(student.getAge());
+		s.setCity(student.getCity());
+		s.setEmail(student.getEmail());
+		s.setIdNumber(student.getIdNumber());
+		s.setParentName(student.getParentName());
+		s.setParentPhoneNumber(student.getParentPhoneNumber());
+		s.setPassword(student.getPassword());
+		s.setPhoneNumber(student.getPhoneNumber());
+		s.setSex(student.getSex());
+		s.setStudentId(student.getStudentId());
 		studentService.updata(s);
 		return super.update();
 	}
@@ -127,6 +151,30 @@ public class StudentAction  extends BaseAction{
 
 	public void setMeg(String meg) {
 		this.meg = meg;
+	}
+
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public Integer getCur() {
+		return cur;
+	}
+
+	public void setCur(Integer cur) {
+		this.cur = cur;
+	}
+
+	public Integer getStudentAmountPerPage() {
+		return studentAmountPerPage;
+	}
+
+	public void setStudentAmountPerPage(Integer studentAmountPerPage) {
+		this.studentAmountPerPage = studentAmountPerPage;
 	}
 	
 	
