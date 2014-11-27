@@ -88,6 +88,14 @@
 										</div>
 										
 										<hr>
+										
+										<div class="form-group" >
+											<label  class="col-xs-2 control-label">推荐课程</label>
+											<div class="col-xs-3">
+												<s:radio list="%{#{'false':'不推荐','true':'推荐'} }" name="classes.recommand"></s:radio>
+											</div>
+										</div>
+										
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">老师</label>
 											<div class="col-xs-3">

@@ -26,6 +26,7 @@ public class Course implements Serializable {
 	private String subject;			//科目
 	
 	private String courseDetail;
+	
 		
 	public Course() {
 	}
@@ -74,6 +75,6 @@ public class Course implements Serializable {
 	public void setCourseDetail(String courseDetail) {
 		this.courseDetail = courseDetail;
 	}
-	
+
 
 }

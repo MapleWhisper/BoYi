@@ -87,6 +87,16 @@
 										</div>
 										
 										<hr>
+										
+										<div class="form-group" >
+											<label  class="col-xs-2 control-label">推荐课程</label>
+											<div class="col-xs-3">
+												<input type="radio" name="classes.recommand" value="false" checked="checked">不推荐<br>
+												
+												<input type="radio" name="classes.recommand" value="true">推荐
+											</div>
+										</div>
+										
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">老师</label>
 											<div class="col-xs-3">

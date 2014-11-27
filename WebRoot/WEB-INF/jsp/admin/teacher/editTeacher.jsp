@@ -29,8 +29,8 @@
 						  <div class="panel-body">
 						  	 <form action="${pageContext.request.contextPath }/admin/teacher/teacherAction!update" class="form-horizontal" role="form" id="form1" method="post">
 									<div class="form-group">
-										<label   class="col-xs-3 control-label">教师邮箱</label>
-										<div class="col-xs-9">
+										<label   class="col-xs-2 control-label">教师邮箱</label>
+										<div class="col-xs-10">
 											<input type="email" class="form-control " name="teacher.email" id="email" required value="${teacher.email }" >
 											<input type="hidden" name="teacher.id" value="${teacher.id }">
 										</div>
@@ -38,31 +38,36 @@
 									
 									
 									<div class="form-group">
-										<label   class="col-xs-3 control-label">输入密码</label>
-										<div class="col-xs-9">
+										<label   class="col-xs-2 control-label">输入密码</label>
+										<div class="col-xs-10">
 											<input type="password" class="form-control  " name="teacher.password" id="password" required value="${teacher.password }">
 										</div>
 									</div>
 									<div class="form-group">
-										<label   class="col-xs-3 control-label">确认输入密码</label>
-										<div class="col-xs-9">
+										<label   class="col-xs-2 control-label">确认输入密码</label>
+										<div class="col-xs-10">
 											<input type="password" class="form-control  " name="password2" id="password2" required value="${teacher.password }">
 										</div>
 									</div>
 									<div class="form-group">
-										<label   class="col-xs-3 control-label">姓名</label>
-										<div class="col-xs-9">
+										<label   class="col-xs-2 control-label">姓名</label>
+										<div class="col-xs-10">
 											<input type="text" class="form-control  " name="teacher.name" id="username"	required value="${teacher.name }">
 										</div>
 									</div>
 									<div class="form-group">
-										<label   class="col-xs-3 control-label">教职工号</label>
-										<div class="col-xs-9">
+										<label   class="col-xs-2 control-label">教职工号</label>
+										<div class="col-xs-10">
 											<input type="number" class="form-control  " name="teacher.teacherId" id="teacherId"	required value="${teacher.teacherId }">
 											
 										</div>
 									</div>
-									
+									<div class="form-group" >
+											<label  class="col-xs-2 control-label">推荐课程</label>
+											<div class="col-xs-2">
+												<s:radio list="%{#{'false':'不推荐','true':'推荐'} }" name="teacher.recommand"></s:radio>
+											</div>
+										</div>
 									<div>
 										<div class="form-group">    
 											 <div class="col-xs-6 col-xs-offset-4">

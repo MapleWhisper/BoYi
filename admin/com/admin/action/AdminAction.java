@@ -74,6 +74,7 @@ public class AdminAction  extends BaseAction{
 		a.setUsername(admin.getUsername());
 		a.setName(admin.getName());
 		a.setPosition(admin.getPosition());
+		
 		adminServer.updata(a);
 		return super.update();
 	}

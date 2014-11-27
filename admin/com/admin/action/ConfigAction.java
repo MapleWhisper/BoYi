@@ -24,7 +24,7 @@ import org.springframework.stereotype.Controller;
 
 import com.boyi.base.BaseAction;
 
-@Controller("configconfigAction")
+@Controller("configAction")
 @Scope("prototype")
 @ParentPackage("struts-default")
 @Namespace("/admin/config")

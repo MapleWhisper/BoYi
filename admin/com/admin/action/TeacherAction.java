@@ -66,6 +66,7 @@ public class TeacherAction  extends BaseAction{
 			t.setName(teacher.getName());
 			t.setPassword(teacher.getPassword());
 			t.setTeacherId(teacher.getTeacherId());
+			t.setRecommand(teacher.isRecommand());
 			teacherServer.updata(t);
 		}
 		return super.update();

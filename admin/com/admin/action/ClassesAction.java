@@ -119,6 +119,7 @@ public class ClassesAction extends BaseAction{
 		c.setClassTime(classes.getClassTime());
 		c.setClassType(classes.getClassType());
 		c.setStudentNumer(classes.getStudentNumer());
+		c.setRecommand(classes.isRecommand());
 		Teacher t = teacherServer.getById(teacherId);
 		Course c1 = courseServer.getById(courseId);
 		c.setTeacher(t);

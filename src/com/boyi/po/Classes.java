@@ -38,6 +38,8 @@ public class Classes implements Serializable {
 	private String status;				//课程状态
 	private String classDetail;			//班级详情
 	
+	private boolean recommand;			//是否是推荐课程
+	
 	private Set<Student> students;		//学生
 	private Teacher teacher ; 			//老师
 	private Course course;				//所属课程
@@ -164,6 +166,16 @@ public class Classes implements Serializable {
 	public void setExams(Set<Exam> exams) {
 		this.exams = exams;
 	}
+	
+	public boolean isRecommand() {
+		return recommand;
+	}
+	public void setRecommand(boolean recommand) {
+		this.recommand = recommand;
+	}
+	
+
+	
 	
 	
 

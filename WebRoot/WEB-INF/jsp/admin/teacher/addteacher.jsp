@@ -28,37 +28,45 @@
 						  <div class="panel-body">
 						  	 <form action="${pageContext.request.contextPath }/admin/teacher/teacherAction!save" class="form-horizontal" role="form" id="form1" method="post">
 									<div class="form-group">
-										<label   class="col-xs-3 control-label">教师邮箱</label>
-										<div class="col-xs-9">
+										<label   class="col-xs-2 control-label">教师邮箱</label>
+										<div class="col-xs-10">
 											<input type="email" class="form-control " name="teacher.email" id="email" required  >
 										</div>
 									</div>
 									
 									
 									<div class="form-group">
-										<label   class="col-xs-3 control-label">输入密码</label>
-										<div class="col-xs-9">
+										<label   class="col-xs-2 control-label">输入密码</label>
+										<div class="col-xs-10">
 											<input type="password" class="form-control  " name="teacher.password" id="password" required>
 										</div>
 									</div>
 									<div class="form-group">
-										<label   class="col-xs-3 control-label">确认输入密码</label>
-										<div class="col-xs-9">
+										<label   class="col-xs-2 control-label">确认输入密码</label>
+										<div class="col-xs-10">
 											<input type="password" class="form-control  " name="password2" id="password2" required>
 										</div>
 									</div>
 									<div class="form-group">
-										<label   class="col-xs-3 control-label">姓名</label>
-										<div class="col-xs-9">
+										<label   class="col-xs-2 control-label">姓名</label>
+										<div class="col-xs-10">
 											<input type="text" class="form-control  " name="teacher.name" id="username"	required>
 										</div>
 									</div>
 									<div class="form-group">
-										<label   class="col-xs-3 control-label">教职工号</label>
-										<div class="col-xs-9">
+										<label   class="col-xs-2 control-label">教职工号</label>
+										<div class="col-xs-10">
 											<input type="number" class="form-control  " name="teacher.teacherId" id="teacherId"	required>
 											
 										</div>
+									</div>
+									<div class="form-group" >
+											<label  class="col-xs-2 control-label">推荐课程</label>
+											<div class="col-xs-2">
+												<input type="radio" name="teacher.recommand" value="false" checked="checked">不推荐<br>
+												
+												<input type="radio" name="teacher.recommand" value="true">推荐
+											</div>
 									</div>
 									
 									<div>

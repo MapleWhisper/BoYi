@@ -22,7 +22,7 @@ public class Teacher implements Serializable {
 	//登录信息
 	private String email;			//邮箱
 	private String password;		//密码
-	
+	private boolean recommand;			//是否是推荐课程
 	
 	private Set<Classes> classes;	//所教课程
 
@@ -96,5 +96,15 @@ public class Teacher implements Serializable {
 		this.pic = pic;
 	}
 
+
+	public boolean isRecommand() {
+		return recommand;
+	}
+
+
+	public void setRecommand(boolean recommand) {
+		this.recommand = recommand;
+	}
+	
 	
 }

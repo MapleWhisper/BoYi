@@ -31,13 +31,13 @@
 							List</h1>
 					</div>
 					<div class="panel-body">
-						<div class="row well">
+						<div class="row well" style="text-align: center;">
 							<center>
 								<a class="btn btn-warning btn-lg btn-block"
 									href="${pageContext.request.contextPath}/admin/classes/classesAction!add"
-									style="width: 300px">添加班次</a>
+									style="width: 300px">添加班次
+								</a>
 							</center>
-
 						</div>
 						<!-- 班级导航头 -->
 						<ul class="nav nav-pills nav-justified" role="tablist">
@@ -79,7 +79,12 @@
 									<tbody>
 										<c:forEach items="${classesList}" var="c">
 											<tr>
-												<td>${c.name }</td>
+												<c:if test="${c.recommand}">
+													<td>${c.name }<span class="label label-danger">推荐课程</span></td>
+												</c:if>
+												<c:if test="${not c.recommand}">
+													<td>${c.name }</td>
+												</c:if>
 												<td>${c.teacher.name }</td>
 												<td><fm:formatDate value="${c.beginDate }"
 														pattern="yyyy-MM-dd" /></td>
