@@ -47,6 +47,7 @@ public class LoginAction extends  BaseAction{
 		if(s!=null){
 			HttpSession session = ServletActionContext.getRequest().getSession();
 			session.setAttribute("student", s);	//把用户信息添加到session中，跳转到主页面
+			System.out.println(s.getPassword());
 			return "index";
 		}
 		//登陆失败

@@ -2,12 +2,24 @@
 package com.boyi.service;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.boyi.base.BaseServerImpl;
 import com.boyi.po.Student;
 import com.boyi.utils.BoYiUtils;
+
 
 /**
  * 管理员登陆服务实现类
@@ -27,10 +39,10 @@ public class StudentServiceImpl extends BaseServerImpl<Student> implements Stude
 	@Override
 	public Student login(Student student) {
 		Student s = (Student) getSessionFactory().openSession().createQuery("from Student a where a.email = ? and a.password= ? ")
-			.setParameter(0, student.getEmail()).setParameter(1, student.getPassword()).uniqueResult();
+				.setParameter(0, student.getEmail()).setParameter(1, student.getPassword()).uniqueResult();
 		return s;
 	}
-	
+
 	@Override
 	public Student loginWhitMd5(Student student) {
 		Student u = (Student) getSessionFactory().openSession().createQuery("from Student a where a.email = ?  ")
@@ -41,4 +53,5 @@ public class StudentServiceImpl extends BaseServerImpl<Student> implements Stude
 		}
 		return null;
 	}
+
 }

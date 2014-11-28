@@ -1,7 +1,9 @@
 package com.boyi.po;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -39,8 +42,16 @@ public class Student implements Serializable{
 	
 	
 	private Set<Classes> classes;	//所报课程
+	private Date birth;
 	
-	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@Column(nullable=true)
+	public Date getBirth() {
+		return birth;
+	}
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Integer getId() {
@@ -150,13 +161,14 @@ public class Student implements Serializable{
 		this.sex = sex;
 	}
 	
-	@Column(length=10)
+	
 	public String getParentName() {
 		return parentName;
 	}
 	public void setParentName(String parentName) {
 		this.parentName = parentName;
 	}
+	
 	@Column(length=11)
 	public String getParentPhoneNumber() {
 		return parentPhoneNumber;
@@ -164,6 +176,8 @@ public class Student implements Serializable{
 	public void setParentPhoneNumber(String parentPhoneNumber) {
 		this.parentPhoneNumber = parentPhoneNumber;
 	}
+	
+	
 	
 	
 	

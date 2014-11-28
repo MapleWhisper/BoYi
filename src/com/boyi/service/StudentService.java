@@ -1,5 +1,7 @@
 
 package com.boyi.service;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.boyi.base.BaseServer;
@@ -24,6 +26,5 @@ public interface StudentService extends BaseServer<Student> {
 	 */
 	public Student login(Student student);
 
-	public Student loginWhitMd5(Student student);
-	
+	public Student loginWhitMd5(Student student);	
 }

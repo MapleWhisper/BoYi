@@ -16,11 +16,11 @@
 						<div class="col-xs-3 " style="background-color: #f5f5f5;height: 570px" >
 							<table class="table">
 									<tr>
-										<td><img src="${pageContext.request.contextPath}/image/student_default_pic.jpg" height="70px" width="70px"></img></td>
-										<td>${student.name}于广路<br><a href="#">个人设置</a></td>
+										<td><img src="${pageContext.request.contextPath}/${student.picPath}" height="70px" width="70px"></img></td>
+										<td>你好，${student.name}<br><a href="studentCenterAction!PersonalSet">个人设置</a></td>
 									</tr>
 									<tr>
-										<td>学号:</td><td>${student.id}1204010226</td>
+										<td>学号:</td><td>${student.studentId}</td>
 									</tr>
 							</table>
 							 <div class="list-group">
@@ -38,8 +38,8 @@
 								<div class="panel panel-default" style="height: 470px">
 									<div class="panel-body" >
 										<ol class="breadcrumb">
-										  <li><a href="#">个人中心</a></li>
-										  <li><a href="#" class="active">我的班级</a></li>
+										  <li>个人中心</li>
+										  <li>我的班级</li>
 										</ol>
 										<!-- 当前课程 -->
 										<ul class="nav  nav-pills nav-justified" role="tablist">
