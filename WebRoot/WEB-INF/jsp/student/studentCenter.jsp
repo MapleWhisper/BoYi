@@ -14,25 +14,11 @@
     			<div class="panel panel-default" style="height: 600px" >
 					<div class="panel-body">
 						<div class="col-xs-3 " style="background-color: #f5f5f5;height: 570px" >
-							<table class="table">
-									<tr>
-										<td><img src="${pageContext.request.contextPath}/${student.picPath}" height="70px" width="70px"></img></td>
-										<td>你好，${student.name}<br><a href="studentCenterAction!PersonalSet">个人设置</a></td>
-									</tr>
-									<tr>
-										<td>学号:</td><td>${student.studentId}</td>
-									</tr>
-							</table>
-							 <div class="list-group">
-							  <a href="#" class="list-group-item"> 查看我的消费记录 </a>
-							  <a href="#" class="list-group-item">我的成绩</a>
-							  <a href="#" class="list-group-item">入学测试</a>
-							</div>
-							
+							<%@ include file="part/left.jsp"%>
 						</div><!-- col-xs-3 -->
 						<div class="col-xs-9">
 							<div class="row" style="height: 100px">
-								
+								<%@ include file="part/top.jsp"%>
 							</div>
 							<div class="row">
 								<div class="panel panel-default" style="height: 470px">
@@ -50,15 +36,14 @@
 										</ul><!-- 申请头 -->
 										
 										
-										<!-- 待审核 -->
 										 	<div class="tab-content" style="margin-top: 20px">
 										 		<div class="tab-pane active" id="list1" >
 												</div>
-												<div class="tab-pane active" id="list1" >
+												<div class="tab-pane " id="list2" >
 												</div>
-												<div class="tab-pane active" id="list1" >
+												<div class="tab-pane " id="list2" >
 												</div>
-												<div class="tab-pane active" id="list1" >
+												<div class="tab-pane " id="list4" >
 												</div>
 											</div>
 								</div>
@@ -68,6 +53,7 @@
 				</div>
     		</div>
     		
+    	</div>
     	</div>
     	<%@ include file="../buttom.jsp" %>
   </body>

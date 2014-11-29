@@ -45,6 +45,7 @@ import com.boyi.service.StudentService;
 		@Result(name="index",type="redirectAction",location="indexAction"),
 		@Result(name="studentCenter",location="/WEB-INF/jsp/student/studentCenter.jsp"),
 		@Result(name="personalInfo",location="/WEB-INF/jsp/student/personalInfo.jsp"),
+		@Result(name="personalInfo1",location="/WEB-INF/jsp/student/personalInfo.jsp"),
 })
 public class StudentCenterAction extends BaseAction{
 
@@ -64,9 +65,13 @@ public class StudentCenterAction extends BaseAction{
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		//		Student student = studentService.getById(stu.getId());
 		Student stu = (Student) session.getAttribute("student");
+		this.student = studentService.getById(stu.getId());
 		return "studentCenter";
 	}
 	public String PersonalSet(){
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		Student stu = (Student) session.getAttribute("student");
+		this.student = studentService.getById(stu.getId());
 		return "personalInfo";
 	}
 	
@@ -78,23 +83,20 @@ public class StudentCenterAction extends BaseAction{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		Student stu = (Student) session.getAttribute("student");
-		/*
-		Student stu = (Student) session.getAttribute("student");
 		stu = studentService.getById(stu.getId());
-		*/
-		
+		this.student = stu;
 		String oldPwd=request.getParameter("oldPwd");
 		String newPwd=request.getParameter("newPwd");
 		System.out.println(stu.getPassword());
 		System.out.println(oldPwd);
 		if(!stu.getPassword().equals(oldPwd)){
 			request.setAttribute("message","原密码输入错误！");
-			return "personalInfo";
+			return "personalInfo1";
 		}else{
 			stu.setPassword(newPwd);
 			studentService.updata(stu);
 			request.setAttribute("message","密码修改成功！");
-			return "personalInfo";
+			return "personalInfo1";
 		}
 	}
 	
@@ -115,7 +117,7 @@ public class StudentCenterAction extends BaseAction{
 				ImageUtil.savaPic(ServletActionContext.getServletContext(), new FileInputStream(pic), path, pic.length());
 				stu.setPicPath(path);
 			}
-
+			
 			String birth=request.getParameter("stuBirthTime");
 			DateFormat sdf =   new SimpleDateFormat( "yyyy-MM-dd" );
 			String idNumber=request.getParameter("idNumber");
@@ -125,7 +127,7 @@ public class StudentCenterAction extends BaseAction{
 			stu.setIdNumber(idNumber);
 			stu.setPhoneNumber(phoneNumber);
 			stu.setBirth(sdf.parse(birth));
-			
+			stu.setSex(student.getSex());
 			studentService.updata(stu);
 			session.setAttribute("student", stu);
 			request.setAttribute("student",stu);
@@ -205,6 +207,12 @@ public class StudentCenterAction extends BaseAction{
 	}
 	public void setPicContentType(String picContentType) {
 		this.picContentType = picContentType;
+	}
+	public Student getStudent() {
+		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 	
 	
