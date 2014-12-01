@@ -11,5 +11,6 @@ public interface ArticleService extends BaseServer<Article> {
 	public List<Article> findNewsAll();
 	public List<Article> findAdminNotificationAll();
 	public List<Article> findAdminNotificationAll(Page page);
+	public List<Article> findDownLoadAll();
 	
 }
