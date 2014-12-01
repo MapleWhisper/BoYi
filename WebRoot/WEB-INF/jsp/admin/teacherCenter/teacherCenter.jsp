@@ -57,7 +57,7 @@
 														pattern="yyyy-MM-dd" /></td>
 												<td><fm:formatDate value="${c.endDate }"
 														pattern="yyyy-MM-dd" /></td>
-												<td><button class="btn" disabled="disabled">${c.status}</button></td>
+												<td><button class="btn label" disabled="disabled">${c.status}</button></td>
 
 												<td><a
 													href="teacherCenterAction!showClasses?id=${c.id }"

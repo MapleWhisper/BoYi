@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 import com.alibaba.fastjson.JSON;
 import com.boyi.base.BaseAction;
+import com.boyi.po.Classes;
 import com.boyi.po.Course;
 import com.boyi.service.CourseServer;
 
@@ -36,6 +37,7 @@ public class CourseAction  extends BaseAction{
 	
 	@Resource(name="courseServerImpl")
 	private CourseServer courseServer;
+	
 	
 	private List<Course> seniorlist;
 	private List<Course> middlelist;
@@ -81,7 +83,6 @@ public class CourseAction  extends BaseAction{
 		
 		return null;
 	}
-	
 	
 	
 	
@@ -140,6 +141,7 @@ public class CourseAction  extends BaseAction{
 	public void setCourseDetail(String courseDetail) {
 		this.courseDetail = courseDetail;
 	}
+
 	
 	
 }

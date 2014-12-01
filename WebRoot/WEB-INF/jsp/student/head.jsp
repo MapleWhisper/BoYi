@@ -32,7 +32,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						
 						<li><p class="navbar-text">你好[${sessionScope.student.name}]</p></li>		
-						<li><a href="#" >[个人中心]</a></li>
+						<li><a href="${pageContext.request.contextPath}/student/studentCenterAction" >[个人中心]</a></li>
 						<li ><a href="${pageContext.request.contextPath}/client/login/logout">
 							<span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;退出登陆</a></li>
 						

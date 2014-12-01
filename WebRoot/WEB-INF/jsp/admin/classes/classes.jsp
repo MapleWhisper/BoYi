@@ -42,20 +42,20 @@
 						<!-- 班级导航头 -->
 						<ul class="nav nav-pills nav-justified" role="tablist">
 
-							<li role="presentation" class="${status=='未开始'?'active':' ' }"><a
+							<li role="presentation" class="${status=='未开始'?'active':'' }"><a
 								href="${pageContext.request.contextPath}/admin/classes/classesAction">
 									未开始<span class="badge"><s:property
-											value="classesList.{^#this.status=='未开始'}.size()" /></span>
+											value="classesList.{?#this.status=='未开始'}.size()" /></span>
 							</a></li>
-							<li role="presentation" class="${status=='在读'?'active':' ' }"><a
+							<li role="presentation" class="${status=='在读'?'active':'' }"><a
 								href="${pageContext.request.contextPath}/admin/classes/classesAction?status=在读">
 									在读<span class="badge"><s:property
-											value="classesList.{^#this.status=='在读'}.size()" /></span>
+											value="classesList.{?#this.status=='在读'}.size()" /></span>
 							</a></li>
-							<li role="presentation" class="${status=='已结束'?'active':' ' }"><a
+							<li role="presentation" class="${status=='已结束'?'active':'' }"><a
 								href="${pageContext.request.contextPath}/admin/classes/classesAction?status=已结束">
 									已结束<span class="badge"><s:property
-											value="classesList.{^#this.status=='已结束'}.size()" /></span>
+											value="classesList.{?#this.status=='已结束'}.size()" /></span>
 							</a></li>
 						</ul>
 
@@ -80,7 +80,7 @@
 										<c:forEach items="${classesList}" var="c">
 											<tr>
 												<c:if test="${c.recommand}">
-													<td>${c.name }<span class="label label-danger">推荐课程</span></td>
+													<td><a href="${pageContext.request.contextPath}/admin/classes/classesAction!show?id=${c.id}">${c.name}<span class="label label-danger">推荐课程</span></a></td>
 												</c:if>
 												<c:if test="${not c.recommand}">
 													<td>${c.name }</td>

@@ -45,4 +45,15 @@ public class ArticleSerivceImpl extends BaseServerImpl<Article> implements Artic
 		getMaxPageNum(page);	//得到总页数
 		return query.list();
 	}
+	
+	/**
+	 * 显示所有 下载文档的连接
+	 */
+	@Override
+	public List<Article> findDownLoadAll() {
+		String hql = " from Article a where a.type=?";
+		List<Article> list = (List<Article>) getSession().createQuery(hql)
+				.setParameter(0, ArticleType.资料下载.toString()).list();
+		return list;
+	}
 }

@@ -26,4 +26,6 @@ public interface ClassesServer extends BaseServer<Classes> {
 	public List<Classes> findAllByStatus(String status);
 	
 	public List<Classes> findIndexAll(String grade,String subject,String sort,Page page);
+	
+	public List<Classes> findRecommand();
 }

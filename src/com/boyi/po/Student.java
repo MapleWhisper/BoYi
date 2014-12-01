@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -40,9 +42,13 @@ public class Student implements Serializable{
 	private String parentName;		//父母姓名
 	private String parentPhoneNumber;		//父母手机号
 	
+	private StudentAccount account;	//学生账户
+	
 	
 	private Set<Classes> classes;	//所报课程
 	private Date birth;
+	
+	private Set<ClassApply> classApplys; 
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(nullable=true)
@@ -175,6 +181,24 @@ public class Student implements Serializable{
 	}
 	public void setParentPhoneNumber(String parentPhoneNumber) {
 		this.parentPhoneNumber = parentPhoneNumber;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="student")
+	public Set<ClassApply> getClassApplys() {
+		return classApplys;
+	}
+	public void setClassApplys(Set<ClassApply> classApplys) {
+		this.classApplys = classApplys;
+	}
+	
+	
+	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinColumn(name="accountId")
+	public StudentAccount getAccount() {
+		return account;
+	}
+	public void setAccount(StudentAccount studentAccount) {
+		this.account = studentAccount;
 	}
 	
 	

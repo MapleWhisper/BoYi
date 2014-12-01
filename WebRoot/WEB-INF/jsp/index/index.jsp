@@ -64,15 +64,14 @@
 		<div class="row">
 			<div class="col-xs-7 col-xs-offset-1" style="margin-top: 20px; ">
 				<div class="row">
-					<div class="col-xs-3">
-						<font size="5">推荐课程</font>
+					<div class="col-xs-2">
+						<h3>推荐课程</h3>
 					</div>
-					<div class="col-xs-9">
+					<div class="col-xs-10">
 						<hr style="border:0;background-color:blue ;height:1px;" />
 					</div>
 				</div>
-				<div class="row">
-					<div class="row" style="margin-bottom: 20px; ">
+				<div class="row" style="margin-bottom: 30px;margin-left: 1px; ">
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#primary"
 								role="tab" data-toggle="tab">小学</a></li>
@@ -85,208 +84,54 @@
 						<!-- Tab panes -->
 						<div class="tab-content" style="margin-top: 20px">
 							<div role="tabpanel" class="tab-pane active" id="primary">
-								<div class="col-xs-6">
-									<div class="panel panel-default">
-										<div class="panel-body">
-											<div class="row">
-												<div class="col-xs-4">
-													<img
-														src="${pageContext.request.contextPath}/image/index/laoshi.jpg"
-														height="50" width="70">
-												</div>
-												<div class="col-xs-8">
-													<a href=""><font size="4" color="orange">数据</font> </a><br>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-xs-4"></div>
-												<div class="col-xs-4">价格：数据</div>
-												<div class="col-xs-4">
-													人数：<font color="orange">数据</font>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="panel panel-default">
-										<div class="panel-body">
-											<div class="row">
-												<div class="col-xs-4">
-													<img
-														src="${pageContext.request.contextPath}/image/index/laoshi.jpg"
-														height="50" width="70">
-												</div>
-												<div class="col-xs-8">
-													<a href=""><font size="4" color="orange">数据</font> </a><br>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-xs-4"></div>
-												<div class="col-xs-4">价格：数据</div>
-												<div class="col-xs-4">
-													人数：<font color="orange">数据</font>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<%@ include file="tuijian/c1.jsp"%>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="chuzhong">
+								<%@ include file="tuijian/c2.jsp"%>
 
 							</div>
-							<div role="tabpanel" class="tab-pane" id="chuzhong"></div>
-							<div role="tabpanel" class="tab-pane" id="gaozhong"></div>
+							<div role="tabpanel" class="tab-pane" id="gaozhong">
+								<%@ include file="tuijian/c3.jsp"%></div>
 
 						</div>
-					</div>
 
 
 				</div>
 				<div class="row" style="margin-top: 10px; ">
-					<div class="row">
-						<div class="col-xs-3">
-							<font size="5">推荐名师</font>
+						<div class="col-xs-2">
+							<h3>推荐名师</h3>
 						</div>
-						<div class="col-xs-9">
+						<div class="col-xs-10">
 							<hr style="border:0;background-color:blue ;height:1px;" />
 						</div>
-					</div>
-					<div class="row" style="margin-bottom: 20px; ">
-
-						<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#Tprimary"
-								role="tab" data-toggle="tab">小学</a></li>
-							<li role="presentation"><a href="#Tchuzhong" role="tab"
-								data-toggle="tab">初中</a></li>
-							<li role="presentation"><a href="#Tgaozhong" role="tab"
-								data-toggle="tab">高中</a></li>
-
-						</ul>
-						<!-- Tab panes -->
-						<div class="tab-content" style="margin-top: 20px">
-							<div role="tabpanel" class="tab-pane active" id="Tprimary">
-
-								<div class="col-xs-6">
-									<div class="panel panel-default">
-										<div class="panel-body">
-											<div class="row">
-												<div class="col-xs-4">
-													<img
-														src="${pageContext.request.contextPath}/image/index/laoshi.jpg"
-														height="50" width="70">
-												</div>
-												<div class="col-xs-8">
-													<a href=""><font size="4" color="orange">数据</font> </a><br>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-xs-4"></div>
-												<div class="col-xs-4">价格：数据</div>
-												<div class="col-xs-4">
-													人数：<font color="orange">数据</font>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-6">
-									<div class="panel panel-default">
-										<div class="panel-body">
-											<div class="row">
-												<div class="col-xs-4">
-													<img
-														src="${pageContext.request.contextPath}/image/index/laoshi.jpg"
-														height="50" width="70">
-												</div>
-												<div class="col-xs-8">
-													<a href=""><font size="4" color="orange">数据</font> </a><br>
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-xs-4"></div>
-												<div class="col-xs-4">价格：数据</div>
-												<div class="col-xs-4">
-													人数：<font color="orange">数据</font>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-							</div>
-							<div role="tabpanel" class="tab-pane" id="Tchuzhong"></div>
-							<div role="tabpanel" class="tab-pane" id="Tgaozhong"></div>
-
-						</div>
-
-					</div>
 
 				</div>
+				<div class="row" style="margin-bottom: 20px; ">
+								<%@ include file="tuijian/s1.jsp"%>
+					</div>
 
 
 			</div>
-			<div class="col-xs-3" style="margin-top: 50px; ">
+			<div class="col-xs-3" style="margin-top: 20px; ">
+				<!-- 登陆 -->
 				<div class="row">
-					<form class="form-horizontal" role="form">
-						<div class="form-group">
-							<label for="inputEmail3" class="col-xs-4 control-label">用户名</label>
-							<div class="col-xs-8">
-								<input type="email" class="form-control" id="inputEmail3"
-									placeholder="Email">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputPassword3" class="col-xs-4 control-label">密码</label>
-							<div class="col-xs-8">
-								<input type="password" class="form-control" id="inputPassword3"
-									placeholder="Password">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-xs-offset-2 col-xs-10">
-								<div class="checkbox">
-									<label> <input type="checkbox"> 记住密码
-									</label>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-xs-offset-2 col-xs-10">
-								<button type="submit" class="btn btn-info">登陆</button>
-								<button type="submit" class="btn btn-info">注册</button>
-							</div>
-
-						</div>
-					</form>
-				</div>
+					<c:if test="${sessionScope.student == null}">
+						<%@ include file="tuijian/login.jsp" %>
+					</c:if>
+					<c:if test="${sessionScope.student != null}">
+					</c:if>
+					
+				</div><!-- 登陆 row-->
+				
+				<!-- 新闻动态 -->
 				<div class="row">
 					<div class="col-xs-11 col-xs-offset-1">
-						<font size="3"> <b>日常处理</b></font>
-						<hr>
-						<ul>
-							<li><a>事务处理事务处理</a>
-							<li><a><font color="orange">事务处理事务处理</font></a>
-							<li><a>事务处理事务处理</a>
-						</ul>
+						<h3 class="page-header">新闻动态</h3>
+						<%@ include file="tuijian/news.jsp" %>
 					</div>
 
 
-				</div>
-				<div class="row" style="margin-top: 25px; ">
-					<div class="col-xs-11 col-xs-offset-1">
-						<img src="image/tietu.jpg" height="80" width="250">
-					</div>
-				</div>
-				<div class="row" style="margin-top: 25px; ">
-					<div class="col-xs-11 col-xs-offset-1">
-						<img src="image/tietu.jpg" height="80" width="250">
-					</div>
-				</div>
-				<div class="row" style="margin-top: 25px; ">
-					<div class="col-xs-11 col-xs-offset-1">
-						<img src="image/tietu.jpg" height="80" width="250">
-					</div>
-				</div>
+				</div><!-- 新闻动态 -->
 
 			</div>
 		</div>
@@ -308,10 +153,18 @@
 
 <script type="text/javascript">
 	$(function() {
+		/*
 		$(".nav-tabs a").mouseover(function() {
 			$(this).tab('show');
 			//locaton.href=$(this).attr("href");
 		});
+		*/
+		$(".tab-pane").each(function(){
+			if($(this).find("img").size()==0){
+				$(this).append("<h3 style='text-align: center;color: gray;margin-top:70px;'>暂无课程</h3>");
+			}
+		});
+			
 	});
 	$(function() {
 	    $('.banner').unslider({

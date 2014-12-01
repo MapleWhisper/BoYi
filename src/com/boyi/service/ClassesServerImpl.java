@@ -54,4 +54,11 @@ public class ClassesServerImpl extends BaseServerImpl<Classes> implements Classe
 			return query.list();
 		}
 		
+		@Override
+		public List<Classes> findRecommand() {
+			 String hql="from Classes c where c.recommand=?";
+
+			 return  getSession().createQuery(hql).setBoolean(0, true).list();
+		}
+		
 }

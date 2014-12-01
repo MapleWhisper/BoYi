@@ -4,10 +4,7 @@
 
 <div class="container-fluid">
 <div class="row">
-		<div class="col-sm-3 col-sm-offset-1">
-			<img src="image/LOGO.png" width="100%" height="80xp">
-		</div>
-		<div class="col-sm-7 ">博精思弈</div>
+		<%@ include file="../index/loginHead.jsp"%>
 </div>
 
 	<div id="header" style="margin-top: 30px">

@@ -3,17 +3,20 @@
 	<p style="font-size:16px;font-weight:bold;">名师推荐</p>
 	<HR>
 </div>
-<div class="row">
+<c:forEach items="${ teacherList}" var="t">
 	<div class="row">
 		<div class="col-xs-5">
-			<img src="../images/images1-1.jpg">
+			<img height="80px" width="80px" src="${pageContext.request.contextPath}/${t.pic}">
 		</div>
 		<div class="col-xs-7">
-			<div class="row">丁玲</div>
-			<div class="row">高中三年级语文教师</div>
+			
+			<table>
+				<tr>
+					<td></td>
+					<td>${t.name }</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	<HR>
-
-
-</div>
+</c:forEach>

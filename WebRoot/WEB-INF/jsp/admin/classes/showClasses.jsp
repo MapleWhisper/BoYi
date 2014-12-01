@@ -62,7 +62,7 @@
 							<tbody>
 								<c:forEach items="${classes.classApplies}" var="apply">
 									<tr class="apply">
-										<td>${apply.student.studentId }</td>
+										<td>${apply.student.name }</td>
 										<td><fm:formatDate value="${apply.applyDate }"
 												pattern="yyyy-MM-dd HH:mm" /></td>
 										<td>${apply.student.email }</td>
@@ -95,17 +95,19 @@
 									id="table2">
 									<thead>
 										<tr class="info">
-											<td>学号</td>
+											<td>序号</td>
 											<td>姓名</td>
+											<td>学号</td>
 											<td>邮箱</td>
 											<td>操作</td>
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${classes.students}" var="s">
+										<c:forEach items="${classes.students}" var="s" varStatus="sta">
 											<tr>
-												<td>${s.studentId }</td>
+												<td>${sta.count }</td>
 												<td>${s.name }</td>
+												<td>${s.studentId }</td>
 												<td>${s.email }</td>
 
 												<td><a href="../classes/classesAction!edit?id=${c.id }"
@@ -176,7 +178,7 @@
 
 	<script type="text/javascript">
     		$(function(){
-    			$("#teacherCenter").css("margin-right","-30px").css("font-size"," 25px");
+    			$("#classes").css("margin-right","-30px").css("font-size"," 25px");
     		});
 
     		$(function(){

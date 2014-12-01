@@ -13,6 +13,9 @@
 <title>课程详情</title>
 </head>
 <body>
+	<div>
+		<%@ include file="../index/loginHead.jsp"%>
+	</div>
 	<div class="container" style="background-color: #ffffff">
 		<ol class="breadcrumb">
 			<li><a href="${pageContext.request.contextPath}/indexAction">首页</a></li>
@@ -87,6 +90,7 @@
 			</div><!-- 右侧老师推荐 -->
 		</div>
 	</div>
+	<%@ include file="../foot.jsp"%>
 	<%@include file="modal/confirmClass.jsp" %>
 	<%@include file="../modal/studentLogin.jsp" %>
 	

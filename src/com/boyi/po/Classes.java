@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,10 @@ public class Classes implements Serializable {
 	private String classType;			//班级类型
 	
 	private String classPlace;			//上课地点
-	private int classPrice;				//班级价格
+	
+	private int classPrice;				//课时价格
+	private int teacherPrice;			//教师授课课时价格
+	
 	private String status;				//课程状态
 	private String classDetail;			//班级详情
 	
@@ -44,10 +48,13 @@ public class Classes implements Serializable {
 	private Teacher teacher ; 			//老师
 	private Course course;				//所属课程
 	private Set<Exam> exams;			//考试
+	
+	private Set<ClassApply> classApplies;
+	private Set<StudentResume> studentResumes;
 
 	
 	
-	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE},fetch=FetchType.EAGER)
 	@JoinColumn(name="courseId")
 	public Course getCourse() {
 		return course;
@@ -115,6 +122,15 @@ public class Classes implements Serializable {
 		this.teacher = teacher;
 	}
 	
+	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="classes",targetEntity=ClassApply.class)
+	public Set<ClassApply> getClassApplies() {
+		return classApplies;
+	}
+	public void setClassApplies(Set<ClassApply> classApplies) {
+		this.classApplies = classApplies;
+	}
+	
 	@Column
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	public Date getEndDate() {
@@ -173,8 +189,24 @@ public class Classes implements Serializable {
 	public void setRecommand(boolean recommand) {
 		this.recommand = recommand;
 	}
+	public int getTeacherPrice() {
+		return teacherPrice;
+	}
+	public void setTeacherPrice(int teacherPrice) {
+		this.teacherPrice = teacherPrice;
+	}
+	
+	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="classes")
+	public Set<StudentResume> getStudentResumes() {
+		return studentResumes;
+	}
+	public void setStudentResumes(Set<StudentResume> studentResumes) {
+		this.studentResumes = studentResumes;
+	}
+	
 	
 
+	
 	
 	
 	

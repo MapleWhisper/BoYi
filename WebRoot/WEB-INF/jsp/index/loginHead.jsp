@@ -20,10 +20,14 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="${pageContext.request.contextPath}/indexAction">博弈教育</a></li>
+						<li><a href="${pageContext.request.contextPath}/course/indexAction">选课页面</a></li>
+						<li><a href="${pageContext.request.contextPath}/student/studentCenterAction">学生中心</a></li>
 					</ul>
 					
 					<ul class="nav navbar-nav navbar-right">
-     				 <li><a href="#">返回博弈教育首页</a></li>
+     				 <li><a href="${pageContext.request.contextPath}/loginAction!loginUI">登陆</a></li>
+     				 <li><a href="${pageContext.request.contextPath}/loginAction!registerUI">注册</a></li>
+     				 <li><a href="${pageContext.request.contextPath}/indexAction">返回博弈教育首页</a></li>
      				</ul>
 				</div>
 				

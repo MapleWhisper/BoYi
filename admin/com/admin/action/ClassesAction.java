@@ -2,6 +2,7 @@ package com.admin.action;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -13,12 +14,17 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.boyi.base.BaseAction;
+import com.boyi.enmu.ClassApplyStatus;
 import com.boyi.enmu.ClassesStatus;
+import com.boyi.po.ClassApply;
 import com.boyi.po.Classes;
 import com.boyi.po.Course;
+import com.boyi.po.Student;
 import com.boyi.po.Teacher;
+import com.boyi.service.ClassApplyService;
 import com.boyi.service.ClassesServer;
 import com.boyi.service.CourseServer;
+import com.boyi.service.StudentService;
 import com.boyi.service.TeacherServer;
 
 
@@ -32,12 +38,16 @@ import com.boyi.service.TeacherServer;
 		@Result(name="index",location="/WEB-INF/jsp/admin/classes/classes.jsp"),
 		@Result(name="add",location="/WEB-INF/jsp/admin/classes/addClasses.jsp"),
 		@Result(name="edit",location="/WEB-INF/jsp/admin/classes/editClasses.jsp"),
+		@Result(name="show",location="/WEB-INF/jsp/admin/classes/showClasses.jsp"),
 		
 })
 public class ClassesAction extends BaseAction{
 	
 	@Resource(name="classesServerImpl")
 	private ClassesServer classesServer;
+	
+	@Resource(name="studentServiceImpl")
+	private StudentService studentService;
 	
 	@Resource(name="teacherServerImpl")
 	private TeacherServer teacherServer;
@@ -48,6 +58,10 @@ public class ClassesAction extends BaseAction{
 	private List<Teacher> teacherList;
 	private List<Course> courseList;
 	private List<Classes> classesList;
+	
+	@Resource(name="classApplyServiceImpl")
+	private ClassApplyService classApplyService;
+	
 	
 	private Classes classes;
 	
@@ -78,7 +92,6 @@ public class ClassesAction extends BaseAction{
 	
 	@Override
 	public String save() {
-		System.out.println(teacherId+courseId);
 		Teacher t = teacherServer.getById(teacherId);
 		Course c = courseServer.getById(courseId);
 		this.classes.setTeacher(t);
@@ -134,6 +147,45 @@ public class ClassesAction extends BaseAction{
 		}
 		classesServer.updata(c);
 		return super.update();
+	}
+	
+	
+	@Override
+	public String show() {
+		classes = classesServer.getById(id);
+		return super.show();
+	}
+	
+	
+	public String accept(){
+		ClassApply apply = classApplyService.getById(id);
+		if(!apply.getStatus().equals("待确认")){
+			return "toIndex";
+		}
+		apply.setStatus(ClassApplyStatus.已完成.toString());
+		
+		
+		//把学生加入班级
+		Classes classes = apply.getClasses();
+		classes.getStudents().add(apply.getStudent());
+		Student stu = apply.getStudent();
+		stu.getClasses().add(apply.getClasses());
+		
+		classesServer.updata(classes);
+		studentService.updata(stu);
+		classApplyService.updata(apply);
+		
+		return "toIndex";
+	}
+	
+	public String refuse(){
+		ClassApply apply = classApplyService.getById(id);
+		if(!apply.getStatus().equals("待确认")){
+			return "toIndex";
+		}
+		apply.setStatus(ClassApplyStatus.已拒绝.toString());
+		classApplyService.updata(apply);
+		return "toIndex";
 	}
 	
 	

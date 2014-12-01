@@ -163,5 +163,8 @@ $(function(){
 	            "previous":"上一页"
 	        }
 	});
+	$(".panel-heading").click(function(){
+		$(this).siblings(".panel-body").toggle();
+	});
 });
 
