@@ -34,16 +34,16 @@ import com.opensymphony.xwork2.ActionSupport;
 })
 public class IndexAction extends ActionSupport{
 	@Resource(name="studentServiceImpl")
-	private StudentService  stu;
+	private StudentService  studentService;
 
 	@Resource(name="teacherServerImpl")
-	private TeacherServer tea;
+	private TeacherServer teacherServer;
 
 	@Resource(name="classesServerImpl")
-	private ClassesServer  classes ;
+	private ClassesServer  classesServer ;
 
 	@Resource(name="articleSerivceImpl")
-	private ArticleService  ArticleService ;
+	private ArticleService  articleService ;
 
 
 	private Student s;
@@ -60,13 +60,13 @@ public class IndexAction extends ActionSupport{
 	 */
 	public String execute() {
 		//推荐课程
-		clist=classes.findRecommand();
+		clist=classesServer.findRecommand();
 		
 		//推荐教师
-		tlist=tea.findRecommand();
+		tlist=teacherServer.findRecommand();
 		
 		//新闻列表
-		alist=  ArticleService.findNewsAll() ;
+		alist=  articleService.findNewsAll() ;
 		return "index";
 	}
 
@@ -114,37 +114,5 @@ public class IndexAction extends ActionSupport{
 		this.alist = alist;
 	}
 
-	public StudentService getStu() {
-		return stu;
-	}
-
-	public void setStu(StudentService stu) {
-		this.stu = stu;
-	}
-
-	public TeacherServer getTea() {
-		return tea;
-	}
-
-	public void setTea(TeacherServer tea) {
-		this.tea = tea;
-	}
-
-	public ClassesServer getClasses() {
-		return classes;
-	}
-
-	public void setClasses(ClassesServer classes) {
-		this.classes = classes;
-	}
-
-	public ArticleService getArticleService() {
-		return ArticleService;
-	}
-
-	public void setArticleService(ArticleService articleService) {
-		ArticleService = articleService;
-	}
-	
 	
 }

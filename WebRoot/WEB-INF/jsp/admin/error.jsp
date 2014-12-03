@@ -8,10 +8,10 @@
   <body>
     	<div class="container">
     		<div class="row" style="margin-top: 70px ">
-    				<div class="jumbotron">
+    				<div class="jumbotron" style="text-align: center;">
 					  <h2>${meg}</h2>
 					  <br>
-					  <center ><p id="cnt" style="color: red">3秒后返回主页...</p> <p><a class="btn btn-primary" href="/ZhaoPin/client/index">点我立即返回</a></p></center>
+					  <p id="cnt" style="color: red">3秒后返回主页...</p> <p><a class="btn btn-primary" href="/BoYi/admin/indexAction">点我立即返回</a></p>
 					 
 					</div>
     		</div>
@@ -24,7 +24,7 @@
 				if(cnt>0){
 					$("#cnt").html(cnt+"秒后返回主页...");
 				}else{
-					location.href='/ZhaoPin/client/index';
+					location.href='/BoYi/admin/indexAction';
 				}
 			};
 			$(function(){

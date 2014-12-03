@@ -29,6 +29,7 @@ import com.boyi.utils.Page;
 		@Result(name="error",location="/WEB-INF/jsp/error.jsp"),
 		@Result(name="add",location="/WEB-INF/jsp/admin/student/addStudent.jsp"),
 		@Result(name="edit",location="/WEB-INF/jsp/admin/student/editStudent.jsp"),
+		@Result(name="show",location="/WEB-INF/jsp/admin/student/showStudent.jsp"),
 		
 })
 public class StudentAction  extends BaseAction{

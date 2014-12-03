@@ -1,7 +1,11 @@
 package com.index.action;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -77,6 +81,31 @@ public class LoginAction extends  BaseAction{
 		}
 
 		
+	}
+	
+	
+	public void loginAjax(){
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html");
+		PrintWriter pw = null;
+		try {
+			pw = response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Student s = studentService.login(student);
+		//登陆成功 
+		if(s!=null){
+			HttpSession session = ServletActionContext.getRequest().getSession();
+			session.setAttribute("student", s);	//把用户信息添加到session中，跳转到主页面
+			pw.println("success");
+			pw.flush();
+			return;
+		}
+		//登陆失败
+		pw.println("error");
+		pw.flush();
+		return;
 	}
 	
 	public StudentService getStudentService() {

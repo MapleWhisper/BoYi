@@ -28,6 +28,7 @@
 	<mapping class="com.boyi.po.Exam" />
 	<mapping class="com.boyi.po.ExamResult" />
 	<mapping class="com.boyi.po.ClassApply" />
+	<mapping class="com.boyi.po.ClassRecord" />
 	<mapping class="com.boyi.po.StudentAccount" />
 	<mapping class="com.boyi.po.StudentResume" />
 

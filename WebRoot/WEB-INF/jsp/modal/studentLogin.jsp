@@ -11,19 +11,17 @@
 				<h4 class="modal-title">您还没有登陆，请先登陆</h4>
 			</div>
 			<div class="modal-body" style="text-align: center;">
-				<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/loginAction!login">
+				<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/loginAction!login" id="form2">
 						<div class="form-group">
 							<label  class="col-xs-2 control-label">用户名</label>
 							<div class="col-xs-8">
-								<input type="email" class="form-control" required="required"
-									placeholder="Email">
+								<input type="email" class="form-control" required="required"   placeholder="邮箱" name="student.email">
 							</div>
 						</div>
 						<div class="form-group">
 							<label  class="col-xs-2 control-label">密码</label>
 							<div class="col-xs-8">
-								<input type="password" class="form-control" required id="inputPassword3"
-									placeholder="Password">
+								<input type="password" class="form-control"  required="required" placeholder="密码" name="student.password">
 							</div>
 						</div>
 						<div class="form-group">
@@ -36,13 +34,20 @@
 						</div>
 						<div class="form-group">
 							<div class="col-xs-offset-1 col-xs-6">
-								<button type="submit" class="btn btn-info btn-primary">登陆</button>
+								<button type="button" id="login" class="btn btn-info btn-primary">登陆</button>
 							</div>
 							<div class="col-xs-4">
-								<button type="submit" class="btn btn-default">没有账号?，点我去注册!</button>
+								<a href="${pageContext.request.contextPath}/loginAction!registerUI" class="btn btn-default">没有账号?，点我去注册!</a>
 							</div>
 
 						</div>
+						 <div class="form-group" >
+						      <div class="col-xs-7 col-xs-offset-1">
+									<div class="alert alert-danger " role="alert" style="display: none" id="e1">
+											 <span >账号或者密码错误<span>
+									</div>
+						      </div>
+						    </div>
 					</form>
 			</div>
 			<div class="modal-footer">

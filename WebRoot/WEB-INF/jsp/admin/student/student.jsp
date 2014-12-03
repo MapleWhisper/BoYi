@@ -32,8 +32,9 @@
 						<table class="table table-hover table-striped table-bordered">
 							<thead>
 								<tr class="info">
-									<td>学生学号</td>
+									
 									<td>学生姓名</td>
+									<td>学生学号</td>
 									<td>学生邮箱</td>
 									<td>操作</td>
 									<td>操作</td>
@@ -43,8 +44,8 @@
 							</tbody>
 								<c:forEach items="${studentList}" var="student">
 									<tr>
-										<td>${student.studentId }</td>
-										<td>${student.name }</td>
+										<td><a href="${pageContext.request.contextPath}/admin/student/studentAction!show?id=${student.id}">${student.name }</a></td>
+										<td><a href="${pageContext.request.contextPath}/admin/student/studentAction!show?id=${student.id}">${student.studentId}</a></td>
 										<td>${student.email }</td>
 										<td><a href="studentAction!edit?id=${student.id }"
 											class="btn btn-info"><span

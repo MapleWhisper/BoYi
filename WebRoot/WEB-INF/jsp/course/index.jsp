@@ -137,7 +137,7 @@
 		for(var i =0;i<3; i++){
 			
 			//alert("."+tem[i]+" button[value=' "+tem1[i]+" ']");
-			var btn = $("button[value="+tem1[i]+"]");
+			var btn = $("."+tem[i]+" button[value='"+tem1[i]+"']");
 			btn.addClass("active");
 			btn.siblings().removeClass("active");
 			btn.parent().siblings().children("button").removeClass("active");

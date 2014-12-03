@@ -19,6 +19,8 @@ import javax.persistence.OneToMany;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import com.boyi.enmu.ClassesStatus;
+
 @Entity
 @Component
 public class Classes implements Serializable {
@@ -51,6 +53,7 @@ public class Classes implements Serializable {
 	
 	private Set<ClassApply> classApplies;
 	private Set<StudentResume> studentResumes;
+	private Set<ClassRecord> classRecords;	//课程记录
 
 	
 	
@@ -204,8 +207,34 @@ public class Classes implements Serializable {
 		this.studentResumes = studentResumes;
 	}
 	
+	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="classes")
+	public Set<ClassRecord> getClassRecords() {
+		return classRecords;
+	}
+	public void setClassRecords(Set<ClassRecord> classRecords) {
+		this.classRecords = classRecords;
+	}
 	
-
+	/**
+	 * 检查课程状态
+	 * @return	如果课程状态改变了，返回true
+	 */
+	public boolean checkStatus(){
+		Long now = System.currentTimeMillis();
+		String s = "";
+		boolean flag =false;
+		if(now < this.getBeginDate().getTime()){
+			s=ClassesStatus.未开始.toString();
+		}else if(now < this.getEndDate().getTime()){
+			s=ClassesStatus.在读.toString();
+		}else{
+			s=ClassesStatus.已结束.toString();
+		}
+		flag = !s.equals(this.status);
+		this.status = s;
+		return flag;
+	}
+	
 	
 	
 	

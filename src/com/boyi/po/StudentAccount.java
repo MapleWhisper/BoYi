@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 import org.springframework.stereotype.Component;
 
@@ -54,5 +55,10 @@ public class StudentAccount implements Serializable{
 		this.resumes = resumes;
 	}
 	
-	
+	public  synchronized void add(int amount){
+		this.money +=amount;
+	}
+	public  synchronized void remove(int amount){
+		this.money -=amount;
+	}
 }

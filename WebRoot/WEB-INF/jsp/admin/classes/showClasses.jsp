@@ -1,3 +1,4 @@
+<%@page import="java.text.DateFormat"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <html>
@@ -34,13 +35,49 @@
 						<h1 class="panel-title" style="font-size: 25px">班级详情 Class
 							Detail</h1>
 					</div>
-					<div class="panel-body">...班级介绍</div>
+					<div class="panel-body"><h1>${classes.name}</h1></div>
 				</div>
 				<!-- 班级详情 -->
-			</div>
+			
+			
+			<!-- 班级记录 -->
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h1 class="panel-title" style="font-size: 25px">班级记录 Class
+							Record</h1>
+					</div>
+					<div class="panel-body">
+						<div style="text-align: center;">
+							<span class="well">今天是<%=DateFormat.getDateInstance(DateFormat.FULL).format(new Date() ) %></span>
+							<a class="btn btn-primary btn-lg" onclick="return confirm('你确定要添加今天的班级记录吗')"
+							   href="${pageContext.request.contextPath}/admin/classes/classesAction!addRecord?id=${classes.id}">添加今天的班级记录</a>
+							
+							<hr>
+						</div>
+						<table class="table table-hover table-striped table-bordered table-condensed">
+							<thead>
+								<tr class="info">
+									<td>记录日期</td>
+									<td>操作</td>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${classes.classRecords}" var="record">
+									<tr class="apply">
+										<td><fm:formatDate value="${record.date }"
+												type="date" dateStyle="full" /></td>
+
+										<td><a href="${pageContext.request.contextPath}/admin/classes/classesAction!showRecord?id=${record.id }" 
+											class="btn btn-info">查看</a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+
+						</table>
+					</div>
+				</div><!-- 班级记录 -->
 
 			<!-- 班级申请 -->
-			<div class="col-xs-10">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h1 class="panel-title" style="font-size: 25px">班级申请 Class
@@ -64,7 +101,7 @@
 									<tr class="apply">
 										<td>${apply.student.name }</td>
 										<td><fm:formatDate value="${apply.applyDate }"
-												pattern="yyyy-MM-dd HH:mm" /></td>
+												type="both"  /></td>
 										<td>${apply.student.email }</td>
 										<td><span style="font-size: 14px" class="label">${apply.status }</span></td>
 
@@ -78,7 +115,9 @@
 
 						</table>
 					</div>
-				</div><!-- 班级申请 -->
+				</div>
+				
+				<!-- 班级申请 -->
 				
 
 				<!-- 学生列表开始 -->
@@ -99,6 +138,7 @@
 											<td>姓名</td>
 											<td>学号</td>
 											<td>邮箱</td>
+											<td>余额</td>
 											<td>操作</td>
 										</tr>
 									</thead>
@@ -109,8 +149,9 @@
 												<td>${s.name }</td>
 												<td>${s.studentId }</td>
 												<td>${s.email }</td>
+												<td class="money" id="${s.account.money}">${s.account.money}元</td>
 
-												<td><a href="../classes/classesAction!edit?id=${c.id }"
+												<td><a href="${pageContext.request.contextPath}/admin/classes/classesAction!edit?id=${c.id }"
 													class="btn btn-info"><span
 														class=" glyphicon glyphicon-zoom-in"></span>&nbsp;&nbsp;查看</a></td>
 											</tr>
@@ -172,9 +213,9 @@
 
 
 		</div>
+		</div>
 
 		<%@ include file="../buttom.jsp"%>
-	</div>
 
 	<script type="text/javascript">
     		$(function(){
@@ -206,6 +247,15 @@
     					$(this).addClass("label-default");
     				}
     					
+    			});
+    			
+    			$(".money").each(function(){
+    				var m = $(this).attr("id");
+    				if(m<0){
+    					$(this).addClass("danger");
+    				}else{
+    					$(this).addClass("success");
+    				}
     			});
     			
     		});

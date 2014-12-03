@@ -43,12 +43,8 @@ public class StudentResume implements Serializable{
 	public String getType() {
 		return type;
 	}
+	
 	public void setType(String type) {
-		for(ResumeType s :ResumeType.values()){
-			if(!type.equals(s.toString())){
-				throw new IllegalArgumentException(type+"参数不正确，只能为存钱和扣费");
-			}
-		}
 		this.type = type;
 	}
 	

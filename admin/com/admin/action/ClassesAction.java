@@ -2,10 +2,11 @@ package com.admin.action;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -17,11 +18,14 @@ import com.boyi.base.BaseAction;
 import com.boyi.enmu.ClassApplyStatus;
 import com.boyi.enmu.ClassesStatus;
 import com.boyi.po.ClassApply;
+import com.boyi.po.ClassRecord;
 import com.boyi.po.Classes;
 import com.boyi.po.Course;
 import com.boyi.po.Student;
+import com.boyi.po.StudentAccount;
 import com.boyi.po.Teacher;
 import com.boyi.service.ClassApplyService;
+import com.boyi.service.ClassRecordService;
 import com.boyi.service.ClassesServer;
 import com.boyi.service.CourseServer;
 import com.boyi.service.StudentService;
@@ -34,11 +38,14 @@ import com.boyi.service.TeacherServer;
 @Namespace("/admin/classes")
 @Action(value="classesAction",results={
 		@Result(name="toIndex",type="redirectAction",location="classesAction"),
-		@Result(name="error",location="/WEB-INF/jsp/error.jsp"),
+		@Result(name="toRecord",type="redirectAction",location="classesAction!showRecord"),
+		@Result(name="toClasses",type="redirectAction",location="classesAction!show"),
+		@Result(name="error",location="/WEB-INF/jsp/admin/error.jsp"),
 		@Result(name="index",location="/WEB-INF/jsp/admin/classes/classes.jsp"),
 		@Result(name="add",location="/WEB-INF/jsp/admin/classes/addClasses.jsp"),
 		@Result(name="edit",location="/WEB-INF/jsp/admin/classes/editClasses.jsp"),
 		@Result(name="show",location="/WEB-INF/jsp/admin/classes/showClasses.jsp"),
+		@Result(name="showRecord",location="/WEB-INF/jsp/admin/classes/showRecord.jsp"),
 		
 })
 public class ClassesAction extends BaseAction{
@@ -55,20 +62,27 @@ public class ClassesAction extends BaseAction{
 	@Resource(name="courseServerImpl")
 	private CourseServer courseServer;
 	
+	@Resource(name="classApplyServiceImpl")
+	private ClassApplyService classApplyService;
+	
+	@Resource(name="classRecordServiceImpl")
+	private ClassRecordService classRecordService;
+	
 	private List<Teacher> teacherList;
 	private List<Course> courseList;
 	private List<Classes> classesList;
 	
-	@Resource(name="classApplyServiceImpl")
-	private ClassApplyService classApplyService;
+	
 	
 	
 	private Classes classes;
+	private ClassRecord classRecord;
 	
 	private Integer teacherId;
 	private Integer courseId;
 	private String status;
 	private Integer id;
+	private Integer sId;	//学生Id
 	
 	
 	
@@ -79,6 +93,7 @@ public class ClassesAction extends BaseAction{
 			this.status = "未开始";
 		}
 		this.classesList = classesServer.findAllByStatus(status);
+		
 		return "index";
 	}
 	
@@ -96,14 +111,8 @@ public class ClassesAction extends BaseAction{
 		Course c = courseServer.getById(courseId);
 		this.classes.setTeacher(t);
 		this.classes.setCourse(c);
+		this.classes.checkStatus();	//检查当前课程状态
 		
-		if(new Date().getTime() < classes.getBeginDate().getTime()){
-			classes.setStatus(ClassesStatus.未开始.toString());
-		}else if(new Date().getTime() < classes.getEndDate().getTime()){
-			classes.setStatus(ClassesStatus.在读.toString());
-		}else{
-			classes.setStatus(ClassesStatus.已结束.toString());
-		}
 		classesServer.save(classes);
 		return "toIndex";
 	}
@@ -138,25 +147,31 @@ public class ClassesAction extends BaseAction{
 		c.setTeacher(t);
 		c.setCourse(c1);
 		
-		if(new Date().getTime() < classes.getBeginDate().getTime()){
-			classes.setStatus(ClassesStatus.未开始.toString());
-		}else if(new Date().getTime() < classes.getEndDate().getTime()){
-			classes.setStatus(ClassesStatus.在读.toString());
-		}else{
-			classes.setStatus(ClassesStatus.已结束.toString());
-		}
+		c.checkStatus();
 		classesServer.updata(c);
 		return super.update();
 	}
 	
-	
+	/**
+	 * 显示课程详情
+	 */
 	@Override
 	public String show() {
+		if(id==null){
+			id = (Integer) ServletActionContext.getRequest().getSession().getAttribute("classesId");
+		}
 		classes = classesServer.getById(id);
+		if(classes.checkStatus()){
+			classesServer.updata(classes);
+		}
+		
 		return super.show();
 	}
 	
-	
+	/**
+	 * 接受课程申请
+	 * @return
+	 */
 	public String accept(){
 		ClassApply apply = classApplyService.getById(id);
 		if(!apply.getStatus().equals("待确认")){
@@ -169,6 +184,14 @@ public class ClassesAction extends BaseAction{
 		Classes classes = apply.getClasses();
 		classes.getStudents().add(apply.getStudent());
 		Student stu = apply.getStudent();
+		
+		if(stu.getAccount()==null){
+			StudentAccount account = new StudentAccount();
+			account.setMoney(0);
+			stu.setAccount(account);
+		}
+		
+		
 		stu.getClasses().add(apply.getClasses());
 		
 		classesServer.updata(classes);
@@ -178,6 +201,32 @@ public class ClassesAction extends BaseAction{
 		return "toIndex";
 	}
 	
+	/**
+	 * 签到
+	 * @return
+	 */
+	public String sign(){
+		this.classRecord = classRecordService.getById(id);
+		ServletActionContext.getRequest().getSession().setAttribute("recordId", id);
+		if(classRecord==null){
+			setMeg("错误的记录Id");
+			return "error";
+		}
+		Map<Integer,Boolean> records = classRecord.getRecords();
+		
+		if( records.get(sId)==true ){	//如果已经签到了
+			return "toRecord";	//返回签到页
+		}
+		Student stu = studentService.getById(sId);
+		classRecordService.sign(classRecord,stu);	//签到
+		
+		return "toRecord";	//返回签到页
+	}
+	
+	/**
+	 * 拒绝课程申请
+	 * @return
+	 */
 	public String refuse(){
 		ClassApply apply = classApplyService.getById(id);
 		if(!apply.getStatus().equals("待确认")){
@@ -188,33 +237,52 @@ public class ClassesAction extends BaseAction{
 		return "toIndex";
 	}
 	
+	/**
+	 * 显示课程记录
+	 * @return
+	 */
+	public String showRecord(){
+		if(id==null){
+			id = (Integer) ServletActionContext.getRequest().getSession().getAttribute("recordId");
+		}
+		this.classRecord = classRecordService.getById(id);
+		
+		this.classes = classRecord.getClasses();
+		if(!classes.getStatus().equals(ClassesStatus.在读.toString())){
+			setMeg("当前班级还没有开课，或者课程已经结束，不可以添加班级记录");
+			return "error";
+		}
+		if(classRecord!=null){	//如果有该课程记录
+			return "showRecord";
+		}
+		return "toRecord";
+	}
 	
 	
+	/**
+	 * 
+	 * 添加课程记录
+	 * @return
+	 */
+	public String addRecord(){
+		ServletActionContext.getRequest().getSession().setAttribute("classesId",id);
+		
+		this.classes = classesServer.getById(id);
+		if(classes==null){
+			return "toClasses";
+		}
+		ClassRecord record = new ClassRecord();
+		record.setClasses(classes);
+		record.setDate(new Date());
+		record.setRecord("");
+		if(!classRecordService.save1(record)){	//如果创建失败
+			setMeg("今天已经创建课程记录了，创建失败！");
+			return "error";
+		}
+		
+		return "toClasses";
+	}
 	
-	public ClassesServer getClassesServer() {
-		return classesServer;
-	}
-
-	public void setClassesServer(ClassesServer classesServer) {
-		this.classesServer = classesServer;
-	}
-
-	public TeacherServer getTeacherServer() {
-		return teacherServer;
-	}
-
-	public void setTeacherServer(TeacherServer teacherServer) {
-		this.teacherServer = teacherServer;
-	}
-
-	public CourseServer getCourseServer() {
-		return courseServer;
-	}
-
-	public void setCourseServer(CourseServer courseServer) {
-		this.courseServer = courseServer;
-	}
-
 	
 	public List<Teacher> getTeacherList() {
 		return teacherList;
@@ -279,6 +347,23 @@ public class ClassesAction extends BaseAction{
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+	public ClassRecord getClassRecord() {
+		return classRecord;
+	}
+
+	public void setClassRecord(ClassRecord classRecord) {
+		this.classRecord = classRecord;
+	}
+
+	public Integer getSId() {
+		return sId;
+	}
+
+	public void setSId(Integer sId) {
+		this.sId = sId;
+	}
+
 	
 	
 	

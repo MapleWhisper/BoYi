@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -192,7 +193,7 @@ public class Student implements Serializable{
 	}
 	
 	
-	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE},fetch=FetchType.EAGER)
 	@JoinColumn(name="accountId")
 	public StudentAccount getAccount() {
 		return account;

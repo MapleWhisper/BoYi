@@ -41,7 +41,7 @@
 						</div>
 						<!-- 班级导航头 -->
 						<ul class="nav nav-pills nav-justified" role="tablist">
-
+							
 							<li role="presentation" class="${status=='未开始'?'active':'' }"><a
 								href="${pageContext.request.contextPath}/admin/classes/classesAction">
 									未开始<span class="badge"><s:property

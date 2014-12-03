@@ -102,7 +102,6 @@
 				$.post("/BoYi/course/indexAction!applyClass",{"id":id},function(data){
 					data = data.trim();
 					if(data=="login"){
-						alert("login");
 						$("#studentLogin").modal("show");
 					}else if(data == "success"){
 						alert("恭喜，申请提交成功");
@@ -111,8 +110,22 @@
 					}
 					
 					$("#confirmClass").modal("hide");
-				})
+				});
 					
+			});
+			
+			$("#login").click(function(){
+				$.post("/BoYi/loginAction!loginAjax",$("#form2").serialize(),function(data){
+					data = data.trim();
+					if(data=="success"){
+						alert("登陆成功");
+						$("#studentLogin").modal("hide");
+						$("#confirmClass").modal("show");
+					}else{
+						$("#e1").show();
+						$("#e1").fadeOut(3000);
+					}
+				});
 			});
 		});
 	</script>
