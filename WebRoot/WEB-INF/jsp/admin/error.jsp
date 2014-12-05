@@ -11,14 +11,14 @@
     				<div class="jumbotron" style="text-align: center;">
 					  <h2>${meg}</h2>
 					  <br>
-					  <p id="cnt" style="color: red">3秒后返回主页...</p> <p><a class="btn btn-primary" href="/BoYi/admin/indexAction">点我立即返回</a></p>
+					  <p id="cnt" style="color: red">4秒后返回主页...</p> <p><a class="btn btn-primary" href="/BoYi/admin/indexAction">点我立即返回</a></p>
 					 
 					</div>
     		</div>
     		
     	</div>
     	<script type="text/javascript">
-    		var cnt = 3;
+    		var cnt = 5;
 	    	function count(){
 				cnt--;
 				if(cnt>0){

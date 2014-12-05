@@ -132,7 +132,7 @@ public class ProblemAction extends BaseAction{
 			p.setOptC(problem.getOptC());
 			p.setOptD(problem.getOptD());
 			p.setAnswer(problem.getAnswer());
-			problemService.updata(p);
+			problemService.update(p);
 			try {
 				response.getWriter().println("{\"mes\":\"success\"}");
 			} catch (IOException e) {

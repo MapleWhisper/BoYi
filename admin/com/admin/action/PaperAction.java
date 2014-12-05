@@ -163,7 +163,7 @@ public class PaperAction extends BaseAction{
 			pw = response.getWriter();
 			this.examResult = examResultServer.getById(id);
 			examResult.setScore(score);
-			examResultServer.updata(examResult);
+			examResultServer.update(examResult);
 			pw.println("success");
 		} catch (Exception e) {
 			e.printStackTrace();

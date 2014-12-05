@@ -45,7 +45,7 @@
 								<c:forEach items="${teacherList}" var="tea">
 									<tr>
 										<c:if test="${tea.recommand}">
-											<td>${tea.name }<span class="label label-danger">推荐教师</span></td>
+											<td><a target="_blank" href="${pageContext.request.contextPath}/admin/teacher/teacherAction!show?id=${tea.id}">${tea.name }<span class="label label-danger">推荐教师</span></a></td>
 										</c:if>
 										<c:if test="${not tea.recommand}">
 											<td>${tea.name }</td>

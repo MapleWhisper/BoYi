@@ -32,7 +32,7 @@ public interface BaseServer<T> {
 	 * 修改实体
 	 * @param t
 	 */
-	public void updata(T entry);
+	public void update(T entry);
 	
 	/**
 	 * 根据Id获取实例

@@ -94,7 +94,7 @@ public class StudentCenterAction extends BaseAction{
 			return "personalInfo1";
 		}else{
 			stu.setPassword(newPwd);
-			studentService.updata(stu);
+			studentService.update(stu);
 			request.setAttribute("message","密码修改成功！");
 			return "personalInfo1";
 		}
@@ -128,7 +128,7 @@ public class StudentCenterAction extends BaseAction{
 			stu.setPhoneNumber(phoneNumber);
 			stu.setBirth(sdf.parse(birth));
 			stu.setSex(student.getSex());
-			studentService.updata(stu);
+			studentService.update(stu);
 			session.setAttribute("student", stu);
 			request.setAttribute("student",stu);
 		} catch (Exception e) {

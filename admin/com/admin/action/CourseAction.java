@@ -79,7 +79,7 @@ public class CourseAction  extends BaseAction{
 		
 		Course c = courseServer.getById(id);
 		c.setCourseDetail(courseDetail);
-		courseServer.updata(c);
+		courseServer.update(c);
 		
 		return null;
 	}

@@ -146,7 +146,7 @@
 										<c:forEach items="${classes.students}" var="s" varStatus="sta">
 											<tr>
 												<td>${sta.count }</td>
-												<td>${s.name }</td>
+												<td><a href="${pageContext.request.contextPath}/admin/student/studentAction!show?id=${student.id}">${s.name }</a></td>
 												<td>${s.studentId }</td>
 												<td>${s.email }</td>
 												<td class="money" id="${s.account.money}">${s.account.money}元</td>

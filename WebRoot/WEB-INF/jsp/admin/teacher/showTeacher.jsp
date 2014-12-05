@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@ include file="../header.jspf"%>
-<title>学生详情</title>
+<title>教师详情</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/js/datatables/dataTables.bootstrap.css"></link>
 
@@ -40,39 +40,38 @@
 			<div class="col-xs-10">
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h1 class="panel-title" style="font-size: 25px">学生详情 Student
-							Detail</h1>
+						<h1 class="panel-title" style="font-size: 25px">教师详情</h1>
 					</div>
 					<div class="panel-body ">
 						<div class="row">
 							<div class="col-xs-2" style="text-align: center;" >
 								
-								<img  class="img-thumbnail" src="${pageContext.request.contextPath}/${student.picPath}"
+								<img  class="img-thumbnail" src="${pageContext.request.contextPath}/${teacher.pic}"
 											height="150px" width="150px"></img>
 										<br>
-										<h3>${student.name }</h3>
+										<h3>${Teacher.name }</h3>
 							</div>
 							<div class="col-xs-4">
 								
 								<table class="table info">
 									<tr>
 										<td >学号:</td>
-										<td >${student.studentId }</td>
+										<td >${teacher.teacherId }</td>
 									</tr>
 									<tr>
 										<td>邮箱:</td>
-										<td>${student.email }</td>
+										<td>${teacher.email }</td>
 									</tr>
 									<tr>
 										<td>电话号码:</td>
-										<td>${student.phoneNumber }</td>
+										<td>${teacher }</td>
 									</tr>
 								</table>
 							</div>
 							<div class="col-xs-6">
 								账户余额：
-								<h2>${student.account.money }元</h2>
-								 <button class="btn btn-warning" data-toggle="modal" data-target="#studentPay">点此充值</button>
+								<h2>${teacher.account.money }元</h2>
+								 <button class="btn btn-warning" data-toggle="modal" data-target="#teacherPay">点此充值</button>
 								
 							</div>
 							
@@ -87,7 +86,7 @@
 				<!--学生账户 -->
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h1 class="panel-title" style="font-size: 25px">扣费记录</h1>
+						<h1 class="panel-title" style="font-size: 25px">交易记录</h1>
 					</div>
 					<div class="panel-body">
 						<div style="text-align: center;">
@@ -108,7 +107,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${student.account.resumes}" var="r">
+								<c:forEach items="${teacher.account.resumes}" var="r">
 									<tr >
 									<td>${r.id }</td>
 									<td><fm:formatDate value="${r.tradeDate}"
@@ -130,7 +129,7 @@
 			
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<h1 class="panel-title" style="font-size: 25px">学生报名的班级</h1>
+						<h1 class="panel-title" style="font-size: 25px">老师教的班级</h1>
 					</div>
 					<div class="panel-body">
 
@@ -150,7 +149,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${student.classes}" var="c">
+										<c:forEach items="${teacher.classes}" var="c">
 											<tr>
 												<td>${c.name }</td>
 												<td><fm:formatDate value="${c.beginDate }"
@@ -182,7 +181,7 @@
 		</div>
 		</div>
 		
-		<%@ include file="../../modal/studentPay.jsp"%>
+		<%@ include file="../../modal/teacherPay.jsp"%>
 		<%@ include file="../buttom.jsp"%>
 		<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
@@ -191,7 +190,7 @@
 		
 	<script type="text/javascript">
     		$(function(){
-    			$("#student").css("margin-right","-30px").css("font-size"," 25px");
+    			$("#teacher").css("margin-right","-30px").css("font-size"," 25px");
     		});
 
     		$(function(){

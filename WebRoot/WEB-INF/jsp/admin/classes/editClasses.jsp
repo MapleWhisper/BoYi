@@ -42,19 +42,19 @@
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级总人数</label>
 											<div class="col-xs-4">
-												<s:textfield type="number" cssClass="form-control " required="required" name="classes.studentNumer" id="studentNumer" />
+												<s:textfield type="number" cssClass="form-control " required="required" name="classes.studentNumber" id="studentNumber" />
 											</div>
 										</div>
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级开始日期</label>
 											<div class="col-xs-4">
-												<input type="text" class="form-control  " required="required" name="classes.beginDate" id="beginDate" value="${classes.beginDate }" onClick="WdatePicker()">
+												<input type="text" class="form-control" required="required" name="classes.beginDate" id="beginDate" value="<fm:formatDate value='${classes.beginDate }' type='date'/>" onClick="WdatePicker()">
 											</div>
 										</div>
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级结束日期</label>
 											<div class="col-xs-4">
-												<input type="text" class="form-control  " required="required" name="classes.endDate" id="endDate" value="${classes.beginDate }" onClick="WdatePicker()">
+												<input type="text" class="form-control" required="required" name="classes.endDate" id="endDate" value="<fm:formatDate value='${classes.endDate }' type='date'/>" onClick="WdatePicker()" >
 											</div>
 										</div>
 										
@@ -75,7 +75,9 @@
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级类型</label>
 											<div class="col-xs-4">
-												<s:textfield type="text" cssClass="form-control  " required="required" name="classes.classType" id="classType" />
+												<s:select list="#application.classTypes" headerKey="小班" 
+														name="classes.classType" cssClass="form-control" required="required">
+												</s:select>
 											</div>
 										</div>
 										
@@ -153,11 +155,8 @@
 			editor = K.create('#editor', {
 				resizeType : 1,
 				allowPreviewEmoticons : false,
-				allowImageUpload : false,
-				items : [
-					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-					'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+				allowImageUpload : true
+				
 			});
 
 		});

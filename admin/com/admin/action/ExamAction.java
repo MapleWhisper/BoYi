@@ -150,7 +150,7 @@ public class ExamAction extends BaseAction{
 			e.setStatus(ExamStatus.已结束.toString());
 		}
 		
-		examServer.updata(e);
+		examServer.update(e);
 		return super.update();
 	}
 

@@ -115,7 +115,7 @@ public class ArticleAction  extends BaseAction{
 		a.setTitle(article.getTitle());
 		a.setType(article.getType());
 		a.setContext(article.getContext());
-		articleService.updata(a);
+		articleService.update(a);
 		return "toIndex";
 	}
 	

@@ -1,4 +1,4 @@
-package com.boyi.service;
+package com.boyi.serviceImpl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.boyi.base.BaseServerImpl;
 import com.boyi.po.Exam;
 import com.boyi.po.ExamResult;
+import com.boyi.service.ExamResultServer;
 
 
 /**

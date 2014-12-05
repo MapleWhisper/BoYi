@@ -1,4 +1,4 @@
-package com.boyi.service;
+package com.boyi.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.boyi.base.BaseServerImpl;
 import com.boyi.po.Classes;
 import com.boyi.po.Exam;
+import com.boyi.service.ExamServer;
 
 
 /**

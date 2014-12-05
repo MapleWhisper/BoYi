@@ -1,4 +1,4 @@
-package com.boyi.service;
+package com.boyi.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 import com.boyi.base.BaseServerImpl;
 import com.boyi.po.Paper;
 import com.boyi.po.Problem;
+import com.boyi.service.ProblemService;
 import com.boyi.utils.Page;
 
 @Transactional

@@ -1,10 +1,11 @@
-package com.boyi.service;
+package com.boyi.serviceImpl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.boyi.base.BaseServerImpl;
 import com.boyi.po.Admin;
+import com.boyi.service.AdminServer;
 
 
 /**

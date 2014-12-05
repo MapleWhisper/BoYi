@@ -77,7 +77,7 @@ public  abstract class BaseServerImpl<E> implements BaseServer<E>{
 	 * 
 	 */
 	@Override
-	public void updata(E entry) {
+	public void update(E entry) {
 		getSession().update(entry);
 		getSession().flush();
 	}

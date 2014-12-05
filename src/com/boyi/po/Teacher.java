@@ -2,13 +2,18 @@ package com.boyi.po;
 
 import java.io.Serializable;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import org.springframework.stereotype.Controller;
 @Entity
 @Controller
@@ -25,6 +30,7 @@ public class Teacher implements Serializable {
 	private boolean recommand;			//是否是推荐课程
 	
 	private Set<Classes> classes;	//所教课程
+	private TeacherAccount account;		//
 
 	
 	@Id
@@ -104,6 +110,16 @@ public class Teacher implements Serializable {
 
 	public void setRecommand(boolean recommand) {
 		this.recommand = recommand;
+	}
+
+	
+	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE},fetch=FetchType.EAGER,mappedBy="teacher")
+	public TeacherAccount getAccount() {
+		return account;
+	}
+
+	public void setAccount(TeacherAccount account) {
+		this.account = account;
 	}
 	
 	

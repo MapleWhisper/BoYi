@@ -1,4 +1,4 @@
-package com.boyi.service;
+package com.boyi.serviceImpl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.boyi.base.BaseServerImpl;
 import com.boyi.enmu.ArticleType;
 import com.boyi.po.Article;
+import com.boyi.service.ArticleService;
 import com.boyi.utils.Page;
 
 @Service

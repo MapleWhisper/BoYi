@@ -28,6 +28,7 @@ import com.boyi.service.ClassApplyService;
 import com.boyi.service.ClassRecordService;
 import com.boyi.service.ClassesServer;
 import com.boyi.service.CourseServer;
+import com.boyi.service.StudentAccountService;
 import com.boyi.service.StudentService;
 import com.boyi.service.TeacherServer;
 
@@ -56,6 +57,9 @@ public class ClassesAction extends BaseAction{
 	@Resource(name="studentServiceImpl")
 	private StudentService studentService;
 	
+	@Resource(name="studentAccountServiceImpl")
+	private StudentAccountService studentAccountService;
+	
 	@Resource(name="teacherServerImpl")
 	private TeacherServer teacherServer;
 	
@@ -83,6 +87,8 @@ public class ClassesAction extends BaseAction{
 	private String status;
 	private Integer id;
 	private Integer sId;	//学生Id
+
+	private Integer tId;	//教师Id
 	
 	
 	
@@ -140,7 +146,7 @@ public class ClassesAction extends BaseAction{
 		c.setClassPrice(classes.getClassPrice());
 		c.setClassTime(classes.getClassTime());
 		c.setClassType(classes.getClassType());
-		c.setStudentNumer(classes.getStudentNumer());
+		c.setStudentNumber(classes.getStudentNumber());
 		c.setRecommand(classes.isRecommand());
 		Teacher t = teacherServer.getById(teacherId);
 		Course c1 = courseServer.getById(courseId);
@@ -148,7 +154,7 @@ public class ClassesAction extends BaseAction{
 		c.setCourse(c1);
 		
 		c.checkStatus();
-		classesServer.updata(c);
+		classesServer.update(c);
 		return super.update();
 	}
 	
@@ -162,7 +168,7 @@ public class ClassesAction extends BaseAction{
 		}
 		classes = classesServer.getById(id);
 		if(classes.checkStatus()){
-			classesServer.updata(classes);
+			classesServer.update(classes);
 		}
 		
 		return super.show();
@@ -188,15 +194,18 @@ public class ClassesAction extends BaseAction{
 		if(stu.getAccount()==null){
 			StudentAccount account = new StudentAccount();
 			account.setMoney(0);
+			account.setStudent(stu);
+			studentAccountService.save(account);
+			
 			stu.setAccount(account);
 		}
 		
 		
 		stu.getClasses().add(apply.getClasses());
 		
-		classesServer.updata(classes);
-		studentService.updata(stu);
-		classApplyService.updata(apply);
+		classesServer.update(classes);
+		studentService.update(stu);
+		classApplyService.update(apply);
 		
 		return "toIndex";
 	}
@@ -213,12 +222,31 @@ public class ClassesAction extends BaseAction{
 			return "error";
 		}
 		Map<Integer,Boolean> records = classRecord.getRecords();
-		
-		if( records.get(sId)==true ){	//如果已经签到了
-			return "toRecord";	//返回签到页
+		if(sId!=null){
+			if( records.get(sId)==true ){	//如果 学生 已经签到了
+				return "toRecord";	//返回签到页
+			}
 		}
+		if(tId!=null){
+			if(  classRecord.isTrecord()){	//如果 老师 已经签到了
+				return "toRecord";	//返回签到页
+			}
+		}
+		
 		Student stu = studentService.getById(sId);
-		classRecordService.sign(classRecord,stu);	//签到
+		Teacher tea = teacherServer.getById(tId);
+		if(stu!=null){
+			if(!classRecordService.sign(classRecord,stu)){	//签到
+				setMeg("签到失败，请联系管理员处理");
+				return "error";
+			}
+		}
+		if(tea!=null){
+			if(!classRecordService.sign(classRecord,tea)){	//签到
+				setMeg("签到失败，请联系管理员处理");
+				return "error";
+			}
+		}
 		
 		return "toRecord";	//返回签到页
 	}
@@ -233,7 +261,7 @@ public class ClassesAction extends BaseAction{
 			return "toIndex";
 		}
 		apply.setStatus(ClassApplyStatus.已拒绝.toString());
-		classApplyService.updata(apply);
+		classApplyService.update(apply);
 		return "toIndex";
 	}
 	
@@ -275,6 +303,7 @@ public class ClassesAction extends BaseAction{
 		record.setClasses(classes);
 		record.setDate(new Date());
 		record.setRecord("");
+		record.setTrecord(false);
 		if(!classRecordService.save1(record)){	//如果创建失败
 			setMeg("今天已经创建课程记录了，创建失败！");
 			return "error";
@@ -362,6 +391,14 @@ public class ClassesAction extends BaseAction{
 
 	public void setSId(Integer sId) {
 		this.sId = sId;
+	}
+
+	public Integer getTId() {
+		return tId;
+	}
+
+	public void setTId(Integer tId) {
+		this.tId = tId;
 	}
 
 	

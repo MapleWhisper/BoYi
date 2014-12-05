@@ -1,4 +1,4 @@
-package com.boyi.service;
+package com.boyi.serviceImpl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.boyi.base.BaseServerImpl;
 import com.boyi.po.Paper;
+import com.boyi.service.PaperService;
 
 @Service
 @SuppressWarnings("unchecked")

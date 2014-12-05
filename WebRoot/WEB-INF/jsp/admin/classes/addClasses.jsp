@@ -41,13 +41,13 @@
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级总人数</label>
 											<div class="col-xs-4">
-												<input type="number" class="form-control " required name="classes.studentNumer" id="studentNumer" >
+												<input type="number" class="form-control " required name="classes.studentNumber" id="studentNumber" >
 											</div>
 										</div>
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级开始日期</label>
 											<div class="col-xs-4">
-												<input type="text" class="form-control  " required name="classes.beginDate" id="beginDate" onClick="WdatePicker()">
+												<input type="text" class="form-control " required name="classes.beginDate" id="beginDate" onClick="WdatePicker()">
 											</div>
 										</div>
 										<div class="form-group" >
@@ -74,7 +74,11 @@
 										<div class="form-group" >
 											<label  class="col-xs-2 control-label">班级类型</label>
 											<div class="col-xs-4">
-												<input type="text" class="form-control  " required name="classes.classType" id="classType" >
+												<select class="form-control " name="classes.classType" id="classType">
+													<c:forEach items="${applicationScope.classTypes }" var="c">
+														<option value="${c}">${c }</option>
+													</c:forEach>
+												</select>
 											</div>
 										</div>
 										

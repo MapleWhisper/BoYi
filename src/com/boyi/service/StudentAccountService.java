@@ -1,12 +1,12 @@
 
 package com.boyi.service;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import com.boyi.base.BaseServer;
 import com.boyi.po.Student;
 import com.boyi.po.StudentAccount;
+import com.boyi.po.StudentResume;
 
 /**
  * 
@@ -16,5 +16,5 @@ import com.boyi.po.StudentAccount;
  */
 @Transactional
 public interface StudentAccountService extends BaseServer<StudentAccount> {
-	
+	public boolean add(StudentResume resume,Student student);
 }

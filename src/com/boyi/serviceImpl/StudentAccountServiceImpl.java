@@ -1,11 +1,12 @@
 
-package com.boyi.service;
+package com.boyi.serviceImpl;
 
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,8 +18,11 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.boyi.base.BaseServerImpl;
+import com.boyi.enmu.ResumeType;
 import com.boyi.po.Student;
 import com.boyi.po.StudentAccount;
+import com.boyi.po.StudentResume;
+import com.boyi.service.StudentAccountService;
 import com.boyi.utils.BoYiUtils;
 
 
@@ -32,5 +36,28 @@ import com.boyi.utils.BoYiUtils;
 @Transactional
 public class StudentAccountServiceImpl extends BaseServerImpl<StudentAccount> implements StudentAccountService{
 	
+	
+	/**
+	 * 
+	 * 存钱
+	 */
+	public boolean add(StudentResume resume,Student student) {
+		try {
+			StudentAccount account = student.getAccount();
+			System.out.println(account.getStudent().getName());
+			resume.setType(ResumeType.存入.toString());
+			resume.setTradeDate(new Date());
+			resume.setAccount(account);
+			resume.setClasses(null);
+			account.getResumes().add(resume);
+			account.add(resume.getAmount());		//存钱
+			this.update(account);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+	}
 
 }

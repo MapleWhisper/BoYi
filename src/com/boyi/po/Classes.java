@@ -27,7 +27,7 @@ public class Classes implements Serializable {
 	
 	private Integer id;					//id
 	private String name;				//班级名称
-	private Integer studentNumer;		//班级总人数
+	private Integer studentNumber;		//班级总人数
 	private Integer curentNumber;		//当前人数
 	
 	private Date endDate;				//班级截止日期
@@ -109,11 +109,11 @@ public class Classes implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Integer getStudentNumer() {
-		return studentNumer;
+	public Integer getStudentNumber() {
+		return studentNumber;
 	}
-	public void setStudentNumer(Integer studentNumer) {
-		this.studentNumer = studentNumer;
+	public void setStudentNumber(Integer studentNumber) {
+		this.studentNumber = studentNumber;
 	}
 	
 	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})

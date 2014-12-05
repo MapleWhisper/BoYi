@@ -4,8 +4,6 @@
   <head>
 	<%@ include file="../header.jspf" %>
 	<title>登陆系统</title>
-	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
-	<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
   </head>
   
   <body>
@@ -75,6 +73,8 @@
     		
     	</div>
     	<%@ include file="../buttom.jsp" %>
+    	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
   		<script type="text/javascript">
     	$(function() {  
 			$("#form1").validate({

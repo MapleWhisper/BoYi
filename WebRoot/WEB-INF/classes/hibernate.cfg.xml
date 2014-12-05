@@ -30,7 +30,9 @@
 	<mapping class="com.boyi.po.ClassApply" />
 	<mapping class="com.boyi.po.ClassRecord" />
 	<mapping class="com.boyi.po.StudentAccount" />
+	<mapping class="com.boyi.po.TeacherAccount" />
 	<mapping class="com.boyi.po.StudentResume" />
+	<mapping class="com.boyi.po.TeacherResume" />
 
 
 </session-factory>

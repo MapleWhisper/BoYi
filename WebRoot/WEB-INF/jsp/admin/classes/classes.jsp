@@ -68,7 +68,8 @@
 									<thead>
 
 										<tr class="info">
-											<td>课程名</td>
+											<td>班级名称</td>
+											<td>班级类型</td>
 											<td>教师名称</td>
 											<td>开课时间</td>
 											<td>结束时间</td>
@@ -85,6 +86,7 @@
 												<c:if test="${not c.recommand}">
 													<td>${c.name }</td>
 												</c:if>
+												<td>${c.classType }</td>
 												<td>${c.teacher.name }</td>
 												<td><fm:formatDate value="${c.beginDate }"
 														pattern="yyyy-MM-dd" /></td>

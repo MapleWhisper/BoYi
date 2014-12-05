@@ -53,14 +53,25 @@
 							<span class="well">该记录日期为<span style="color: red;"><fm:formatDate value="${classRecord.date }"
 												type="date" dateStyle="full" /></span></span>
 							<hr>
+							<h1><span style="color: blue;">教师:${classRecord.classes.teacher.name}</span>
+								 <c:if test="${classRecord.trecord}">
+								 	<a class="btn btn-default btn-lg" disabled="disabled">已签到</a>
+								 </c:if>
+								 <c:if test="${not classRecord.trecord}">
+								 	<a class="btn btn-danger btn-lg" href="${pageContext.request.contextPath}/admin/classes/classesAction!sign?id=${classRecord.id}&tId=${classRecord.classes.teacher.id}"
+													onclick="return confirm('确认要给老师签到吗？签到后不能修改')" >签到</a>
+								 </c:if>
+							
+							</h1>
+							<hr>
 						</div>
 						
 						<table class="table table-hover table-striped table-bordered table-condensed">
 							<thead>
 								<tr class="info">
 									<td>序号</td>
-									<td>学生Id</td>
 									<td>学生姓名</td>
+									<td>学生Id</td>
 									<td>余额</td>
 									<td>是否签到</td>
 									<td>签到</td>
@@ -70,16 +81,17 @@
 								<c:forEach items="${classRecord.classes.students}" var="s" varStatus="sta">
 									<tr >
 										<td>${sta.count }</td>
-										<td>${s.studentId }</td>
+										
 										<td>${s.name }</td>
+										<td>${s.studentId }</td>
 										<td class="money" id="${s.account.money}">${s.account.money}元</td>
 										<c:if test="${classRecord.records[s.id]=='true'}">
-											<td><button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> 已签到</button></td>
+											<td><button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span>已签到</button></td>
 											<td><a class="btn btn-default " disabled="disabled">已签到</a></td>
 										</c:if>
 										<c:if test="${classRecord.records[s.id]=='false'}">
-											<td><button class="btn btn-default btn-primary"><span class="glyphicon glyphicon-remove"></span> 未签到</button></td>
-											<td><a class="btn btn-primary" href="${pageContext.request.contextPath}/admin/classes/classesAction!sign?id=${classRecord.id}&sId=${s.id}"
+											<td><button class="btn btn-default btn-danger"><span class="glyphicon glyphicon-remove"></span>未签到</button></td>
+											<td><a class="btn btn-danger" href="${pageContext.request.contextPath}/admin/classes/classesAction!sign?id=${classRecord.id}&sId=${s.id}"
 													onclick="return confirm('确认要签到吗？签到后不能修改')">签到</a>
 											</td>
 										</c:if>
@@ -128,6 +140,7 @@
     					$(this).addClass("success");
     				}
     			});
+    			
     			
     		});
     		

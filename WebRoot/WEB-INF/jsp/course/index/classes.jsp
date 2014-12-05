@@ -26,7 +26,7 @@
 												
 												<tr class="ccontext">
 													<td ><span class="glyphicon glyphicon-usd"></span>价格:${c.classPrice }</td>
-													<td><span class="glyphicon glyphicon-user"></span>人数:${c.studentNumer}</td>
+													<td><span class="glyphicon glyphicon-user"></span>人数:${c.studentNumber}</td>
 												</tr>
 											</table>
 										</div>

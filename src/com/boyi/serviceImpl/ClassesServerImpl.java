@@ -1,4 +1,4 @@
-package com.boyi.service;
+package com.boyi.serviceImpl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.boyi.base.BaseServerImpl;
 import com.boyi.po.Classes;
+import com.boyi.service.ClassesServer;
 import com.boyi.utils.Page;
 
 
@@ -42,10 +43,10 @@ public class ClassesServerImpl extends BaseServerImpl<Classes> implements Classe
 			}else{
 				s = " id desc";
 			}
-			String hql = "from Classes c where c.status = ? and c.course.grade like ? and c.course.subject like ? order by "+ s;
+			String hql = "from Classes c where c.status <> ? and c.course.grade like ? and c.course.subject like ? order by "+ s;
 			System.out.println(hql+s+grade+subject+sort);
 			Query query= getSession().createQuery(hql);
-			query.setString(0, "未开始")
+			query.setString(0, "已结束")
 			.setString(1, "%"+grade+"%")
 			.setString(2, "%"+subject+"%");
 			query.setMaxResults(page.getAmount());							//取几条记录

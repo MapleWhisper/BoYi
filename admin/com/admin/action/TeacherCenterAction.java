@@ -89,7 +89,7 @@ public class TeacherCenterAction  extends BaseAction{
 		try {
 			if(ImageUtil.savaPic(ServletActionContext.getServletContext(), new FileInputStream(pic), path, pic.length())){
 				teacher.setPic(path);
-				teacherServer.updata(teacher);
+				teacherServer.update(teacher);
 				return "toIndex";
 			}else{
 				meg = "图片上传出错";
@@ -109,7 +109,7 @@ public class TeacherCenterAction  extends BaseAction{
 		if(t!=null){
 			t.setEmail(teacher.getEmail());
 			t.setName(teacher.getName());
-			teacherServer.updata(t);
+			teacherServer.update(t);
 		}
 		return super.update();
 	}

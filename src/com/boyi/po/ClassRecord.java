@@ -34,6 +34,7 @@ public class ClassRecord {
 	private Date date;
 	
 	private String record;
+	private boolean trecord;		//教师是否签到
 	
 	private Map<Integer, Boolean> records;
 	
@@ -102,6 +103,14 @@ public class ClassRecord {
 			String r = JSON.toJSONString(records);
 			this.record = r;
 		}
+	}
+
+	public boolean isTrecord() {
+		return trecord;
+	}
+
+	public void setTrecord(boolean trecord) {
+		this.trecord = trecord;
 	}
 	
 	

@@ -117,13 +117,13 @@ public class ExamAction extends BaseAction{
 			//考试已经结束
 			if(exam.getStatus().equals(ExamStatus.正在考试.toString())){
 				exam.setStatus(ExamStatus.已结束.toString());
-				examServer.updata(exam);
+				examServer.update(exam);
 			}
 		}else{
 			if(exam.getStatus().equals(ExamStatus.未开始.toString())){
 				exam.setStatus(ExamStatus.正在考试.toString());
 				System.out.println("可以开始了1");
-				examServer.updata(exam);
+				examServer.update(exam);
 			}
 			//考试正在进行
 			//计算 考试剩余时间
@@ -183,7 +183,7 @@ public class ExamAction extends BaseAction{
 		//生成答案JSON字符串
 		String ans  = JSON.toJSONString(answer);
 		result.setAns(ans);
-		examResultServer.updata(result);
+		examResultServer.update(result);
 		
 		return null;
 	}

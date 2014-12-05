@@ -1,4 +1,4 @@
-package com.boyi.service;
+package com.boyi.serviceImpl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.boyi.base.BaseServerImpl;
 import com.boyi.po.Teacher;
+import com.boyi.service.TeacherServer;
 
 
 /**
