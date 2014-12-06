@@ -21,17 +21,10 @@
 					<ul class="nav navbar-nav">
 						<li><a href="${pageContext.request.contextPath}/indexAction">博弈教育首页</a></li>
 					</ul>
-					<!-- 
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="搜索岗位">
-						</div>
-						<button type="submit" class="btn btn-default">提交</button>
-					</form>
-					 -->
+					
 					<ul class="nav navbar-nav navbar-right">
 						
-						<li><p class="navbar-text">你好:${sessionScope.admin.name}</p></li>		
+						<li><p class="navbar-text">你好:${sessionScope.admin.name}${sessionScope.teacher.name}</p></li>		
 						<li ><a href="${pageContext.request.contextPath}/adminLoginAction!logout">
 							<span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;退出登陆</a></li>
 						

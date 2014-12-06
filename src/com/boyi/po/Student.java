@@ -30,13 +30,15 @@ public class Student implements Serializable{
 	//登录信息
 	private String email;			//邮箱
 	private String password;		//密码
+	private Date birth;				//出生日期
 	
 	
 	//个人信息
 	private String city;			//城市
 	private String picPath;			//头像路径
 	private	String phoneNumber;		//手机号
-	private String address;			//住址
+	private String school;			//所属学校
+	private String schoolTime;			//入学年月和班级
 	private String idNumber;		//身份证号
 	private String age;				//年龄
 	private String sex;				//性别
@@ -47,7 +49,7 @@ public class Student implements Serializable{
 	
 	
 	private Set<Classes> classes;	//所报课程
-	private Date birth;
+	
 	
 	private Set<ClassApply> classApplys; 
 	
@@ -136,13 +138,6 @@ public class Student implements Serializable{
 		this.picPath = picPath;
 	}
 	
-	@Column(length=200)
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	
 	@Column(length=40)
 	public String getIdNumber() {
@@ -200,6 +195,19 @@ public class Student implements Serializable{
 	}
 	public void setAccount(StudentAccount studentAccount) {
 		this.account = studentAccount;
+	}
+	
+	public String getSchool() {
+		return school;
+	}
+	public void setSchool(String school) {
+		this.school = school;
+	}
+	public String getSchoolTime() {
+		return schoolTime;
+	}
+	public void setSchoolTime(String schoolTime) {
+		this.schoolTime = schoolTime;
 	}
 	
 	

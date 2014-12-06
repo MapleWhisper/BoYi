@@ -32,6 +32,7 @@ import com.boyi.service.TeacherServer;
 @Namespace("/admin/teacherCenter")
 @Action(value="teacherCenterAction",results={
 		@Result(name="toIndex",type="redirectAction",location="teacherCenterAction"),
+		@Result(name="login",type="redirectAction",location="../../adminLoginAction"),
 		@Result(name="error",location="/WEB-INF/jsp/error.jsp"),
 		@Result(name="index",location="/WEB-INF/jsp/admin/teacherCenter/teacherCenter.jsp"),
 		@Result(name="showClasses",location="/WEB-INF/jsp/admin/teacherCenter/showClasses.jsp"),
@@ -65,11 +66,11 @@ public class TeacherCenterAction  extends BaseAction{
 	public String execute() throws Exception {
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		this.teacher = (Teacher) session.getAttribute("teacher");
-		//临时代码
-		if(teacher ==null ){
-			teacher = new Teacher();
-			teacher.setId(1);
+		if(teacher==null){
+			
+			return "login";
 		}
+		
 		//临时代码
 		this.teacher = teacherServer.getById(teacher.getId());
 		

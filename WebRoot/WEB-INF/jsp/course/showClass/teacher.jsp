@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <div class="row">
-	<p style="font-size:16px;font-weight:bold;">名师推荐</p>
+	<h3 class="page-header">名师推荐</h3>
 	<HR>
 </div>
 <c:forEach items="${ teacherList}" var="t">

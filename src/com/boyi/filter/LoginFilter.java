@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.boyi.po.Admin;
 import com.boyi.po.Student;
+import com.boyi.po.Teacher;
 
 public class LoginFilter implements Filter{
 	@Override
@@ -33,6 +35,16 @@ public class LoginFilter implements Filter{
 			Student stu = (Student) session.getAttribute("student");
 			if(stu==null){
 				resp.sendRedirect(req.getContextPath()+"/loginAction!loginUI");
+			}else{
+				chain.doFilter(request, response);
+			}
+			return;
+		}
+		if(path.indexOf("admin/")!=-1){
+			Teacher tea = (Teacher) session.getAttribute("teacher");
+			Admin admin = (Admin) session.getAttribute("admin");
+			if(tea==null && admin==null){
+				resp.sendRedirect(req.getContextPath()+"/adminLoginAction");
 			}else{
 				chain.doFilter(request, response);
 			}

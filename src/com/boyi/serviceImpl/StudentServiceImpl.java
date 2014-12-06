@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -37,6 +39,13 @@ public class StudentServiceImpl extends BaseServerImpl<Student> implements Stude
 	 * @return true:正确
 	 * 		   false:不正确	
 	 */
+	@Override
+	public void save(Student stu) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddmmss");
+		String studentId = dateFormat.format(new Date());
+		stu.setStudentId(studentId);
+		super.save(stu);
+	}
 	@Override
 	public Student login(Student student) {
 		Student s = (Student) getSessionFactory().openSession().createQuery("from Student a where a.email = ? and a.password= ? ")

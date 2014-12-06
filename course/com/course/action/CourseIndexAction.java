@@ -86,6 +86,7 @@ public class CourseIndexAction extends BaseAction{
 		page.setCur(cur);
 		this.classesList = classesServer.findIndexAll(grade, subject, sort, page);
 		this.articleList = articleService.findDownLoadAll();
+		this.teacherList = teacherServer.findRecommand();
 		
 		return "index";
 	}

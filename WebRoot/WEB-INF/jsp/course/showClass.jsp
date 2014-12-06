@@ -65,20 +65,17 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
 						<li role="presentation" class="active"><a href="#tab1"
-							role="tab" data-toggle="tab">课程信息</a></li>
+							role="tab" data-toggle="tab">班级信息</a></li>
 						<li role="presentation"><a href="#tab2" role="tab"
-							data-toggle="tab">教学视频</a></li>
-						<li role="presentation"><a href="#tab3" role="tab"
 							data-toggle="tab">招生简章</a></li>
-						<li role="presentation"><a href="#tab4" role="tab"
+						<li role="presentation"><a href="#tab3" role="tab"
 							data-toggle="tab">课程大纲</a></li>
 					</ul>
 					<!-- Tab panes -->
 					<div class="tab-content">
-						<div role="tabpanel" class="tab-pane active" id="tab1"></div>
+						<div role="tabpanel" class="tab-pane active" id="tab1">${classes.classDetail }</div>
 						<div role="tabpanel" class="tab-pane" id="tab2"></div>
-						<div role="tabpanel" class="tab-pane" id="tab3"></div>
-					    <div role="tabpanel" class="tab-pane" id="tab4"></div>
+						<div role="tabpanel" class="tab-pane" id="tab3">${classes.course.courseDetail }</div>
 					</div>
 			</div><!-- col-xs-8 -->
 			

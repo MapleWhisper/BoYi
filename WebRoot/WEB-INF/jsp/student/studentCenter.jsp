@@ -8,7 +8,7 @@
   <body>
     	<div class="container">
     		<div class="row">
-    			<%@ include file="head.jsp" %>
+    			<%@ include file="../index/loginHead.jsp" %>
     		</div>
     		<div class="row" style="margin-top: 70px ;padding-left: 100px ; padding-right: 100px ;">
     			<div class="panel panel-default" style="height: 600px" >
@@ -55,6 +55,6 @@
     		
     	</div>
     	</div>
-    	<%@ include file="../buttom.jsp" %>
+    	<%@ include file="../foot.jsp" %>
   </body>
 </html>

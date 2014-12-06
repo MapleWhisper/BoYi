@@ -26,6 +26,7 @@ import com.boyi.service.StudentService;
 @Namespace("/")
 @Action(value="loginAction",results={
 		@Result(name="index",type="redirectAction",location="indexAction"),
+		@Result(name="toIndex",type="redirectAction",location="indexAction"),
 		@Result(name="loginUI",location="/WEB-INF/jsp/index/login.jsp"),
 		@Result(name="registerUI",location="/WEB-INF/jsp/index/register.jsp"),
 		@Result(name="loginout",location="/WEB-INF/jsp/loginAction/logout.jsp"),
@@ -62,7 +63,7 @@ public class LoginAction extends  BaseAction{
 	public String logout(){
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		session.removeAttribute("student");	
-		return "loginUI";		//返回到登陆页面
+		return "toIndex";		//返回到登陆页面
 	}
 	
 	public String registerUI(){

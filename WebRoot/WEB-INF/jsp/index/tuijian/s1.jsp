@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <s:iterator value="tlist" var="t">
-	<div class="col-xs-4">
+	<div class="col-xs-6">
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<div class="row">

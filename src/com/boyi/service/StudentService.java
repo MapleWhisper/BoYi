@@ -24,6 +24,9 @@ public interface StudentService extends BaseServer<Student> {
 	 * 
 	 * @return 登陆得到的对象，可以判断是否为空来确认用户名和密码是否正确
 	 */
+	
+	@Override
+	public void save(Student entry);
 	public Student login(Student student);
 
 	public Student loginWhitMd5(Student student);	

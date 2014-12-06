@@ -72,7 +72,7 @@
     		</div><!-- row-end -->
     		
     	</div>
-    	<%@ include file="../buttom.jsp" %>
+    	<%@ include file="../foot.jsp" %>
     	<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/messages_zh.js"></script>
   		<script type="text/javascript">

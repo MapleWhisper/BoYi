@@ -123,7 +123,6 @@ public class StudentCenterAction extends BaseAction{
 			String idNumber=request.getParameter("idNumber");
 			String address =request.getParameter("stuAddress");
 			String phoneNumber =request.getParameter("phoneNumber");
-			stu.setAddress(address);
 			stu.setIdNumber(idNumber);
 			stu.setPhoneNumber(phoneNumber);
 			stu.setBirth(sdf.parse(birth));

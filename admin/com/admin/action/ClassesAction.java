@@ -96,7 +96,7 @@ public class ClassesAction extends BaseAction{
 	public String execute() throws Exception {
 		
 		if(status ==null){
-			this.status = "未开始";
+			this.status = "在读";
 		}
 		this.classesList = classesServer.findAllByStatus(status);
 		

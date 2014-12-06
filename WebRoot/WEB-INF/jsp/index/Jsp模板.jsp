@@ -15,6 +15,6 @@
     		</div>
     		
     	</div>
-    	<%@ include file="../buttom.jsp" %>
+    	<%@ include file="../foot.jsp" %>
   </body>
 </html>

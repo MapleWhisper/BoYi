@@ -1,5 +1,7 @@
 package com.admin.action;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -90,7 +92,8 @@ public class StudentAction  extends BaseAction{
 		try {
 			studentService.save(student);
 		} catch (Exception e) {
-			meg="该管理员账号已经存在,请不要重复添加!";
+			e.printStackTrace();
+			meg="该账号已经存在,请不要重复添加!";
 			return "error";
 		}
 		return "toIndex";
@@ -107,7 +110,8 @@ public class StudentAction  extends BaseAction{
 	public String update() {
 		Student s = studentService.getById(id);
 		s.setName(student.getName());
-		s.setAddress(student.getAddress());
+		s.setSchool(student.getSchool());
+		s.setSchoolTime(student.getSchoolTime());
 		s.setAge(student.getAge());
 		s.setCity(student.getCity());
 		s.setEmail(student.getEmail());
@@ -117,7 +121,6 @@ public class StudentAction  extends BaseAction{
 		s.setPassword(student.getPassword());
 		s.setPhoneNumber(student.getPhoneNumber());
 		s.setSex(student.getSex());
-		s.setStudentId(student.getStudentId());
 		studentService.update(s);
 		return super.update();
 	}

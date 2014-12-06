@@ -25,8 +25,15 @@
 					</ul>
 					
 					<ul class="nav navbar-nav navbar-right">
-     				 <li><a href="${pageContext.request.contextPath}/loginAction!loginUI">登陆</a></li>
-     				 <li><a href="${pageContext.request.contextPath}/loginAction!registerUI">注册</a></li>
+					 <c:if test="${ sessionScope.student ==null}">
+					 		<li><a href="${pageContext.request.contextPath}/loginAction!loginUI">登陆</a></li>
+     					 <li><a href="${pageContext.request.contextPath}/loginAction!registerUI">注册</a></li>
+					 </c:if>
+					  <c:if test="${sessionScope.student !=null}">
+					 		<li><a href="${pageContext.request.contextPath}/student/studentCenterAction">你好，${student.name },[学生中心]</a></li>
+     					 <li><a href="${pageContext.request.contextPath}/loginAction!logout">退出登录</a></li>
+					 </c:if>
+     				 
      				 <li><a href="${pageContext.request.contextPath}/indexAction">返回博弈教育首页</a></li>
      				</ul>
 				</div>

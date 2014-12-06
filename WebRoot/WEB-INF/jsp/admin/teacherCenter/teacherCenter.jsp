@@ -78,16 +78,15 @@
 			<!--右侧的内容 -->
 
 			<div class="col-xs-3" style="margin-left: -10px">
-				<div class="panel panel-info">
-					<div class="panel-heading">教师信息<span style="float: right;"><a href="#" id="edit">修改个人信息</a></span></div>
+				<div class="panel panel-info" >
+					<div class="panel-heading">教师信息<span style="float: right;"></span></div>
 					<div class="panel-body">
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#home"
 								role="tab" data-toggle="tab">我的资料</a></li>
 							<li role="presentation"><a href="#profile" role="tab"
 								data-toggle="tab">Profile</a></li>
-							<li role="presentation"><a href="#messages" role="tab"
-								data-toggle="tab">Messages</a></li>
+							<li role="presentation"><a  href="#" id="edit">修改信息</a></li>
 						</ul>
 						<!-- Tab panes -->
 						<div class="tab-content">
@@ -154,10 +153,10 @@
     			$("#edit").click(function(){
     				$(".old").toggle();
     				$(".new").toggle();
-    				if($(this).html()=="修改个人信息"){
+    				if($(this).html()=="修改信息"){
     					$(this).html("取消修改");
     				}else{
-    					$(this).html("修改个人信息");
+    					$(this).html("修改信息");
     				}
     			});
     			

@@ -71,14 +71,18 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label   class="col-xs-2 control-label">学生学号</label>
+										<label   class="col-xs-2 control-label">*所属学校</label>
 										<div class="col-xs-3">
-											<input type="number" class="form-control" name="student.studentId" id="studentId"  value="${student.studentId}">
-										</div>
-										<div class="col-xs-3">
-											<span class="help-block">*可留空，系统将自动生成学号</span>
+											<input type="text" class="form-control" name="student.school" id="school" required="required"	value="${student.school}">
 										</div>
 									</div>
+									<div class="form-group">
+										<label   class="col-xs-2 control-label">*入学年月和班级</label>
+										<div class="col-xs-3">
+											<input type="text" class="form-control" name="student.schoolTime" id="schoolTime" required="required" value="${student.schoolTime}">
+										</div>
+									</div>
+									
 									<div class="form-group">
 										<label   class="col-xs-2 control-label">学生电话</label>
 										<div class="col-xs-3">
@@ -109,12 +113,7 @@
 											<input type="text" class="form-control  " name="student.city" id="city"	value="${student.city}">
 										</div>
 									</div>
-									<div class="form-group">
-										<label   class="col-xs-2 control-label">住址</label>
-										<div class="col-xs-6">
-											<input type="text" class="form-control  " name="student.address" id="address"	value="${student.address}">
-										</div>
-									</div>
+									
 									<div>
 										<div class="form-group">    
 											 <div class="col-xs-6 col-xs-offset-4">

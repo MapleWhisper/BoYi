@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.boyi.base.BaseServer;
+import com.boyi.po.Admin;
 import com.boyi.po.Teacher;
 
 /**
@@ -17,4 +18,5 @@ import com.boyi.po.Teacher;
 @Transactional
 public interface TeacherServer extends BaseServer<Teacher> {
 	public List<Teacher> findRecommand();
+	public Teacher login(Teacher teacher);
 }

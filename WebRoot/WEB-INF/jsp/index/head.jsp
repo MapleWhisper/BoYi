@@ -10,18 +10,19 @@
 	<div id="header" style="margin-top: 30px">
 		<ul>
 			<li><font color="white">选课程</font></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction">一年级</a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction">二年级</a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction"> 三年级</a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction"> 四年级</a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction"> 五年级</a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction">六年级</a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction">初一 </a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction">初二 </a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction">初三 </a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction"> 高一</a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction">高二 </a></li>
-			<li><a href="${pageContext.request.contextPath}/course/indexAction"> 高三</a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=小学一年级">一年级</a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=小学二年级">二年级</a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=小学三年级"> 三年级</a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=小学四年级"> 四年级</a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=小学五年级"> 五年级</a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=小学六年级">六年级</a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=初中一年级">初一 </a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=初中二年级">初二 </a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=初中三年级">初三 </a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=高中一年级"> 高一</a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=高中二年级">高二 </a></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=高中三年级"> 高三</a></li>
+			<li><a href="http://bbs.bjsyedu.com" target="_blank"> 逛论坛</a></li>
 		</ul>
 	</div>
 

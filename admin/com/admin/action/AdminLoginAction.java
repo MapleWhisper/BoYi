@@ -1,7 +1,5 @@
 package com.admin.action;
 
-import java.util.Arrays;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -12,15 +10,12 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.boyi.base.BaseAction;
 import com.boyi.po.Admin;
-import com.boyi.po.Privilege;
+import com.boyi.po.Teacher;
 import com.boyi.service.AdminServer;
+import com.boyi.service.TeacherServer;
 
 @Controller
 @Scope("prototype")
@@ -34,10 +29,14 @@ import com.boyi.service.AdminServer;
 public class AdminLoginAction extends BaseAction{
 	
 	//注入admin服务	adminServerImpl
-		@Resource(name="adminServerImpl")
-		private AdminServer adminServer;
+	@Resource(name="adminServerImpl")
+	private AdminServer adminServer;
+	
+	@Resource(name="teacherServerImpl")
+	private TeacherServer teacherServer;
 		
 	private Admin admin;
+	private Teacher teacher;
 	private String valifCode;
 	private String error;
 		
@@ -68,10 +67,14 @@ public class AdminLoginAction extends BaseAction{
 			error = "验证码错误";
 			return "login";
 		}
-		System.out.println(admin.getUsername());
-		System.out.println(admin.getPassword());
+		
 		Admin a =adminServer.login(admin);
-		System.out.println("管理员登陆");
+		this.teacher = new Teacher();
+		this.teacher.setEmail(admin.getUsername());
+		this.teacher.setPassword(admin.getPassword());
+		Teacher t = teacherServer.login(teacher);
+		
+		System.out.println("管理员/教师登陆");
 		//登陆成功
 		if(a!=null){
 			/*
@@ -88,6 +91,10 @@ public class AdminLoginAction extends BaseAction{
 			session.setAttribute("admin", a);
 			return "success";
 		}
+		if(t!=null){
+			session.setAttribute("teacher", t);
+			return "success";
+		}
 		//登陆失败
 		error="账号或密码不正确";
 		return "login";
@@ -97,6 +104,7 @@ public class AdminLoginAction extends BaseAction{
 	public String logout(){
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		session.removeAttribute("admin");	
+		session.removeAttribute("teacher");
 		return "toIndex";		//返回到登陆页面
 	}
 
