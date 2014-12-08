@@ -18,6 +18,9 @@
 		</li>
 </ul>
 
+<c:if test="${admin!=null}">
+
+
 <ul class="list-group" role="tablist" id="nav">
 		<li role="presentation" class="list-group-item pre " id="classes">
 			<span class="glyphicon glyphicon-tasks"></span>
@@ -94,3 +97,4 @@
 			</a>
 		</li>
 </ul>
+</c:if>

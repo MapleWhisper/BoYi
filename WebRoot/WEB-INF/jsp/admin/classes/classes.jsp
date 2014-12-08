@@ -43,7 +43,7 @@
 						<ul class="nav nav-pills nav-justified" role="tablist">
 							
 							<li role="presentation" class="${status=='未开始'?'active':'' }"><a
-								href="${pageContext.request.contextPath}/admin/classes/classesAction">
+								href="${pageContext.request.contextPath}/admin/classes/classesAction?status=未开始">
 									未开始<span class="badge"><s:property
 											value="classesList.{?#this.status=='未开始'}.size()" /></span>
 							</a></li>
@@ -84,7 +84,7 @@
 													<td><a href="${pageContext.request.contextPath}/admin/classes/classesAction!show?id=${c.id}">${c.name}<span class="label label-danger">推荐课程</span></a></td>
 												</c:if>
 												<c:if test="${not c.recommand}">
-													<td>${c.name }</td>
+													<td><a href="${pageContext.request.contextPath}/admin/classes/classesAction!show?id=${c.id}">${c.name }</a></td>
 												</c:if>
 												<td>${c.classType }</td>
 												<td>${c.teacher.name }</td>

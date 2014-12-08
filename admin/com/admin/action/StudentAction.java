@@ -112,6 +112,8 @@ public class StudentAction  extends BaseAction{
 		s.setName(student.getName());
 		s.setSchool(student.getSchool());
 		s.setSchoolTime(student.getSchoolTime());
+		s.setStudentType(student.getStudentType());
+		s.setStudentId(student.getStudentId());
 		s.setAge(student.getAge());
 		s.setCity(student.getCity());
 		s.setEmail(student.getEmail());

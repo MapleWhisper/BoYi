@@ -55,6 +55,13 @@
 								<td><button class="btn btn-primary edit" type="button">修改参数</button></td>
 								<td>系统管理员qq,系统主页QQ聊天</td>
 							</tr>
+							<tr>
+								<td>admin.school</td>
+								<td><input type="text"
+									value="${applicationScope.system['admin.school']}" name="admin.school"></td>
+								<td><button class="btn btn-primary edit" type="button">修改参数</button></td>
+								<td>学校列表，添加学生显示，学校之间使用'-'分开</td>
+							</tr>
 
 							<tr>
 								<td>page.articleAmountPerPage</td>

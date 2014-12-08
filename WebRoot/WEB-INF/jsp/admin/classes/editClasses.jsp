@@ -88,7 +88,12 @@
 												<s:textfield type="number" cssClass="form-control  " required="required" name="classes.classPrice" id="classPrice" />
 											</div>
 										</div>
-										
+										<div class="form-group" >
+											<label  class="col-xs-2 control-label">教师课时费</label>
+											<div class="col-xs-4">
+												<s:textfield type="number" cssClass="form-control" required="required" name="classes.teacherPrice" id="classPrice" />
+											</div>
+										</div>
 										<hr>
 										
 										<div class="form-group" >
@@ -114,7 +119,6 @@
 												</s:select>
 											</div>
 										</div>
-										
 										
 										
 										

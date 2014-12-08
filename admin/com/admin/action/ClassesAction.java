@@ -144,6 +144,7 @@ public class ClassesAction extends BaseAction{
 		c.setClassDetail(classes.getClassDetail());
 		c.setClassPlace(classes.getClassPlace());
 		c.setClassPrice(classes.getClassPrice());
+		c.setTeacherPrice(classes.getTeacherPrice());
 		c.setClassTime(classes.getClassTime());
 		c.setClassType(classes.getClassType());
 		c.setStudentNumber(classes.getStudentNumber());
@@ -166,6 +167,7 @@ public class ClassesAction extends BaseAction{
 		if(id==null){
 			id = (Integer) ServletActionContext.getRequest().getSession().getAttribute("classesId");
 		}
+		ServletActionContext.getRequest().getSession().setAttribute("classesId",id);
 		classes = classesServer.getById(id);
 		if(classes.checkStatus()){
 			classesServer.update(classes);
@@ -312,6 +314,41 @@ public class ClassesAction extends BaseAction{
 		return "toClasses";
 	}
 	
+	@Override
+	public String delete() {
+		try {
+			this.classes = classesServer.getById(id);
+			for(Student s :classes.getStudents()){
+				s.getClasses().remove(classes);
+			}
+			classes.getStudents().clear();
+			classesServer.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			setMeg("删除失败课程失败!<br>已经存在扣费记录；不能删除<br>："+e.getMessage());
+			return "error";
+		}
+		
+		return "toIndex";
+		
+	}
+	
+	public String removeStudent(){
+		try {
+			int cid = (Integer) ServletActionContext.getRequest().getSession().getAttribute("classesId");
+			this.classes = classesServer.getById(cid);
+			Student stu = studentService.getById(id);
+			stu.getClasses().remove(classes);
+			classes.getStudents().remove(stu);
+			classesServer.update(classes);
+			studentService.update(stu);
+		} catch (Exception e) {
+			e.printStackTrace();
+			setMeg("删除学生失败！"+e.getMessage());
+			return "error";
+		}
+		return "toClasses";
+	}
 	
 	public List<Teacher> getTeacherList() {
 		return teacherList;

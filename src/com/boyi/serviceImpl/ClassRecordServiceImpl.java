@@ -118,11 +118,11 @@ public class ClassRecordServiceImpl extends BaseServerImpl<ClassRecord> implemen
 			TeacherResume resume = new TeacherResume();		//记录日志		
 			resume.setTradeDate(new Date());
 			resume.setAccount(account);
-			resume.setAmount(classes.getClassPrice());
+			resume.setAmount(classes.getTeacherPrice());
 			resume.setClasses(classes);
 			resume.setType(ResumeType.存入.toString());
 			account.getResumes().add(resume);
-			account.add(classes.getClassPrice());	//给教师加钱
+			account.add(classes.getTeacherPrice());	//给教师加钱
 			teacherAccountService.update(account);		//保存扣费日志 和 余额
 			
 			classRecord.setTrecord(true);	//把教师记录改为签到

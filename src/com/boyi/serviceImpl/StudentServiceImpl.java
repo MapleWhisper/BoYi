@@ -39,11 +39,14 @@ public class StudentServiceImpl extends BaseServerImpl<Student> implements Stude
 	 * @return true:正确
 	 * 		   false:不正确	
 	 */
+	
+	/**
+	 * 
+	 * 保存学生
+	 */
 	@Override
 	public void save(Student stu) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddmmss");
-		String studentId = dateFormat.format(new Date());
-		stu.setStudentId(studentId);
+		stu.createStudentId();
 		super.save(stu);
 	}
 	@Override

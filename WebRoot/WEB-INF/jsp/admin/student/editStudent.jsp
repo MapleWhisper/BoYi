@@ -71,18 +71,32 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label   class="col-xs-2 control-label">*所属学校</label>
+										<label   class="col-xs-2 control-label">学生Id</label>
 										<div class="col-xs-3">
-											<input type="text" class="form-control" name="student.school" id="school" required="required"	value="${student.school}">
+											<input type="text" class="form-control" name="student.studentId" id="studentId" required="required" value="${student.studentId}">
 										</div>
 									</div>
 									<div class="form-group">
-										<label   class="col-xs-2 control-label">*入学年月和班级</label>
+										<label   class="col-xs-2 control-label">*所属学校</label>
 										<div class="col-xs-3">
-											<input type="text" class="form-control" name="student.schoolTime" id="schoolTime" required="required" value="${student.schoolTime}">
+											<input type="text" class="form-control" name="student.school" id="school" required="required"	value="${student.school}">
+											
 										</div>
 									</div>
 									
+									<div class="form-group">
+										<label   class="col-xs-2 control-label">*入学年</label>
+										<div class="col-xs-3">
+											<input type="number" class="form-control" name="student.schoolTime" id="schoolTime" required="required" value="${student.schoolTime}">
+										</div>
+									</div>
+									<div class="form-group">
+										<label   class="col-xs-2 control-label">*学生类型</label>
+										<div class="col-xs-3">
+											<s:select list="%{#{'X':'小学','C':'初中','G':'高中','D':'大学','Z':'职业培训' }}" name="student.studentType" cssClass="form-control" required="required">
+											</s:select>
+										</div>
+									</div>
 									<div class="form-group">
 										<label   class="col-xs-2 control-label">学生电话</label>
 										<div class="col-xs-3">

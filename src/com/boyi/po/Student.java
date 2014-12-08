@@ -1,6 +1,7 @@
 package com.boyi.po;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -31,6 +32,7 @@ public class Student implements Serializable{
 	private String email;			//邮箱
 	private String password;		//密码
 	private Date birth;				//出生日期
+	private String studentType;		//学生类型，初中高中大学专职培训
 	
 	
 	//个人信息
@@ -38,7 +40,7 @@ public class Student implements Serializable{
 	private String picPath;			//头像路径
 	private	String phoneNumber;		//手机号
 	private String school;			//所属学校
-	private String schoolTime;			//入学年月和班级
+	private String schoolTime;			//入学年月
 	private String idNumber;		//身份证号
 	private String age;				//年龄
 	private String sex;				//性别
@@ -47,7 +49,7 @@ public class Student implements Serializable{
 	
 	private StudentAccount account;	//学生账户
 	
-	
+	private Set<ExamResult> examResults;	//学生成绩
 	private Set<Classes> classes;	//所报课程
 	
 	
@@ -188,6 +190,14 @@ public class Student implements Serializable{
 	}
 	
 	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="student")
+	public Set<ExamResult> getExamResults() {
+		return examResults;
+	}
+	public void setExamResults(Set<ExamResult> examResults) {
+		this.examResults = examResults;
+	}
+	
 	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE},fetch=FetchType.EAGER)
 	@JoinColumn(name="accountId")
 	public StudentAccount getAccount() {
@@ -211,6 +221,23 @@ public class Student implements Serializable{
 	}
 	
 	
+	public String getStudentType() {
+		return studentType;
+	}
+	public void setStudentType(String studentType) {
+		this.studentType = studentType;
+	}
+	
+	public void createStudentId(){
+		String id = "";
+		id+=studentType;
+		id+=(this.sex.equals("男")?"M":"F");
+		id+=schoolTime;
+		SimpleDateFormat dateFormat = new SimpleDateFormat("HHmmss");
+		id+=dateFormat.format(new Date());
+		System.out.println(id);
+		this.studentId = id;
+	}
 	
 	
 	

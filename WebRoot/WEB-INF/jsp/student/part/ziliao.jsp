@@ -86,12 +86,12 @@
 						</td>
 					</tr>
 					<tr>
-						<td height="50" class="textR pdright40 ftgray03">详细地址:</td>
+						<td height="50" class="textR pdright40 ftgray03">所属学校:</td>
 						<td>
-							<div class="old" id="old_xuexiao_address" style="display: block;">${student.address }</div>
+							<div class="old" id="old_xuexiao_address" style="display: block;">${student.school }</div>
 							<div class="new" style="display: none;" id="new_xuexiao_address">
 								<input class="ipText01 wid300" name="stuAddress" type="text"
-									id="stuAddress" value="${student.address }" />
+									id="stuAddress" value="${student.school }" />
 							</div>
 						</td>
 					</tr>

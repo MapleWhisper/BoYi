@@ -178,7 +178,7 @@ public class Classes implements Serializable {
 		this.status = status;
 	}
 	
-	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="classes")
+	@OneToMany(cascade={CascadeType.ALL},mappedBy="classes")
 	public Set<Exam> getExams() {
 		return exams;
 	}
@@ -207,7 +207,7 @@ public class Classes implements Serializable {
 		this.studentResumes = studentResumes;
 	}
 	
-	@OneToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},mappedBy="classes")
+	@OneToMany(cascade={CascadeType.ALL},mappedBy="classes")
 	public Set<ClassRecord> getClassRecords() {
 		return classRecords;
 	}

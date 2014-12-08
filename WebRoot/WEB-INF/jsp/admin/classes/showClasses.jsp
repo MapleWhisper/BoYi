@@ -151,9 +151,8 @@
 												<td>${s.email }</td>
 												<td class="money" id="${s.account.money}">${s.account.money}元</td>
 
-												<td><a href="${pageContext.request.contextPath}/admin/classes/classesAction!edit?id=${c.id }"
-													class="btn btn-info"><span
-														class=" glyphicon glyphicon-zoom-in"></span>&nbsp;&nbsp;查看</a></td>
+												<td><a href="${pageContext.request.contextPath}/admin/classes/classesAction!removeStudent?id=${s.id}"
+													class="btn btn-info">退出班级</a></td>
 											</tr>
 										</c:forEach>
 									</tbody>

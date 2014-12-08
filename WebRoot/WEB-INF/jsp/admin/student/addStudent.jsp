@@ -76,13 +76,36 @@
 									<div class="form-group">
 										<label   class="col-xs-2 control-label">*所属学校</label>
 										<div class="col-xs-3">
+										<!--  
 											<input type="text" class="form-control" name="student.school" id="school" required="required"	>
+											-->
+											<select name="student.school" class="form-control" required="required">
+												<c:forTokens items="${applicationScope.system['admin.school'] }" delims="-" var="s">
+													<option value="${s}">${s}</option>
+												</c:forTokens>
+											</select>
 										</div>
 									</div>
 									<div class="form-group">
-										<label   class="col-xs-2 control-label">*入学年月和班级</label>
+										<label   class="col-xs-2 control-label">*入学年</label>
 										<div class="col-xs-3">
-											<input type="text" class="form-control" name="student.schoolTime" id="schoolTime" required="required" placeholder="例:2014级07班"	>
+											<select name="student.schoolTime" class="form-control" required="required">
+												<c:forEach  begin="2005" end="2040" var="y" >
+													<option value="${y}">${y}</option>
+												</c:forEach>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label   class="col-xs-2 control-label">*学生类型</label>
+										<div class="col-xs-3">
+											<select name="student.studentType" class="form-control" required="required">
+													<option value="X">小学</option>
+													<option value="C">初中</option>
+													<option value="G">高中</option>
+													<option value="D">大学</option>
+													<option value="Z">职业培训</option>
+											</select>
 										</div>
 									</div>
 									<div class="form-group">

@@ -84,12 +84,18 @@
 										
 										
 										<div class="form-group" >
-											<label  class="col-xs-2 control-label">课程价格</label>
+											<label  class="col-xs-2 control-label">课时价格</label>
 											<div class="col-xs-4">
 												<input type="number" class="form-control  " required name="classes.classPrice" id="classPrice" >
 											</div>
 										</div>
 										
+										<div class="form-group" >
+											<label  class="col-xs-2 control-label">教师课时费价格</label>
+											<div class="col-xs-4">
+												<input type="number" class="form-control  " required name="classes.teacherPrice" id="classPrice" >
+											</div>
+										</div>
 										<hr>
 										
 										<div class="form-group" >
