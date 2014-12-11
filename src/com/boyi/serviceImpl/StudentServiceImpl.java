@@ -20,6 +20,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.boyi.base.BaseServerImpl;
 import com.boyi.po.Student;
+import com.boyi.po.StudentAccount;
 import com.boyi.service.StudentService;
 import com.boyi.utils.BoYiUtils;
 
@@ -47,6 +48,9 @@ public class StudentServiceImpl extends BaseServerImpl<Student> implements Stude
 	@Override
 	public void save(Student stu) {
 		stu.createStudentId();
+		StudentAccount account = new StudentAccount();
+		stu.setAccount(account);
+		stu.setPicPath("image/default_pic.jpg");
 		super.save(stu);
 	}
 	@Override

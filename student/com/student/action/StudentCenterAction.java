@@ -46,6 +46,7 @@ import com.boyi.service.StudentService;
 		@Result(name="studentCenter",location="/WEB-INF/jsp/student/studentCenter.jsp"),
 		@Result(name="personalInfo",location="/WEB-INF/jsp/student/personalInfo.jsp"),
 		@Result(name="personalInfo1",location="/WEB-INF/jsp/student/personalInfo.jsp"),
+		@Result(name="showAccount",location="/WEB-INF/jsp/student/account.jsp"),
 })
 public class StudentCenterAction extends BaseAction{
 
@@ -182,6 +183,12 @@ public class StudentCenterAction extends BaseAction{
 		return fileName;
 	}
 	*/
+	
+	public String showAccount(){
+		Student stu = (Student) ServletActionContext.getRequest().getSession().getAttribute("student");
+		this.student = studentService.getById(stu.getId());
+		return "showAccount";
+	}
 	
 	public StudentService getStudentService() {
 		return studentService;

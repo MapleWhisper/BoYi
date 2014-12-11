@@ -3,6 +3,7 @@
 <html>
   <head>
 	<%@ include file="../header.jspf" %>
+	<title>学生中心</title>
   </head>
   
   <body>
@@ -17,9 +18,11 @@
 							<%@ include file="part/left.jsp"%>
 						</div><!-- col-xs-3 -->
 						<div class="col-xs-9">
+							<!-- 
 							<div class="row" style="height: 100px">
 								<%@ include file="part/top.jsp"%>
 							</div>
+							 -->
 							<div class="row">
 								<div class="panel panel-default" style="height: 470px">
 									<div class="panel-body" >
@@ -32,18 +35,30 @@
 										  <li class="active"><a href="#list1" title="待审核" role="tab" data-toggle="tab">在读课程<span class="badge" id="step1">${count.待审核}</span></a></li>
 										  <li><a href="#list2" title="待答题" role="tab" data-toggle="tab">未开课课程<span class="badge" id="step2">${count.待答题}</span></a></li>
 										  <li><a href="#list3" title="待批阅" role="tab" data-toggle="tab">已结束课程<span class="badge" id="step3">${count.待批阅}</span></a></li>
-										  <li><a href="#list4" title="已完成" role="tab" data-toggle="tab">考试课程</a></li>
 										</ul><!-- 申请头 -->
 										
 										
 										 	<div class="tab-content" style="margin-top: 20px">
 										 		<div class="tab-pane active" id="list1" >
+										 			<s:iterator value="student.classes.{?#this.status=='在读'}" var="c">
+										 				<div class="panel panel-primary">
+										 					<%@include file="part/class.jsp" %>
+										 				</div>
+										 			</s:iterator>
 												</div>
 												<div class="tab-pane " id="list2" >
+													<s:iterator value="student.classes.{?#this.status=='未开始'}" var="c">
+										 				<div class="panel panel-primary">
+										 					<%@include file="part/class.jsp" %>
+										 				</div>
+										 			</s:iterator>
 												</div>
-												<div class="tab-pane " id="list2" >
-												</div>
-												<div class="tab-pane " id="list4" >
+												<div class="tab-pane " id="list3" >
+													<s:iterator value="student.classes.{?#this.status=='已结束'}" var="c">
+										 				<div class="panel panel-primary">
+										 					<%@include file="part/class.jsp" %>
+										 				</div>
+										 			</s:iterator>
 												</div>
 											</div>
 								</div>

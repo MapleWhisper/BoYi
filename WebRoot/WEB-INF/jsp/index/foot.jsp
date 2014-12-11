@@ -4,23 +4,16 @@
 		<div id="footer">
 			<ul>
 
-				<li><a href="#" style="font-size:14px;color:#fff;">产品中心</a>
-					<ul>
-						<li><a href="#">视频服务</a></li>
-						<li><a href="#">大数据服务</a></li>
-						<li><a href="#">云服务</a></li>
-						<li><a href="#">文件分发服务</a></li>
-					</ul></li>
+				
 				
 				<li><a href="#" style="font-size:14px;color:#fff;">新闻中心</a>
 					<ul>
 						<li><a href="#">行业聚焦</a></li>
 						<li><a href="#">活动专题</a></li>
-						<li><a href="#">媒体联络</a></li>
-						<li><a href="#">2014全球GCDN</a></li>
 					</ul></li>
 				<li><a href="#" style="font-size:14px;color:#fff;">相关网站</a>
 					<ul>
+						<li><a target="_blank" href="http://bbs.bjsyedu.com">教育论坛</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/indexAction">后台管理</a></li>
 						<li><a href="${pageContext.request.contextPath}/exam/examAction">考试系统</a></li>
 						<li><a href="${pageContext.request.contextPath}/student/studentCenterAction">学生中心</a></li>
@@ -50,9 +43,9 @@
 		<!-- footer 结束 -->
 
 		<!-- footer1 开始 -->
-		<div id="footer1" style="text-align: center;">
+		<div id="footer1" style="text-align: center;color:#fff">
 			
-			<span style="color:#999999;font-size:16px;">黑ICP备14006802号 ©2014 博精思弈 教育 版权所有 
+			<span style="font-size:16px;">黑ICP备14006802号 ©2014 博精思弈 教育 版权所有 
 			</span> 
 		</div>
 		<!-- footer1 结束 -->

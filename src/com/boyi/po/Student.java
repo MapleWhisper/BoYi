@@ -198,7 +198,7 @@ public class Student implements Serializable{
 		this.examResults = examResults;
 	}
 	
-	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE},fetch=FetchType.EAGER)
+	@OneToOne(cascade={CascadeType.ALL},fetch=FetchType.EAGER)
 	@JoinColumn(name="accountId")
 	public StudentAccount getAccount() {
 		return account;

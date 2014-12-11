@@ -113,6 +113,7 @@
                                                               <option value="初中一年级"  selected>初中一年级</option>
                                                               <option value="初中二年级"   >初中二年级</option>
                                                               <option value="初中三年级"   >初中三年级</option>
+                                                              <option value="初中四年级"   >初中四年级</option>
                                                               <option value="高中一年级"   >高中一年级</option>
                                                               <option value="高中二年级"   >高中二年级</option>
                                                               <option value="高中三年级"   >高中三年级</option>
@@ -216,6 +217,7 @@
                                                               <option value="初中一年级"  selected>初中一年级</option>
                                                               <option value="初中二年级"   >初中二年级</option>
                                                               <option value="初中三年级"   >初中三年级</option>
+                                                              <option value="初中四年级"   >初中四年级</option>
                                                               <option value="高中一年级"   >高中一年级</option>
                                                               <option value="高中二年级"   >高中二年级</option>
                                                               <option value="高中三年级"   >高中三年级</option>
@@ -293,6 +295,7 @@
                                                               <option value="初中一年级"  selected>初中一年级</option>
                                                               <option value="初中二年级"   >初中二年级</option>
                                                               <option value="初中三年级"   >初中三年级</option>
+                                                              <option value="初中四年级"   >初中四年级</option>
                                                               <option value="高中一年级"   >高中一年级</option>
                                                               <option value="高中二年级"   >高中二年级</option>
                                                               <option value="高中三年级"   >高中三年级</option>
@@ -366,6 +369,7 @@
                                                               <option value="初中一年级"  selected>初中一年级</option>
                                                               <option value="初中二年级"   >初中二年级</option>
                                                               <option value="初中三年级"   >初中三年级</option>
+                                                              <option value="初中四年级"   >初中四年级</option>
                                                               <option value="高中一年级"   >高中一年级</option>
                                                               <option value="高中二年级"   >高中二年级</option>
                                                               <option value="高中三年级"   >高中三年级</option>

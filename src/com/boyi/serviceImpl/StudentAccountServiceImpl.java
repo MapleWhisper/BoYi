@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Date;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ import com.boyi.po.Student;
 import com.boyi.po.StudentAccount;
 import com.boyi.po.StudentResume;
 import com.boyi.service.StudentAccountService;
+import com.boyi.service.StudentService;
 import com.boyi.utils.BoYiUtils;
 
 
@@ -36,7 +38,8 @@ import com.boyi.utils.BoYiUtils;
 @Transactional
 public class StudentAccountServiceImpl extends BaseServerImpl<StudentAccount> implements StudentAccountService{
 	
-	
+	@Resource(name="studentServiceImpl")
+	private StudentService studentService;
 	/**
 	 * 
 	 * 存钱
@@ -44,7 +47,14 @@ public class StudentAccountServiceImpl extends BaseServerImpl<StudentAccount> im
 	public boolean add(StudentResume resume,Student student) {
 		try {
 			StudentAccount account = student.getAccount();
-			System.out.println(account.getStudent().getName());
+			if(account==null){
+				account = new StudentAccount();
+				account.setMoney(0);
+				account.setStudent(student);
+				student.setAccount(account);
+				studentService.update(student);
+				account = student.getAccount();
+			}
 			resume.setType(ResumeType.存入.toString());
 			resume.setTradeDate(new Date());
 			resume.setAccount(account);

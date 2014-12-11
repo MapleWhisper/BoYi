@@ -20,7 +20,7 @@
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="${pageContext.request.contextPath}/indexAction">博弈教育首页</a></li>
-						<li><a href="${pageContext.request.contextPath}/indexAction">Bug/功能提交和反馈</a></li>
+						<li><a target="_blank" href="http://bbs.bjsyedu.com/read.php?tid=1">Bug/功能提交和反馈</a></li>
 					</ul>
 					
 					<ul class="nav navbar-nav navbar-right">

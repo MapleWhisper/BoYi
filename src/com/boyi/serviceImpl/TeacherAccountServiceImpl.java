@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Date;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ import com.boyi.po.Teacher;
 import com.boyi.po.TeacherAccount;
 import com.boyi.po.TeacherResume;
 import com.boyi.service.TeacherAccountService;
+import com.boyi.service.TeacherServer;
 import com.boyi.utils.BoYiUtils;
 
 
@@ -36,14 +38,24 @@ import com.boyi.utils.BoYiUtils;
 @Transactional
 public class TeacherAccountServiceImpl extends BaseServerImpl<TeacherAccount> implements TeacherAccountService{
 	
-	
+	@Resource(name="teacherServerImpl")
+	private TeacherServer teacherServer;
 	/**
 	 * 
 	 * 存钱
 	 */
-	public boolean add(TeacherResume resume,Teacher Teacher) {
+	public boolean add(TeacherResume resume,Teacher teacher) {
 		try {
-			TeacherAccount account = Teacher.getAccount();
+			TeacherAccount account = teacher.getAccount();
+			if(account ==null){
+				account = new TeacherAccount();
+				account.setMoney(0);
+				teacher.setAccount(account);
+				
+				account.setTeacher(teacher);
+				teacherServer.update(teacher);
+				account = teacher.getAccount();
+			}
 			System.out.println(account.getTeacher().getName());
 			resume.setType(ResumeType.存入.toString());
 			resume.setTradeDate(new Date());

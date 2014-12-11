@@ -14,8 +14,9 @@
 		</tr>
 	</table>
 	<div class="list-group">
-		<a href=" " class="list-group-item"> 查看我的消费记录 </a> <a href=" "
-			class="list-group-item">我的成绩</a> <a href=" " class="list-group-item">入学测试</a>
+		<a href="${pageContext.request.contextPath}/student/studentCenterAction" class="list-group-item"> 我的班级 </a> 
+		<a href="${pageContext.request.contextPath}/student/studentCenterAction!showAccount" class="list-group-item"> 我的账户 </a> 
+		<a href="${pageContext.request.contextPath}/exam/examAction" class="list-group-item"> 考试系统 </a>
 	</div>
 
 

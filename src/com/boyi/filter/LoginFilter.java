@@ -35,7 +35,7 @@ public class LoginFilter implements Filter{
 		HttpSession session = req.getSession();
 		
 		String path = req.getRequestURI();
-		if(path.indexOf("student/studentCenterAction")!=-1){
+		if(path.indexOf("student/studentCenterAction")!=-1 || path.indexOf("exam/examAction")!=-1){
 			Student stu = (Student) session.getAttribute("student");
 			if(stu==null){
 				resp.sendRedirect(req.getContextPath()+"/loginAction!loginUI");

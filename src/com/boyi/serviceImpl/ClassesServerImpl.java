@@ -35,6 +35,14 @@ public class ClassesServerImpl extends BaseServerImpl<Classes> implements Classe
 		@Override
 		public List<Classes> findIndexAll(String grade, String subject,
 			String sort, Page page) {
+			if(grade==null){
+				grade="";
+			}
+			if(subject==null){
+				subject="";
+			}if(sort==null){
+				sort="";
+			}
 			String s = "";
 			if (sort.equals("价格")){
 				s = " c.classPrice";

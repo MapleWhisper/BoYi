@@ -56,10 +56,16 @@ public class TeacherAccount implements Serializable{
 	
 	
 	public  synchronized void add(int amount){
+		if(money==null){
+			money=0;
+		}
 		this.money +=amount;
 	}
 	
 	public  synchronized void remove(int amount){
+		if(money==null){
+			money=0;
+		}
 		this.money -=amount;
 	}
 	

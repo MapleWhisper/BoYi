@@ -1,6 +1,7 @@
 package com.boyi.po;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -22,6 +23,11 @@ public class StudentAccount implements Serializable{
 	private Student student;		//哪个学生
 	private Integer money;			//账户余额
 	private Set<StudentResume> resumes;	//消费记录
+	
+	public StudentAccount() {
+		this.money = 0;
+		resumes = new HashSet<StudentResume>();
+	}
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -56,9 +62,15 @@ public class StudentAccount implements Serializable{
 	}
 	
 	public  synchronized void add(int amount){
+		if(money==null){
+			money =0;
+		}
 		this.money +=amount;
 	}
 	public  synchronized void remove(int amount){
+		if(money==null){
+			money =0;
+		}
 		this.money -=amount;
 	}
 }

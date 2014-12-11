@@ -33,9 +33,11 @@
 					</div>
 					
 					<div class="col-xs-9">
+						<!-- 
 						<div class="row" style="height: 100px">
 							<%@ include file="part/top.jsp"%>
 						</div>
+						 -->
 						
 						
 						<div class="row">

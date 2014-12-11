@@ -113,7 +113,7 @@ public class Teacher implements Serializable {
 	}
 
 	
-	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE},fetch=FetchType.EAGER,mappedBy="teacher")
+	@OneToOne(cascade={CascadeType.ALL},fetch=FetchType.EAGER,mappedBy="teacher")
 	public TeacherAccount getAccount() {
 		return account;
 	}

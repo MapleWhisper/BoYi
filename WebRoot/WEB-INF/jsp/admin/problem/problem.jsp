@@ -67,6 +67,7 @@
 														<button type="button" class="btn btn-default" name="grade" >初中一年级</button>
 														<button type="button" class="btn btn-default" name="grade" >初中二年级</button>
 														<button type="button" class="btn btn-default" name="grade" >初中三年级</button>
+														<button type="button" class="btn btn-default" name="grade" >初中四年级</button>
 													</div>
 													<div class="btn-group" style="margin-left: 30px;margin-top: 15px">
 														<button type="button" class="btn btn-default" name="grade" >高中一年级</button>

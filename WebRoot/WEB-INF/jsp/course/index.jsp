@@ -49,20 +49,23 @@
 					<div class="panel-body">
 						<ul id="sort">
 							<li>排序</li>
-							<li><a>综合</a></li>
-							<li><a>价格</a></li>
-							<li><a>人数</a></li>
-							<li><a>最新</a></li>
+							<li ><a href="${pageContext.request.contextPath}/course/indexAction">综合</a></li>
+							<li><a href="${pageContext.request.contextPath}/course/indexAction?sort=价格">价格</a></li>
+							<li><a href="${pageContext.request.contextPath}/course/indexAction?sort=人数">人数</a></li>
+							<li><a href="${pageContext.request.contextPath}/course/indexAction">最新</a></li>
 						</ul>
 					</div>
 				</div>
 
 				<%@  include file="index/classes.jsp"%>
+				
+				<div style="text-align: center;">
+					<%@ include file="page.jsp"%>
+				</div>
 			</div>
 			<div class="col-xs-2">
 
 				<div class="row" style="margin-left: 2px">
-					<h3 class="page-header">热门教师</h3>
 					<%@ include file="showClass/teacher.jsp"%>
 
 				</div>

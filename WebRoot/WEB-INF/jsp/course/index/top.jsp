@@ -25,6 +25,8 @@
 					style="margin-top: 15px" value="初中二年级">初二</button>
 				<button type="button" class="btn btn-default" name="grade"
 					style="margin-top: 15px" value="初中三年级">初三</button>
+					<button type="button" class="btn btn-default" name="grade"
+					style="margin-top: 15px" value="初中四年级">初四</button>
 				<button type="button" class="btn btn-default" name="grade"
 					style="margin-top: 15px" value="高中一年级">高一</button>
 				<button type="button" class="btn btn-default" name="grade"

@@ -40,7 +40,8 @@ import com.boyi.utils.Page;
 		@Result(name="login",type="redirectAction",location="/loginAction!loginUI"),
 		@Result(name="index",location="/WEB-INF/jsp/course/index.jsp"),
 		
-		@Result(name="showClass",location="/WEB-INF/jsp/course/showClass.jsp")
+		@Result(name="showClass",location="/WEB-INF/jsp/course/showClass.jsp"),
+		@Result(name="showTeacher",location="/WEB-INF/jsp/course/showTeacher.jsp")
 })
 public class CourseIndexAction extends BaseAction{
 	
@@ -64,6 +65,7 @@ public class CourseIndexAction extends BaseAction{
 	private List<Article> articleList;
 	private List<Teacher> teacherList;
 	private Classes classes;
+	private Teacher teacher;
 	private int id;
 	
 	private String grade;
@@ -106,6 +108,9 @@ public class CourseIndexAction extends BaseAction{
 			this.grade = (String) session.getAttribute("grade");
 			this.subject = (String) session.getAttribute("subject");
 			session.setAttribute("sort", sort);
+			if(cur == null){
+				cur = 1;
+			}
 			return;
 		}
 		if(grade == null ){
@@ -139,6 +144,12 @@ public class CourseIndexAction extends BaseAction{
 		}
 		this.teacherList= teacherServer.findRecommand();
 		return "showClass";
+	}
+		
+	public String showTeacher(){
+		this.teacher = teacherServer.getById(id);
+		this.teacherList = teacherServer.findRecommand();
+		return "showTeacher";
 	}
 	
 	/**
@@ -328,6 +339,14 @@ public class CourseIndexAction extends BaseAction{
 
 	public void setTeacherList(List<Teacher> teacherList) {
 		this.teacherList = teacherList;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 	
 	

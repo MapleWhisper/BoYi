@@ -26,14 +26,14 @@
 												</tr>
 												
 												<tr class="ccontext">
-													<td ><span class="glyphicon glyphicon-usd"></span>价格:${c.classPrice }</td>
+													<td ><span class="glyphicon glyphicon-usd"></span>课时费:${c.classPrice }</td>
 													<td><span class="glyphicon glyphicon-user"></span>人数:${c.studentNumber}</td>
 												</tr>
 											</table>
 										</div>
 										
 										<div class="col-xs-2">
-											<button type="button" class="btn btn-warning" style="margin-top: 40px">去选课</button>
+											<a type="button" class="btn btn-warning" href="${pageContext.request.contextPath}/course/indexAction!showClass?id=${c.id}" style="margin-top: 40px">去选课</a>
 										</div>
 									</div> <!-- row end -->
 							</div><!-- panel body end -->

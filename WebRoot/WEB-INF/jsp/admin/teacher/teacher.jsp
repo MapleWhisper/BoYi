@@ -45,10 +45,10 @@
 								<c:forEach items="${teacherList}" var="tea">
 									<tr>
 										<c:if test="${tea.recommand}">
-											<td><a target="_blank" href="${pageContext.request.contextPath}/admin/teacher/teacherAction!show?id=${tea.id}">${tea.name }<span class="label label-danger">推荐教师</span></a></td>
+											<td><a  href="${pageContext.request.contextPath}/admin/teacher/teacherAction!show?id=${tea.id}">${tea.name }<span class="label label-danger">推荐教师</span></a></td>
 										</c:if>
 										<c:if test="${not tea.recommand}">
-											<td>${tea.name }</td>
+											<td><a  href="${pageContext.request.contextPath}/admin/teacher/teacherAction!show?id=${tea.id}">${tea.name }</a></td>
 										</c:if>
 										<td>${tea.teacherId }</td>
 										<td>${tea.email }</td>
