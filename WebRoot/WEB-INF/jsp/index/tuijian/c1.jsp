@@ -7,38 +7,28 @@
 									<div class="col-xs-6">
 										<div class="panel panel-default">
 											<div class="panel-body">
+												
 												<div class="row">
-													<div class="col-xs-2" style="text-align: center;">
-														<img src="${pageContext.request.contextPath}/${classes.teacher.pic}" height="80" width="80"/>
-														<s:property value="c.teacher.name" />
+													<div class="col-xs-4" style="text-align: center;">
+														<img src="${pageContext.request.contextPath}/${c.teacher.pic}" height="80" width="80"/>
+														
 													</div>
 													<div class="col-xs-8">
-														<a target="_blank" href="${pageContext.request.contextPath}/course/indexAction!showClass?id=${classes.id}"> <s:property
-																value="c.name" />
-														</a><br>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-xs-4"></div>
-													<div class="col-xs-4">
-														价格：<font color="orange"> <s:property
-																value="#classes.classPrice" /></font>
-																		
-													</div>
-													<div class="col-xs-4">
-														人数：<font color="orange"> <s:property
-																value="#classes.studentNumber" /></font>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-xs-4"></div>
-													<div class="col-xs-4">
-														其他：<font color="orange"> <s:property
-																value="#classes.classPrice" /></font>
-													</div>
-													<div class="col-xs-4">
-														当前人数：<font color="orange"> <s:property
-																value="#classes.curentNumber" /></font>
+														<a target="_blank" href="${pageContext.request.contextPath}/course/indexAction!showClass?id=${c.id}"
+															style="font-size: 17px;">
+															${c.name }
+														</a>
+														<table style="font-size: 14px;" >
+															<tr class="cla">
+																<td >授课教师：</td>
+																<td >${c.teacher.name }</td>
+															</tr>
+															<tr class="cla">
+																<td>班级人数：</td>
+																<td>${c.studentNumber}</td>
+															</tr>
+														</table>
+														<br>
 													</div>
 												</div>
 

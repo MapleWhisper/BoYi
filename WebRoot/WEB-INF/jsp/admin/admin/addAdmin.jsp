@@ -29,42 +29,42 @@
 						  	 <form action="${pageContext.request.contextPath }/admin/admin/adminAction!save" class="form-horizontal" role="form" id="form" method="post">
 									<div class="form-group">
 										
-										<label for="inputEmail3" class="col-xs-3 control-label">管理员账号</label>
-										<div class="col-xs-9">
+										<label for="inputEmail3" class="col-xs-2 control-label">管理员账号</label>
+										<div class="col-xs-10">
 											<input type="text" class="form-control  " name="admin.username" id="username" >
 										</div>
 									</div>
 									
 									<div class="form-group">
-										<label for="inputEmail3" class="col-xs-3 control-label">输入密码</label>
-										<div class="col-xs-9">
+										<label for="inputEmail3" class="col-xs-2 control-label">输入密码</label>
+										<div class="col-xs-10">
 											<input type="text" class="form-control  " name="admin.password" id="username">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="inputEmail3" class="col-xs-3 control-label">确认输入密码</label>
-										<div class="col-xs-9">
+										<label for="inputEmail3" class="col-xs-2 control-label">确认输入密码</label>
+										<div class="col-xs-10">
 											<input type="text" class="form-control  " id="username">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="inputEmail3" class="col-xs-3 control-label">姓名</label>
-										<div class="col-xs-9">
+										<label for="inputEmail3" class="col-xs-2 control-label">姓名</label>
+										<div class="col-xs-10">
 											<input type="text" class="form-control  " name="admin.name" id="username"	>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="inputEmail3" class="col-xs-3 control-label">职位</label>
-										<div class="col-xs-9">
+										<label for="inputEmail3" class="col-xs-2 control-label">职位</label>
+										<div class="col-xs-10">
 											<input type="text" class="form-control  " name="admin.position" id="username"	>
 										</div>
 									</div>
 									<div class="form-group" data-toggle="tooltip" data-placement="top" title="可多选" onmouseover="$(this).tooltip('show')">
-										<label for="inputEmail3" class="col-xs-3 control-label">权限</label>
-										<div class="col-xs-9">
+										<label for="inputEmail3" class="col-xs-2 control-label">权限</label>
+										<div class="col-xs-10">
 											<c:forEach items="${privilegeList}" var="p">
 												<label class="checkbox-inline">
-												  <input type="checkbox"  name="privilegeIds" value="${p.id}"/> ${p.name}
+												  <input type="checkbox"  name="admin.privilegeIds" value="${p.id}"/> ${p.name}
 												</label>
 											</c:forEach>
 										</div>

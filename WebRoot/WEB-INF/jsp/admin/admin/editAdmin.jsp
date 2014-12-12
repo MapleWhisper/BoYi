@@ -15,13 +15,13 @@
     		</div>
     		<div class="row" style="margin-top: 70px">
     				<!--左侧的导航条 -->
-					<div class="col-xs-3">
+					<div class="col-xs-2">
 						<%@include file="../left.jsp"%>
 					</div>
 					<!--左侧的导航条 -->
 					
 					<!--右侧的内容 -->
-					<div class="col-xs-9">
+					<div class="col-xs-10">
 						<!-- 面板开始 -->
 						<div class="panel panel-danger">
 						  <div class="panel-heading">
@@ -31,33 +31,30 @@
 						  	 <form action="${pageContext.request.contextPath}/admin/admin/adminAction!update" class="form-horizontal" role="form" id="form1" method="post">
 								<div class="form-group">
 									
-									<label for="inputEmail3" class="col-xs-3 control-label">管理员账号</label>
-									<div class="col-xs-9">
+									<label for="inputEmail3" class="col-xs-2 control-label">管理员账号</label>
+									<div class="col-xs-10">
 										<input type="text" class="form-control inputxt" id="username" name="admin.username" value="${admin.username }" required>
 										<input type="hidden" name="admin.id" value="${admin.id }">
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label for="inputEmail3" class="col-xs-3 control-label">姓名</label>
-									<div class="col-xs-9">
+									<label for="inputEmail3" class="col-xs-2 control-label">姓名</label>
+									<div class="col-xs-10">
 										<input type="text" class="form-control inputxt" id="name" name="admin.name" value="${admin.name }" required>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="inputEmail3" class="col-xs-3 control-label">职位</label>
-									<div class="col-xs-9">
+									<label for="inputEmail3" class="col-xs-2 control-label">职位</label>
+									<div class="col-xs-10">
 										<input type="text" class="form-control inputxt" name="admin.position"  id="position"value="${admin.position }" required>
 									</div>
 								</div>
 								<div class="form-group" data-toggle="tooltip" data-placement="top" title="可多选" onmouseover="$(this).tooltip('show')">
-									<label for="inputEmail3" class="col-xs-3 control-label">权限</label>
-									<div class="col-xs-9">
-										<c:forEach items="${privilegeList}" var="p">
-											<label class="checkbox-inline">
-											  <f:checkbox  path="admin.privilegeIds" name="privilegeIds" value="${p.id}"/> ${p.name}
-											</label>
-										</c:forEach>
+									<label for="inputEmail3" class="col-xs-2 control-label">权限</label>
+									<div class="col-xs-10">
+										<s:checkboxlist name="admin.privilegeIds"   list="privilegeList" listKey="id" listValue="name"/>
+										
 									</div>
 								</div>
 								<div>

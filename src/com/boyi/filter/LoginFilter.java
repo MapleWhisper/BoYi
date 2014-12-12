@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.boyi.po.Admin;
+import com.boyi.po.Privilege;
 import com.boyi.po.Student;
 import com.boyi.po.Teacher;
 
@@ -35,7 +36,9 @@ public class LoginFilter implements Filter{
 		HttpSession session = req.getSession();
 		
 		String path = req.getRequestURI();
-		if(path.indexOf("student/studentCenterAction")!=-1 || path.indexOf("exam/examAction")!=-1){
+		
+		//验证学生登录
+		if(path.indexOf("student/studentCenterAction")!=-1 || path.indexOf("examAction!show")!=-1){
 			Student stu = (Student) session.getAttribute("student");
 			if(stu==null){
 				resp.sendRedirect(req.getContextPath()+"/loginAction!loginUI");
@@ -52,22 +55,57 @@ public class LoginFilter implements Filter{
 				
 			}else{
 				if(tea!=null){
-					System.out.println(tea.getName());
-					
-					if(checkTeacherPrivilege(path)){
+					checkTeacher(request, response, chain, req, resp, path, tea);
+					return;
+				}
+				if(admin!=null){
+					if(path.indexOf("admin/indexAction")!=-1){
 						chain.doFilter(request, response);
 						return;
-					}else{
-						resp.sendRedirect(req.getContextPath()+"/admin/indexAction");
-						return;
 					}
+					checkAdmin(request, response, chain, req, resp, path, admin);
+					return;
 				}
-				chain.doFilter(request, response);
+				
 			}
 			return;
 		}
 		chain.doFilter(request, response);
 		
+	}
+	private void checkAdmin(ServletRequest request, ServletResponse response,
+			FilterChain chain, HttpServletRequest req,
+			HttpServletResponse resp, String path, Admin admin) {
+		try {
+			boolean flag = false;
+	        for(Privilege p :  admin.getPrivileges() ){
+	        	if(path.indexOf(p.getUrl())!=-1 ){
+	        		flag= true;
+	        	}
+	        }
+	        if(!flag){
+	        	resp.sendRedirect(req.getContextPath()+"/admin/indexAction");
+	        }
+	        chain.doFilter(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	private void checkTeacher(ServletRequest request, ServletResponse response,
+			FilterChain chain, HttpServletRequest req,
+			HttpServletResponse resp, String path, Teacher tea)
+			throws IOException, ServletException {
+		System.out.println(tea.getName());
+		
+		if(checkTeacherPrivilege(path)){
+			chain.doFilter(request, response);
+			return;
+		}else{
+			resp.sendRedirect(req.getContextPath()+"/admin/indexAction");
+			return;
+		}
 	}
 	
 	public boolean checkTeacherPrivilege(String path){

@@ -82,7 +82,7 @@ public class Admin implements Serializable{
 		this.name = name;
 	}
 	
-	@ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE},fetch=FetchType.EAGER)
+	@ManyToMany(cascade={CascadeType.MERGE,CascadeType.MERGE},fetch=FetchType.EAGER)
 	@JoinTable(
 			name="admin_privilege",
 			joinColumns=@JoinColumn(name="admin_id"),

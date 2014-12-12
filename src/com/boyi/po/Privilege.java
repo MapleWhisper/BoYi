@@ -21,6 +21,20 @@ public class Privilege implements Serializable{
 	private String url;
 	private Set<Admin> admins;
 	
+	public Privilege() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	public Privilege(String name, String url) {
+		super();
+		this.name = name;
+		this.url = url;
+	}
+
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Integer getId() {
