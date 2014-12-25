@@ -64,6 +64,14 @@ public class ClassesServerImpl extends BaseServerImpl<Classes> implements Classe
 		}
 		
 		@Override
+		public List<Classes> findAvailable() {
+			String sql = "select * from classes where status <> ? order by id desc";
+			Query query= getSession().createSQLQuery(sql).addEntity(Classes.class);
+			query.setString(0, "已结束");
+			return query.list();
+		}
+		
+		@Override
 		public List<Classes> findRecommand() {
 			 String hql="from Classes c where c.recommand=?";
 

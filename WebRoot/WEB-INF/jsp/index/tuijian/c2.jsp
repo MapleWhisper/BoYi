@@ -3,7 +3,7 @@
 
 								<s:iterator status="qwe"
 									value="clist.{?#this.course.grade.indexOf('初中')!=-1}"
-									var="classes">
+									var="c">
 
 									<div class="col-xs-6">
 										<div class="panel panel-default">

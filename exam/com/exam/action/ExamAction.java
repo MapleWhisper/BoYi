@@ -151,11 +151,11 @@ public class ExamAction extends BaseAction{
 			return "error";
 		}
 		
-		Integer stuId = ((Student) session.getAttribute("student"))==null?null:getId();
-		if(stuId == null){
-			stuId = 1;
-		}
+		Student stu = (Student) session.getAttribute("student");
+		Integer stuId = stu.getId();
+		
 		ExamResult result = examResultServer.getById(stuId, id);
+		System.out.println(stuId+" "+id+" "+result);
 		this.paper = exam.getPaper();
 		
 		HashMap<Integer,String> answer;

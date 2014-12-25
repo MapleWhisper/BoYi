@@ -1,10 +1,9 @@
 package com.admin.action;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -15,10 +14,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.alibaba.fastjson.JSON;
 import com.boyi.base.BaseAction;
+import com.boyi.po.Classes;
 import com.boyi.po.Student;
 import com.boyi.po.StudentAccount;
 import com.boyi.po.StudentResume;
+import com.boyi.service.ClassesServer;
 import com.boyi.service.StudentAccountService;
 import com.boyi.service.StudentService;
 import com.boyi.utils.Page;
@@ -47,15 +49,20 @@ public class StudentAction  extends BaseAction{
 	@Resource(name="studentAccountServiceImpl")
 	private StudentAccountService studentAccountService;
 	
+	@Resource(name="classesServerImpl")
+	private ClassesServer classesServer;
+	
 	@Value("${page.studentAmountPerPage}")
 	private Integer studentAmountPerPage;	//每页显示多少学生
 	
 	
 	private List<Student> studentList;
+	private List<Classes> classesList;
 	private Student student;
 	private StudentAccount account;
 	private StudentResume resume;
 	private Integer id;
+	private Integer cid;
 	
 	private String meg;
 	private Page page;
@@ -77,8 +84,11 @@ public class StudentAction  extends BaseAction{
 	public String show() {
 		if(id==null){
 			id = (Integer) ServletActionContext.getRequest().getSession().getAttribute("stuId");
+		}else{
+			ServletActionContext.getRequest().getSession().setAttribute("stuId",id);
 		}
-		student = studentService.getById(id);
+		this.student = studentService.getById(id);
+		this.classesList = classesServer.findAvailable();
 		return super.show();
 	}
 	
@@ -150,6 +160,17 @@ public class StudentAction  extends BaseAction{
 		return "toShow";
 	}
 	
+	public String addToClass(){
+		if(id==null || cid==null){
+			return "toShow";
+		}
+		this.student = studentService.getById(id);
+		Classes c = classesServer.getById(cid);
+		student.getClasses().add(c);
+		c.getStudents().add(student);
+		studentService.update(student);
+		return "toShow";
+	}
 
 	public StudentService getStudentService() {
 		return studentService;
@@ -229,6 +250,22 @@ public class StudentAction  extends BaseAction{
 
 	public void setResume(StudentResume resume) {
 		this.resume = resume;
+	}
+
+	public List<Classes> getClassesList() {
+		return classesList;
+	}
+
+	public void setClassesList(List<Classes> classesList) {
+		this.classesList = classesList;
+	}
+
+	public Integer getCid() {
+		return cid;
+	}
+
+	public void setCid(Integer cid) {
+		this.cid = cid;
 	}
 	
 	

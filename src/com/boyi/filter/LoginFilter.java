@@ -25,7 +25,8 @@ public class LoginFilter implements Filter{
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		System.out.println("LoginFileter...ok");
-		teacherList.addAll(Arrays.asList(new String[]{"indexAction","teacherCenterAction"}));
+		teacherList.addAll(Arrays.asList(new String[]{"indexAction","teacherCenterAction",
+				"paperAction!checkPaper","articleAction!show"}));
 		
 	}
 	@Override

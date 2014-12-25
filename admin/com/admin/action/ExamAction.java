@@ -110,6 +110,7 @@ public class ExamAction extends BaseAction{
 		Set<com.boyi.po.ExamResult> results = new HashSet<com.boyi.po.ExamResult>(); 
 		for(Student s : c.getStudents()){
 			com.boyi.po.ExamResult r = new com.boyi.po.ExamResult();
+			r.setExam(exam);
 			r.setStudent(s);
 			results.add(r);
 		}

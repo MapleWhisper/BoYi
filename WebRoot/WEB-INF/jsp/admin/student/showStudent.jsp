@@ -133,13 +133,16 @@
 						<h1 class="panel-title" style="font-size: 25px">学生报名的班级</h1>
 					</div>
 					<div class="panel-body">
-
+						<div class="row">
+							<div class="col-xs-4 col-xs-offset-4">
+								<button type="button" class="btn btn-block btn-primary" id="addToClass">加入班级</button>
+							</div>
+						</div>
 						<!-- 班级内容 -->
-						<div class="tab-content">
-							<div role="tabpanel" class="tab-pane active" id="list1">
 								<table
 									class="table table-hover table-striped table-bordered table-condensed"
 									style="margin-top: 10px">
+									
 									<thead>
 										<tr class="info">
 											<td>课程名</td>
@@ -152,7 +155,7 @@
 									<tbody>
 										<c:forEach items="${student.classes}" var="c">
 											<tr>
-												<td>${c.name }</td>
+												<td><a href="${pageContext.request.contextPath}/admin/classes/classesAction!show?id=${c.id }">${c.name }</a></td>
 												<td><fm:formatDate value="${c.beginDate }"
 														pattern="yyyy-MM-dd" /></td>
 												<td><fm:formatDate value="${c.endDate }"
@@ -167,8 +170,6 @@
 										</c:forEach>
 									</tbody>
 								</table>
-							</div>
-						</div>
 					</div>
 					<!-- panel-body -->
 				</div>
@@ -182,6 +183,7 @@
 		</div>
 		</div>
 		
+		<%@ include file="../script/addToClassModal.jsp"%>
 		<%@ include file="../../modal/studentPay.jsp"%>
 		<%@ include file="../buttom.jsp"%>
 		<script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
@@ -217,6 +219,11 @@
     			
     			$(".info tr td:even").css("text-align","right");
     			$(".info tr td:odd").css("text-align","left");
+    			
+    			
+    			$("#addToClass").click(function(){
+    				$("#addToClassModal").modal("show");
+    			});
     			
     			$("#form2").validate();
     		});

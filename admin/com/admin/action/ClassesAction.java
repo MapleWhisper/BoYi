@@ -87,7 +87,6 @@ public class ClassesAction extends BaseAction{
 	private String status;
 	private Integer id;
 	private Integer sId;	//学生Id
-
 	private Integer tId;	//教师Id
 	
 	
@@ -335,7 +334,7 @@ public class ClassesAction extends BaseAction{
 	
 	public String removeStudent(){
 		try {
-			int cid = (Integer) ServletActionContext.getRequest().getSession().getAttribute("classesId");
+			Integer cid = (Integer) ServletActionContext.getRequest().getSession().getAttribute("classesId");
 			this.classes = classesServer.getById(cid);
 			Student stu = studentService.getById(id);
 			stu.getClasses().remove(classes);

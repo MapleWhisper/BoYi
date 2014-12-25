@@ -27,5 +27,11 @@ public interface ClassesServer extends BaseServer<Classes> {
 	
 	public List<Classes> findIndexAll(String grade,String subject,String sort,Page page);
 	
+	/**
+	 * 返回所有的 未开始 和 在读的课程
+	 * @return
+	 */
+	public List<Classes> findAvailable();
+	
 	public List<Classes> findRecommand();
 }

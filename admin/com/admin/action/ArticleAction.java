@@ -115,6 +115,7 @@ public class ArticleAction  extends BaseAction{
 		a.setTitle(article.getTitle());
 		a.setType(article.getType());
 		a.setContext(article.getContext());
+		a.setUrl(article.getUrl());
 		articleService.update(a);
 		return "toIndex";
 	}
@@ -132,7 +133,7 @@ public class ArticleAction  extends BaseAction{
 	 */
 	public String search(){
 		if(key!=null){
-			//articleQuery.updateIndex();
+			articleQuery.updateIndex();
 			this.articleList = articleQuery.serch(key);
 		}
 		return "index";

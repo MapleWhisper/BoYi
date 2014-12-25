@@ -40,7 +40,14 @@
 										<div class="form-group" >
 											<label  class="col-xs-1 control-label">文章类别：</label>
 											<div class="col-xs-11" >
-												<s:radio list="%{#{'主页新闻':'主页新闻','帮助文章':'帮助文章','后台通知':'后台通知' }}"  name="article.type"/>
+												<s:radio list="%{#{'主页新闻':'主页新闻','帮助文章':'帮助文章','后台通知':'后台通知','资料下载':'资料下载' }}"  name="article.type"/>
+											</div>
+										</div>
+										<div class="form-group" >
+											<label  class="col-xs-1 control-label">文章连接Url：</label>
+											<div class="col-xs-11" >
+												<input type="url" name="article.url" class="form-control" required="required" value="${article.url }">
+												<span style="color: red">*** 主页新闻，帮助文章，资料下载  该项必须填写 内容随便填写 ***</span>
 											</div>
 										</div>
 										
