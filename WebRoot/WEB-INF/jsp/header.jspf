@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="renderer" content="webkit">
+
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.6.2/html5shiv.js"></script>
 
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/image/index/logo.jpg" type="image/x-icon" />
 <link rel="stylesheet"
 	href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>

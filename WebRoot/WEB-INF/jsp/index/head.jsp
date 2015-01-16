@@ -9,7 +9,7 @@
 
 	<div id="header" style="margin-top: 30px">
 		<ul>
-			<li><font color="white">选课程</font></li>
+			<li><a href="${pageContext.request.contextPath}/course/indexAction">选课程</a></li>
 			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=小学一年级">一年级</a></li>
 			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=小学二年级">二年级</a></li>
 			<li><a href="${pageContext.request.contextPath}/course/indexAction?grade=小学三年级"> 三年级</a></li>
@@ -31,10 +31,10 @@
 
 	<div  class="banner">
 		<ul>
-			<li ><img width="100%" src="${pageContext.request.contextPath}/image/index/slide/1.jpg" ></li>
-			<li><img  width="100%" src="${pageContext.request.contextPath}/image/index/slide/2.jpg" ></li>
-			<li><img  width="100%" src="${pageContext.request.contextPath}/image/index/slide/3.jpg" ></li>
-			<li><img  width="100%" src="${pageContext.request.contextPath}/image/index/slide/4.jpg" ></li>
+			<li><a target="_blank" href="${applicationScope.system['index.slide1Href']}"><img  width="100%" src="${pageContext.request.contextPath}/image/index/slide/1.jpg" /></a></li>
+			<li><a target="_blank" href="${applicationScope.system['index.slide2Href']}"><img  width="100%" src="${pageContext.request.contextPath}/image/index/slide/2.jpg" /></a></li>
+			<li><a target="_blank" href="${applicationScope.system['index.slide3Href']}"><img  width="100%" src="${pageContext.request.contextPath}/image/index/slide/3.jpg" /></a></li>
+			<li><a target="_blank" href="${applicationScope.system['index.slide4Href']}"><img  width="100%" src="${pageContext.request.contextPath}/image/index/slide/4.jpg" /></a></li>
 		</ul>
 		
 	</div>

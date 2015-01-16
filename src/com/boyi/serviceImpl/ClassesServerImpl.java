@@ -64,6 +64,14 @@ public class ClassesServerImpl extends BaseServerImpl<Classes> implements Classe
 		}
 		
 		@Override
+		public Integer getMaxPageNum(Page page) {
+			Integer sum = ((Number)(getSession().createQuery("select count(id) from Classes where status <> '已结束'").iterate().next())).intValue() ;
+			sum = (sum+page.getAmount()-1)/page.getAmount(); 
+			page.setSum(sum);
+			return sum;
+		}
+		
+		@Override
 		public List<Classes> findAvailable() {
 			String sql = "select * from classes where status <> ? order by id desc";
 			Query query= getSession().createSQLQuery(sql).addEntity(Classes.class);

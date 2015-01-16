@@ -88,6 +88,46 @@
 								<td><button class="btn btn-primary edit" type="button">修改参数</button></td>
 								<td>公司电话</td>
 							</tr>
+							<tr>
+								<td>index.slide1Href</td>
+								<td><input type="text"
+									value="${applicationScope.system['index.slide1Href']}"
+									name="index.slide1Href"></td>
+								<td><button class="btn btn-primary edit" type="button">修改参数</button></td>
+								<td>首页第1幻灯片链接</td>
+							</tr>
+							<tr>
+								<td>index.slide2Href</td>
+								<td><input type="text"
+									value="${applicationScope.system['index.slide2Href']}"
+									name="index.slide2Href"></td>
+								<td><button class="btn btn-primary edit" type="button">修改参数</button></td>
+								<td>首页第2幻灯片链接</td>
+							</tr>
+							<tr>
+								<td>index.slide3Href</td>
+								<td><input type="text"
+									value="${applicationScope.system['index.slide3Href']}"
+									name="index.slide3Href"></td>
+								<td><button class="btn btn-primary edit" type="button">修改参数</button></td>
+								<td>首页第3幻灯片链接</td>
+							</tr>
+							<tr>
+								<td>index.slide4Href</td>
+								<td><input type="text"
+									value="${applicationScope.system['index.slide4Href']}"
+									name="index.slide4Href"></td>
+								<td><button class="btn btn-primary edit" type="button">修改参数</button></td>
+								<td>首页第4幻灯片链接</td>
+							</tr>
+							<tr>
+								<td>company.name</td>
+								<td><input type="text"
+									value="${applicationScope.system['company.name']}"
+									name="company.name"></td>
+								<td><button class="btn btn-primary edit" type="button">修改参数</button></td>
+								<td>公司名称</td>
+							</tr>
 							</tbody>
 						</table>
 

@@ -15,6 +15,6 @@
 		</ul>
 		</div>
 
-	<br> 黑ICP备14006802号 ©2014 博精思弈  教育 版权所有
+	<br> 黑ICP备14006802号  ${system['company.name']}
 
 </div>

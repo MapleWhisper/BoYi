@@ -11,6 +11,8 @@
 .banner {
 	position: relative;
 	overflow: auto;
+	background-position: center 0;
+	background-size: cover;
 }
 
 .banner li {
@@ -19,14 +21,14 @@
 .banner ul li {
 	float: left;
 	display: block;
-	min-height: 350px;
+	min-height: 300px;
 }
 
 .banner .dots {
 	position: absolute;
 	left: 600px;
 	right: 0;
-	bottom: 20px;
+	bottom: 15px;
 }
 
 .banner .dots li {
@@ -73,9 +75,9 @@
 				</div>
 				<div class="row" style="margin-bottom: 30px;margin-left: 1px; ">
 						<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#primary"
+							<li role="presentation" ><a href="#primary"
 								role="tab" data-toggle="tab">小学</a></li>
-							<li role="presentation"><a href="#chuzhong" role="tab"
+							<li role="presentation" class="active"><a href="#chuzhong" role="tab"
 								data-toggle="tab">初中</a></li>
 							<li role="presentation"><a href="#gaozhong" role="tab"
 								data-toggle="tab">高中</a></li>
@@ -83,10 +85,10 @@
 						</ul>
 						<!-- Tab panes -->
 						<div class="tab-content" style="margin-top: 20px">
-							<div role="tabpanel" class="tab-pane active" id="primary">
+							<div role="tabpanel" class="tab-pane " id="primary">
 								<%@ include file="tuijian/c1.jsp"%>
 							</div>
-							<div role="tabpanel" class="tab-pane" id="chuzhong">
+							<div role="tabpanel" class="tab-pane active" id="chuzhong">
 								<%@ include file="tuijian/c2.jsp"%>
 
 							</div>
@@ -172,7 +174,7 @@
 	    	delay: 3000,
 	    	keys: true,               //  Enable keyboard (left, right) arrow shortcuts
 	    	dots: true,               //  Display dot navigation
-	    	fluid: false              //  Support responsive design. May break non-responsive designs
+	    	
 	    });
 	});
 </script>

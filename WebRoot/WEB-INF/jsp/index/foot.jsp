@@ -45,7 +45,7 @@
 		<!-- footer1 开始 -->
 		<div id="footer1" style="text-align: center;color:#fff">
 			
-			<span style="font-size:16px;">黑ICP备14006802号 ©2014 博精思弈 教育 版权所有 
+			<span style="font-size:16px;">黑ICP备14006802号 ${system['company.name']} 
 			</span> 
 		</div>
 		<!-- footer1 结束 -->
