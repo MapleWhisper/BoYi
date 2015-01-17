@@ -1,10 +1,12 @@
 package com.boyi.utils;
 
 import java.util.Properties;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
+
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
@@ -13,7 +15,7 @@ public class MailSender {
 	private static JavaMailSenderImpl mailSender2 = new JavaMailSenderImpl();
 	static{
 		 Properties prop  =   new  Properties() ;
-		 prop.put( " mail.smtp.auth " ,  " true " ) ;  //  将这个参数设为true，让服务器进行认证,认证用户名和密码是否正确 
+		 prop.put( " mail.smtp.auth " ,  " true " ) ;  //  灏嗚繖涓弬鏁拌涓簍rue锛岃鏈嶅姟鍣ㄨ繘琛岃璇?璁よ瘉鐢ㄦ埛鍚嶅拰瀵嗙爜鏄惁姝ｇ‘ 
 		 prop.put( " mail.smtp.timeout " ,  " 25000 " ) ;
 		 
 		 mailSender.setJavaMailProperties(prop);
@@ -37,39 +39,39 @@ public class MailSender {
 		
 		helper.setTo("827605162@qq.com");
 		helper.setFrom("boyieduzhaopin@163.com");
-		helper.setSubject("测试邮件");
+		helper.setSubject("娴嬭瘯閭欢");
 		
-		helper.setText("<html><h2>这是测试邮件内容<h2><html>",true);
+		helper.setText("<html><h2>杩欐槸娴嬭瘯閭欢鍐呭<h2><html>",true);
 		
 		mailSender.send(message);
-		System.out.println("邮件发送成功");
+		System.out.println("閭欢鍙戦?鎴愬姛");
 		*/
 		
 	}
 	
 	/**
-	 * 发送邮件
+	 * 鍙戦?閭欢
 	 * 
-	 * @param from	发送人的名称
-	 * @param to	发送到的邮箱地址
-	 * @param subject	邮件标题
-	 * @param htmlText	邮件内容
+	 * @param from	鍙戦?浜虹殑鍚嶇О
+	 * @param to	鍙戦?鍒扮殑閭鍦板潃
+	 * @param subject	閭欢鏍囬
+	 * @param htmlText	閭欢鍐呭
 	 */
 	public static void send(String to ,String subject , String htmlText){
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 		try {
 			helper.setTo(to);
-			helper.setFrom(new InternetAddress(MimeUtility.encodeText("博弈教育")+"<boyieduzhaopin@163.com>"));
+			helper.setFrom(new InternetAddress(MimeUtility.encodeText("鍗氬紙鏁欒偛")+"<boyieduzhaopin@163.com>"));
 			helper.setSubject(subject);
 			helper.setText(htmlText,true);
 			
 		} catch (Exception e) {
-			System.out.println("邮件发送失败");
+			System.out.println("閭欢鍙戦?澶辫触");
 			e.printStackTrace();
 		}
 		mailSender.send(message);
-		System.out.println("邮件发送成功");
+		System.out.println("閭欢鍙戦?鎴愬姛");
 	}
 	
 	

@@ -44,24 +44,24 @@
 						<img style="width: 150px" class="img-thumbnail"
 							src="${pageContext.request.contextPath}/${teacher.pic}">
 					</div>
-					<div class="col-xs-5">
+					<div class="col-xs-6">
 						<table>
 							<tr>
-								<td height="48px" width="100px">教&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师:</td>
+								<td height="48px" width="100px">教&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师：</td>
 								<td height="48px" width="254px">${teacher.name }</td>
 							</tr>
 							<tr>
-								<td height="48px" width="100px">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</td>
+								<td height="48px" width="100px">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</td>
 								<td height="48px" width="254px">${teacher.email }</td>
 							</tr>
 							<tr>
 								<td height="48px" width="100px">教授课程：</td>
-								<td height="48px" width="254px">小学语文</td>
+								<td height="48px" width="254px">初中语文</td>
 							</tr>
 
 						</table>
 					</div>
-					<div class="col-xs-4">
+					<div class="col-xs-3">
 						<a class="btn btn-warning btn-lg" style="margin-top:50px;"
 							data-toggle="modal" data-target="#confirmClass">查看教师空间</a>
 					</div>
@@ -151,29 +151,5 @@
 	<%@ include file="../foot.jsp"%>
 
 
-	<script type="text/javascript">
-		$(function() {
-
-			$("#submit").click(function() {
-				var id = $(this).attr("name");
-				$.post("/BoYi/course/indexAction!applyClass", {
-					"id" : id
-				}, function(data) {
-					data = data.trim();
-					if (data == "login") {
-						$("#studentLogin").modal("show");
-					} else if (data == "success") {
-						alert("恭喜，申请提交成功");
-					} else {
-						alert("抱歉，申请提交失败！");
-					}
-
-					$("#confirmClass").modal("hide");
-				});
-
-			});
-
-		
-		});
-	</script>
+	
 </body>

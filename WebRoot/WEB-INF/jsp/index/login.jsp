@@ -3,7 +3,7 @@
 <html>
   <head>
 	<%@ include file="../header.jspf" %>
-	<title>登陆系统</title>
+	<title>学生登录</title>
   </head>
   
   <body>

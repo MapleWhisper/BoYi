@@ -3,7 +3,7 @@
 <html>
 <head>
 <%@ include file="../header.jspf"%>
-
+<title>学生注册</title>
 </head>
 
 <body>

@@ -4,7 +4,7 @@
 <head>
 
 <%@ include file="../header.jspf"%>
-<title>博精思弈教育学校</title>
+<title>博精思弈教育</title>
 <link href="${pageContext.request.contextPath}/css/index/index.css"
 	rel="stylesheet"></link>
 <style type="text/css">
