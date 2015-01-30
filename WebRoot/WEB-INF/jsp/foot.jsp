@@ -6,7 +6,7 @@
 		<div class="col-xs-8 col-xs-offset-3">
 		<ul class="foot" >
 			<li><a href="${pageContext.request.contextPath}/indexAction">系统首页</a></li>
-			<li><a href="http://bbs.bjsyedu.com">博弈论坛</a></li>
+			<li><a href="http://bbs.bjsyedu.com">教育论坛</a></li>
 			<li><a href="${pageContext.request.contextPath}/admin/indexAction">后台管理</a></li>
 			<li><a href="${pageContext.request.contextPath}/exam/examAction">考试系统</a></li>
 			<li><a href="${pageContext.request.contextPath}/course/indexAction">选课页面</a></li>

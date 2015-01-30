@@ -19,7 +19,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="${pageContext.request.contextPath}/indexAction">博弈教育</a></li>
+						<li><a href="${pageContext.request.contextPath}/indexAction">博精思弈教育</a></li>
 						<li><a href="${pageContext.request.contextPath}/course/indexAction">选课页面</a></li>
 						<li><a href="${pageContext.request.contextPath}/student/studentCenterAction">学生中心</a></li>
 					</ul>
@@ -34,7 +34,7 @@
      					 <li><a href="${pageContext.request.contextPath}/loginAction!logout">退出登录</a></li>
 					 </c:if>
      				 
-     				 <li><a href="${pageContext.request.contextPath}/indexAction">返回博弈教育首页</a></li>
+     				 <li><a href="${pageContext.request.contextPath}/indexAction">返回博精思弈教育首页</a></li>
      				</ul>
 				</div>
 				

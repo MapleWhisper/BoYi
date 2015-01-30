@@ -3,7 +3,7 @@
 <html>
 <head>
 <%@ include file="header.jspf"%>
-<title>博弈教育考试系统</title>
+<title>博精思弈教育考试系统</title>
 <style type="text/css">
 
 </style>
@@ -11,7 +11,7 @@
 
 <body >
 	<div class="header">
-		<p >博弈教育考试系统</p>
+		<p >博精思弈教育考试系统</p>
 	</div>
 	<div class="container" style="margin-bottom: 100px">
 		<div class="row">

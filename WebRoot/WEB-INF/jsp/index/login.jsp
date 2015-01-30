@@ -63,7 +63,7 @@
 				 	 <div class="col-xs-3"  style="margin-top: 80px">
 				 	 	
 				 	 	<div style="text-align: center;">
-							  	<p>还不是博弈教育用户？</p><br>
+							  	<p>还不是博精思弈教育用户？</p><br>
 							<a href="${pageContext.request.contextPath}/loginAction!registerUI" class="btn btn-warning btn-lg">立即注册</a>
 						</div>
     				</div><!-- col-xs-4 -->
